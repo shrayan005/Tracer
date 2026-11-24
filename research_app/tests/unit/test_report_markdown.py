@@ -96,3 +96,14 @@ def test_quotes_and_full_text_count_are_shown():
     assert "**1 selected** · full text for 1 of 1 ·" in md
     assert "**Limitations (stated by the authors):** none stated in the paper" in md
     assert "| **Summary based on** | full text |" in md
+
+
+def test_search_agent_rounds_are_listed_under_the_queries():
+    from app.domain.schemas import SearchAgentRound
+    report = make_report()
+    report.search_agent = [SearchAgentRound(round=2, gaps="few studies in older women", done=False,
+                                            new_queries=["creatine older women"], new_papers=30),
+                           SearchAgentRound(round=3, gaps="covered", done=True)]
+    md = render(report)
+    assert "**Search agent, round 2** (+30 papers): `creatine older women` · *gap: few studies in older women*" in md
+    assert "round 3" not in md                    # a 'done' round searched nothing: not listed

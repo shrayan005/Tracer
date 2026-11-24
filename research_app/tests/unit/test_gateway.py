@@ -275,3 +275,33 @@ async def test_a_reader_that_stops_early_still_pays_estimated_tokens():
     await stream.aclose()
     assert [r.status for r in records] == ["ok"]        # "ok" rows are what the daily budget counts
     assert records[0].input_tokens == 100 and "estimated" in records[0].error
+
+
+# ---------- traces: prompt + answer text for chosen purposes ----------
+
+async def test_traced_purposes_keep_prompt_and_answer_others_do_not():
+    records = []
+
+    async def sink(record):
+        records.append(record)
+
+    gw = LlmGateway([FakeProvider("a", ["done", "plain"])], usage_sink=sink, sleep=no_sleep,
+                    trace_purposes={"search_review"})
+    await gw.complete([{"role": "system", "content": "review"}, {"role": "user", "content": "titles"}],
+                      purpose="search_review")
+    await gw.complete([{"role": "user", "content": "my private question"}], purpose="chat")
+    assert records[0].prompt == "### system\nreview\n\n### user\ntitles" and records[0].response == "done"
+    assert records[1].prompt is None and records[1].response is None
+
+
+async def test_long_traces_are_cut_in_the_middle():
+    records = []
+
+    async def sink(record):
+        records.append(record)
+
+    gw = LlmGateway([FakeProvider("a", ["x" * 50])], usage_sink=sink, sleep=no_sleep,
+                    trace_purposes={"plan"}, trace_max_chars=20)
+    await gw.complete([{"role": "user", "content": "hi"}], purpose="plan")
+    assert records[0].response.startswith("x" * 10) and records[0].response.endswith("x" * 10)
+    assert "30 characters cut" in records[0].response

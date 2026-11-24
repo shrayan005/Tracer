@@ -67,8 +67,11 @@ class LlmGateway:
                  max_retries: int = 2, backoff_base_s: float = 1.0, backoff_max_s: float = 20.0,
                  sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
                  routes: dict[str, list[str]] | None = None, switch_after_s: float | None = None,
-                 wait_for: dict[str, float] | None = None):
+                 wait_for: dict[str, float] | None = None, trace_purposes: set[str] | None = None,
+                 trace_max_chars: int = 20000):
         self.providers = providers
+        self.trace_purposes = set(trace_purposes or ())   # these steps also save prompt + answer text
+        self.trace_max_chars = trace_max_chars
         self.routes = routes or {}     # purpose -> provider names to try first
         self.switch_after_s = switch_after_s   # asked to wait longer than this? try the next provider first
         # purpose -> seconds: tasks whose QUALITY depends on the routed model wait longer before switching
@@ -232,7 +235,8 @@ class LlmGateway:
         latency = time.perf_counter() - start
         billed_output = response.output_tokens + response.thinking_tokens
         cost = provider.cost(response.input_tokens, billed_output)
-        await self._record(call.purpose, provider, attempt, start, call.run_id, response=response, cost=cost)
+        await self._record(call.purpose, provider, attempt, start, call.run_id, response=response, cost=cost,
+                           messages=call.messages)
         return LlmResult(
             text=response.text, provider=provider.name, model=provider.model,
             finish_reason=response.finish_reason, input_tokens=response.input_tokens,
@@ -285,9 +289,10 @@ class LlmGateway:
         return min(exponential + random.uniform(0, self.backoff_base_s), self.backoff_max_s)
 
     async def _record(self, purpose, provider, attempt, start, run_id, *, response=None, cost=None,
-                      error: ProviderError | None = None, note: str | None = None):
+                      error: ProviderError | None = None, note: str | None = None, messages=None):
         if self.usage_sink is None:
             return
+        traced = purpose in self.trace_purposes and messages is not None and response is not None
         record = LlmCallRecord(
             purpose=purpose, provider=provider.name, model=provider.model,
             status="error" if error else "ok", attempt=attempt, run_id=run_id, user_id=current_user_id(),
@@ -296,11 +301,27 @@ class LlmGateway:
             output_tokens=response.output_tokens if response else 0,
             thinking_tokens=response.thinking_tokens if response else 0,
             cost_usd=cost, error=str(error)[:500] if error else note,
+            prompt=self._cut(render_messages(messages)) if traced else None,
+            response=self._cut(response.text) if traced else None,
         )
         try:
             await self.usage_sink(record)
         except Exception:   # logging usage must never break the actual LLM call
             log.exception("failed to record LLM usage")
+
+
+    def _cut(self, text: str) -> str:
+        """Keep traces readable and small: the start and the end of a very long text."""
+        limit = self.trace_max_chars
+        if len(text) <= limit:
+            return text
+        half = limit // 2
+        return f"{text[:half]}\n\n[... {len(text) - limit:,} characters cut ...]\n\n{text[-half:]}"
+
+
+def render_messages(messages: list[dict]) -> str:
+    """A chat as plain text: '### system' / '### user' headers followed by each message."""
+    return "\n\n".join(f"### {m.get('role', '?')}\n{m.get('content', '')}" for m in messages)
 
 
 def extract_json(text: str) -> str:

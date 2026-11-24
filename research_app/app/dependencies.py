@@ -5,6 +5,7 @@ tests replace any of these functions with fakes via app.dependency_overrides.
 """
 
 from collections.abc import AsyncIterator
+from datetime import timedelta
 from functools import lru_cache
 
 import httpx
@@ -116,6 +117,7 @@ def get_llm_gateway() -> LlmGateway:
         backoff_base_s=settings.llm_backoff_base_seconds, backoff_max_s=settings.llm_backoff_max_seconds,
         routes=settings.llm_routes, switch_after_s=settings.llm_switch_after_seconds,
         wait_for=settings.llm_wait_for,
+        trace_purposes=set(settings.llm_trace_purposes), trace_max_chars=settings.llm_trace_max_chars,
     )
 
 
@@ -304,14 +306,17 @@ async def get_arq_pool() -> ArqRedis:
     return _arq_pool
 
 
-async def enqueue_job(job_id: int) -> None:
-    """Put a job id on the worker's queue. The arq id 'job-<id>' stops the same job being queued twice."""
-    await (await get_arq_pool()).enqueue_job("run_job", job_id, _job_id=f"job-{job_id}")
+async def enqueue_job(job_id: int, defer_s: float = 0) -> None:
+    """Put a job id on the worker's queue (defer_s: run it no earlier than that many seconds from now).
+    The arq id 'job-<id>' stops the same job being queued twice."""
+    await (await get_arq_pool()).enqueue_job("run_job", job_id, _job_id=f"job-{job_id}",
+                                             _defer_by=timedelta(seconds=defer_s) if defer_s > 0 else None)
 
 
 def get_job_service() -> JobService:
     return JobService(session_scope, enqueue_job, daily_token_budget=get_settings().daily_token_budget,
-                      events=JobEvents(get_events_redis()))     # the worker publishes, the API listens
+                      events=JobEvents(get_events_redis()),     # the worker publishes, the API listens
+                      job_timeout_s=get_settings().job_timeout_minutes * 60)
 
 
 async def close_resources() -> None:

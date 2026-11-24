@@ -21,7 +21,7 @@ class LlmCallRepository:
             input_tokens=record.input_tokens, output_tokens=record.output_tokens,
             thinking_tokens=record.thinking_tokens, latency_ms=record.latency_ms,
             cost_usd=Decimal(str(record.cost_usd)) if record.cost_usd is not None else None,
-            error=record.error,
+            error=record.error, prompt=record.prompt, response=record.response,
         )
         self.session.add(row)          # add() only stages the row in memory: no waiting
         await self.session.flush()     # flush() talks to Postgres (assigns row.id): await
@@ -36,6 +36,29 @@ class LlmCallRepository:
         if run_id is not None:
             query = query.where(LlmCall.run_id == run_id)
         return float(await self.session.scalar(query))
+
+    async def steps(self, run_id: int) -> list[dict]:
+        """Per purpose and provider, in the order they first ran: calls, errors, tokens (ok calls), avg time."""
+        ok = LlmCall.status == "ok"
+        tokens = LlmCall.input_tokens + LlmCall.output_tokens + LlmCall.thinking_tokens
+        rows = (await self.session.execute(
+            select(LlmCall.purpose, LlmCall.provider, func.count(),
+                   func.count().filter(LlmCall.status == "error"),
+                   func.coalesce(func.sum(case((ok, tokens), else_=0)), 0),
+                   func.coalesce(func.avg(LlmCall.latency_ms), 0),
+                   func.coalesce(func.sum(LlmCall.cost_usd), 0),
+                   func.max(LlmCall.error))
+            .where(LlmCall.run_id == run_id)
+            .group_by(LlmCall.purpose, LlmCall.provider)
+            .order_by(func.min(LlmCall.created_at)))).all()
+        return [dict(purpose=p, provider=pr, calls=c, errors=e, tokens=int(t), avg_ms=int(a), cost_usd=float(cost),
+                     last_error=err[:300] if e and err else None) for p, pr, c, e, t, a, cost, err in rows]
+
+    async def traces(self, run_id: int) -> list[LlmCall]:
+        """The job's calls that kept their prompt (traced purposes), oldest first."""
+        return list((await self.session.scalars(
+            select(LlmCall).where(LlmCall.run_id == run_id, LlmCall.prompt.is_not(None))
+            .order_by(LlmCall.created_at, LlmCall.id))).all())
 
     async def usage(self, run_id: int) -> tuple[int, float]:
         """(tokens, cost in USD) of every successful call tagged with this run (e.g. a job id)."""

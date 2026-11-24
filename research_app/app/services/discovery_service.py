@@ -27,6 +27,7 @@ from dataclasses import dataclass, field
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.common.logging import get_logger
+from app.common.progress import Progress, quiet
 from app.domain.errors import LlmError, QuotaExceededError, SourceError
 from app.domain.schemas import Candidate, DiscoveryResult, PaperRecord, ResearchPlan
 from app.integrations.sources.base import SourceClient
@@ -76,7 +77,8 @@ class DiscoveryService:
         self.agent = agent                         # None = one round only (the old behaviour)
         self.agent_rounds = agent_rounds           # extra rounds the agent may add at most
 
-    async def search_only(self, topic: str, plan: ResearchPlan | None = None) -> SearchOutcome:
+    async def search_only(self, topic: str, plan: ResearchPlan | None = None,
+                          say: Progress | None = None) -> SearchOutcome:
         """Plan and search, WITHOUT saving anything (the search-recall eval runs this live).
         A given `plan` is reused instead of asking the planner (evals: same queries every run)."""
         plan = plan or await self.planner.plan(topic)
@@ -85,11 +87,14 @@ class DiscoveryService:
         records, errors = await self._search_all(source_names, plan.queries)
         outcome = SearchOutcome(plan, source_names, records, sort_candidates(merge_records(records)), errors)
         if self.agent is not None:
-            await self._agent_rounds(outcome)
+            say = say or quiet
+            await say(f"round 1: {len(outcome.candidates)} papers from {len(plan.queries)} queries")
+            await self._agent_rounds(outcome, say)
         return outcome
 
-    async def _agent_rounds(self, outcome: SearchOutcome) -> None:
-        """The agent loop: review the results -> search its new queries -> repeat (updates `outcome`)."""
+    async def _agent_rounds(self, outcome: SearchOutcome, say: Progress) -> None:
+        """The agent loop: review the results -> search its new queries -> repeat (updates `outcome`).
+        Every decision is shown as progress, with its reason (gaps): an agent's work should be visible."""
         for round_no in range(2, self.agent_rounds + 2):          # round 1 was the plan's own search
             summary = round_summary(outcome.candidates, outcome.queries)
             titles = [c.paper.title for c in outcome.candidates]
@@ -99,13 +104,17 @@ class DiscoveryService:
             except (LlmError, QuotaExceededError) as e:          # the agent is an extra: never fatal
                 log.warning("search agent failed, keeping the results so far: %s", e)
                 outcome.errors.append(f"search agent: {e}")
+                await say("search agent unavailable: continuing with the papers found so far")
                 return
             outcome.agent_rounds.append({"round": round_no, "gaps": review.gaps, "done": review.done,
                                          "new_queries": review.new_queries})
             log.info("search agent round %d: done=%s new=%s gaps=%s", round_no, review.done,
                      review.new_queries, review.gaps)
             if review.done:
+                await say(f"search agent: done, the results cover the topic ({review.gaps})")
                 return
+            await say(f"search agent: {review.gaps}")
+            await say(f"round {round_no}: searching " + ", ".join(f'"{q}"' for q in review.new_queries))
             before = len(outcome.candidates)
             records, errors = await self._search_all(outcome.sources, review.new_queries)
             outcome.records += records
@@ -113,10 +122,11 @@ class DiscoveryService:
             outcome.agent_queries += review.new_queries
             outcome.candidates = sort_candidates(merge_records(outcome.records))
             outcome.agent_rounds[-1]["new_papers"] = len(outcome.candidates) - before
+            await say(f"round {round_no}: +{len(outcome.candidates) - before} new papers")
 
-    async def discover(self, topic: str, user_id: int) -> DiscoveryResult:
+    async def discover(self, topic: str, user_id: int, say: Progress | None = None) -> DiscoveryResult:
         """Plan, search and save a new topic owned by `user_id`."""
-        found = await self.search_only(topic)
+        found = await self.search_only(topic, say=say)
         plan, source_names, records, candidates, errors = (found.plan, found.sources, found.records,
                                                            found.candidates, found.errors)
 

@@ -38,7 +38,7 @@ def discovery_result() -> DiscoveryResult:
 
 
 class FakeDiscovery:
-    async def discover(self, topic, user_id):
+    async def discover(self, topic, user_id, say=None):
         assert user_id == 3
         return discovery_result()
 
@@ -280,3 +280,17 @@ async def test_synthesis_runs_once_with_the_selected_papers_and_their_texts(save
     assert with_text == [ids["Triceps elbow extension torque"]]             # texts are passed along
     assert all(p.base_trust.level >= 0 for p in papers)
     assert "analysis" in saved["run"][1]["run_stats"]["timings_s"]
+
+
+# ---------- how many papers a run keeps (the user's choice: 5 / 10 / 15 / 20) ----------
+
+def test_sizes_default_is_unchanged_and_other_counts_scale_the_margins():
+    service = ResearchService(None, None, None, fake_unit_of_work, prefilter_keep=40, select_max=10,
+                              select_min=5, fulltext_shortlist=12, fulltext=object())
+    assert service.sizes(None) == service.sizes(10)
+    ten = service.sizes(10)
+    assert (ten.select_max, ten.shortlist, ten.prefilter_keep, ten.select_min) == (10, 12, 40, 5)
+    twenty = service.sizes(20)
+    assert (twenty.select_max, twenty.shortlist, twenty.prefilter_keep) == (20, 22, 60)   # 2 spare, 3 per paper
+    five = service.sizes(5)
+    assert (five.select_max, five.shortlist, five.prefilter_keep, five.select_min) == (5, 7, 40, 5)

@@ -82,7 +82,14 @@ async def client():
 async def test_research_returns_a_queued_job_at_once(client):
     r = await client.post("/api/research", json={"topic": "  creatine in older adults  "})
     assert r.status_code == 202 and r.json()["status"] == "queued"
-    assert client.jobs.submitted == [("research", {"topic": "creatine in older adults"}, ME)]
+    assert client.jobs.submitted == [("research", {"topic": "creatine in older adults", "papers": 10}, ME)]
+
+
+async def test_research_takes_a_paper_count_of_5_10_15_or_20_only(client):
+    r = await client.post("/api/research", json={"topic": "creatine in older adults", "papers": 20})
+    assert r.status_code == 202 and client.jobs.submitted[-1][1]["papers"] == 20
+    r = await client.post("/api/research", json={"topic": "creatine in older adults", "papers": 50})
+    assert r.status_code == 422 and len(client.jobs.submitted) == 1      # refused before any job exists
 
 
 async def test_a_second_research_while_one_runs_is_refused(client):

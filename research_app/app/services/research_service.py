@@ -16,12 +16,15 @@ Failures are collected as warnings instead of crashing: a failed source, a faile
 a failed summary still gives you a report, with the gap clearly stated.
 """
 
+import asyncio
 import time
+from dataclasses import dataclass
 from app.common.progress import Progress, quiet
 
 from app.domain.errors import NotFoundError, NotReadyError
 from app.domain.schemas import (AnalyzedPaper, Connection, DocumentInfo, EvidenceGaps, PaperDetail, PaperRecord,
-                                PaperScreening, ReportPaper, ResearchPlan, ResearchReport, SectionInfo,
+                                PaperScreening, ReportPaper, ResearchPlan, ResearchReport, SearchAgentRound,
+                                SectionInfo,
                                 SummarizedPaper, TopicSummary, TrustAssessment)
 from app.repositories.analysis_repository import AnalysisRepository
 from app.repositories.document_repository import DocumentRepository
@@ -68,8 +71,23 @@ class ResearchService:
         one with. Without full text there is nothing to swap: the shortlist IS the selection."""
         return max(self.fulltext_shortlist, self.select_max) if self.fulltext is not None else self.select_max
 
-    async def research(self, topic: str, user_id: int, progress: Progress | None = None) -> ResearchReport:
+    def sizes(self, papers: int | None = None) -> "RunSizes":
+        """How many papers a run keeps at each stage, for `papers` final papers (the user's choice, e.g. 5-20).
+        The defaults (10 papers) stay exactly as before; other counts scale the same margins: a shortlist
+        `fulltext_shortlist - select_max` bigger (swap papers without full text), and at least 3 candidates
+        per final paper kept for screening."""
+        if not papers or papers == self.select_max:
+            return RunSizes(self.select_max, self.shortlist_size, self.prefilter_keep, self.select_min)
+        extra = max(0, self.fulltext_shortlist - self.select_max) if self.fulltext is not None else 0
+        return RunSizes(select_max=papers, shortlist=papers + extra,
+                        prefilter_keep=max(self.prefilter_keep, papers * 3), select_min=min(self.select_min, papers))
+
+    async def research(self, topic: str, user_id: int, progress: Progress | None = None, *,
+                       index: bool = True, papers: int | None = None) -> ResearchReport:
+        """index=False: don't prepare for questions here (background jobs queue a separate 'index' job, so
+        slow embeddings can never time out a research and lose its saved report; the CLI keeps index=True)."""
         say = progress or quiet
+        size = self.sizes(papers)                      # how many papers to pick, read and prepare (user's choice)
         timings: dict[str, float] = {}
         clock = time.monotonic()
 
@@ -80,7 +98,7 @@ class ResearchService:
             clock = now
 
         await say("planning and searching the academic sources...")
-        found = await self.discovery.discover(topic, user_id)
+        found = await self.discovery.discover(topic, user_id, say=say)
         lap("discovery")
         plan, brief = found.plan, found.plan.research_brief
         warnings = list(found.errors)
@@ -88,19 +106,19 @@ class ResearchService:
 
         # prefilter returns Candidate objects; remember each one's database id by object identity
         id_of = {id(c): paper_id for c, paper_id in zip(found.candidates, found.paper_ids)}
-        kept = prefilter(found.candidates, plan.queries + found.agent_queries, keep=self.prefilter_keep)
+        kept = prefilter(found.candidates, plan.queries + found.agent_queries, keep=size.prefilter_keep)
         papers = [c.paper for c in kept]
         paper_ids = [id_of[id(c)] for c in kept]
 
-        screenings, attempted = await self._screen_adaptive(brief, papers, say)
+        screenings, attempted = await self._screen_adaptive(brief, papers, say, enough=size.shortlist)
         lap("screening")
         if len(screenings) < attempted:
             warnings.append(f"{attempted - len(screenings)} of {attempted} papers could not be screened")
 
         field = field_family(plan)
-        shortlist = select_best(papers, screenings, field, k_max=self.shortlist_size, k_min=self.select_min)
+        shortlist = select_best(papers, screenings, field, k_max=size.shortlist, k_min=size.select_min)
         warnings += shortlist.warnings
-        picked = shortlist.picked[:self.select_max]
+        picked = shortlist.picked[:size.select_max]
         lap("selection")
 
         texts: dict[int, PaperText] = {}
@@ -108,7 +126,7 @@ class ResearchService:
             await say(f"looking for free full texts of the best {len(shortlist.picked)} papers...")
             by_paper = await self.fulltext.texts_for({paper_ids[sp.index]: sp.paper for sp in shortlist.picked})
             final = prefer_full_text(shortlist.picked, {sp.index for sp in shortlist.picked
-                                                        if paper_ids[sp.index] in by_paper}, self.select_max)
+                                                        if paper_ids[sp.index] in by_paper}, size.select_max)
             picked, warnings = final.picked, warnings + final.warnings
             texts = {sp.index: by_paper[paper_ids[sp.index]] for sp in picked if paper_ids[sp.index] in by_paper}
             lap("full text")
@@ -128,7 +146,8 @@ class ResearchService:
             await self.synthesis.run(found.topic_id, brief, field, inputs, progress=say)
             lap("analysis")
 
-        warnings += await self._index([paper_ids[sp.index] for sp in picked], say)
+        if index:
+            warnings += await self._index([paper_ids[sp.index] for sp in picked], say)
 
         async with self.unit_of_work() as session:        # all results saved together, or nothing
             topics = TopicRepository(session)
@@ -155,7 +174,7 @@ class ResearchService:
         return await self.load(found.topic_id, user_id)
 
     async def analyze_topic(self, topic_id: int, user_id: int, *, refresh: bool = False,
-                            progress: Progress | None = None) -> ResearchReport:
+                            progress: Progress | None = None, index: bool = True) -> ResearchReport:
         """Run milestone 5 for an EXISTING topic (e.g. researched before milestone 5, or after a prompt
         change with refresh=True). Uses stored full texts; analyses are reused where still valid."""
         if self.synthesis is None:
@@ -170,8 +189,26 @@ class ResearchService:
             for p in report.papers]
         await self.synthesis.run(topic_id, report.plan.research_brief, report.field_family, inputs,
                                  refresh=refresh, progress=progress)
-        await self._index([p.paper_id for p in report.papers], progress or quiet)
+        if index:
+            await self._index([p.paper_id for p in report.papers], progress or quiet)
         return await self.load(topic_id, user_id)
+
+    async def prepare(self, topic_id: int, user_id: int, progress: Progress | None = None,
+                      time_budget_s: float | None = None) -> "PrepareOutcome":
+        """Prepare a topic's papers for questions as part of a run. Never raises: says whether it finished,
+        and if not, why and how long the embedding API asked to wait (the job then continues it later).
+        Resumable: papers already embedded are skipped, so a later try only does what is missing."""
+        if self.indexer is None:
+            return PrepareOutcome(done=True)
+        report = await self.load(topic_id, user_id)
+        work = self.indexer.index([p.paper_id for p in report.papers], progress=progress)
+        try:
+            result = await (asyncio.wait_for(work, time_budget_s) if time_budget_s else work)
+        except TimeoutError:
+            return PrepareOutcome(done=False, reason="this run's time is up")
+        if result.failed:
+            return PrepareOutcome(done=False, reason=result.failed[0], retry_after=result.retry_after)
+        return PrepareOutcome(done=True)
 
     async def index_topic(self, topic_id: int, user_id: int, progress: Progress | None = None) -> ResearchReport:
         """Prepare an EXISTING topic's papers for questions (step 7.6: the 'index' job)."""
@@ -220,8 +257,8 @@ class ResearchService:
             labels={p.paper_id: p.in_text for p in report.papers},
             ranks={p.paper_id: p.rank for p in report.papers}, document=document)
 
-    async def _screen_adaptive(self, brief: str, papers: list[PaperRecord], say: Progress
-                               ) -> tuple[dict[int, PaperScreening], int]:
+    async def _screen_adaptive(self, brief: str, papers: list[PaperRecord], say: Progress,
+                               enough: int | None = None) -> tuple[dict[int, PaperScreening], int]:
         """
         Adaptive screening (stop early): screen the prefilter's best `screen_first` papers; if at least
         `shortlist_size` of them are relevant (>= MIN_RELEVANCE), stop. Otherwise screen the next
@@ -230,7 +267,7 @@ class ResearchService:
         Returns ({index in papers: screening}, how many papers were sent to the LLM).
         """
         return await screen_adaptive(self.screener, brief, papers, first=self.screen_first, step=self.screen_step,
-                                     enough=self.shortlist_size, say=say)
+                                     enough=enough or self.shortlist_size, say=say)
 
     async def load(self, topic_id: int, user_id: int | None = None) -> ResearchReport:
         """
@@ -271,10 +308,26 @@ class ResearchService:
                 plan=ResearchPlan.model_validate(topic.plan), field_family=stats["field_family"],
                 sources_used=stats["sources_used"], counts=stats["counts"], timings_s=stats["timings_s"],
                 warnings=stats["warnings"], papers=papers,
+                search_agent=[SearchAgentRound.model_validate(r) for r in stats.get("search_agent", [])],
                 connections=[Connection.model_validate(c) for c in synthesis.connections] if synthesis else [],
                 gaps=EvidenceGaps.model_validate(synthesis.gaps) if synthesis and synthesis.gaps else None,
                 synthesis_flags=list(synthesis.flags) if synthesis else [],
             )
+
+
+@dataclass
+class RunSizes:
+    select_max: int          # papers in the final selection (read in full text where free, prepared for chat)
+    shortlist: int           # best papers whose full text is tried before the final pick
+    prefilter_keep: int      # candidates that may be screened by the LLM
+    select_min: int          # fewer relevant than this -> relax the gate + warn
+
+
+@dataclass
+class PrepareOutcome:
+    done: bool
+    reason: str = ""                     # why it stopped (when not done)
+    retry_after: float | None = None     # seconds the embedding API asked to wait
 
 
 async def screen_adaptive(screener: ScreeningService, brief: str, papers: list[PaperRecord], *, first: int,

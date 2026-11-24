@@ -57,6 +57,10 @@ class Settings(BaseSettings):
 
     # --- LLM reliability ---
     llm_timeout_seconds: float = 60
+    # Prompt + answer text is saved in llm_calls only for these steps (to read what an agent saw and said).
+    # Kept short on purpose: text takes space, and chat questions are the user's own words (not traced).
+    llm_trace_purposes: list[str] = ["plan", "search_review"]
+    llm_trace_max_chars: int = 20000               # longer prompts/answers are cut (start and end kept)
     llm_max_retries: int = 3       # retries per provider on temporary errors (429, 5xx, timeouts)
     llm_backoff_base_seconds: float = 1.0
     llm_backoff_max_seconds: float = 30.0

@@ -31,6 +31,7 @@ class IndexResult:
     empty: int = 0                    # papers with no text at all (no abstract, no full text)
     passages: int = 0                 # passages written now
     failed: list[str] = field(default_factory=list)
+    retry_after: float | None = None  # seconds the embedding API asked to wait (rate limit / quota)
 
 
 class IndexService:
@@ -64,6 +65,7 @@ class IndexService:
             except ProviderError as e:               # stop here; what is saved stays saved
                 log.warning("indexing stopped: %s", e)
                 result.failed = [f"paper {pid}: {e}" for g in groups[n:] for pid in g]
+                result.retry_after = getattr(e, "retry_after", None)
                 return result
             start = 0
             async with self.unit_of_work() as session:   # saved per group: progress survives a later failure

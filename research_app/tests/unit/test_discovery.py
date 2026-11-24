@@ -225,3 +225,29 @@ async def test_agent_failure_keeps_results_so_far():
     outcome = await service.search_only("t", plan=plan(biomedical=False))
     assert outcome.queries == ["q", "q2"] and len(outcome.candidates) == 2
     assert any(e.startswith("search agent:") for e in outcome.errors)
+
+
+async def test_agent_rounds_are_shown_as_progress_with_their_reason():
+    said = []
+
+    async def say(message):
+        said.append(message)
+
+    agent = ScriptedAgent(review("q2"), review(done=True))
+    service = DiscoveryService({"openalex": FakeSource("openalex")}, None, None, agent=agent, agent_rounds=2)
+    await service.search_only("t", plan=plan(biomedical=False), say=say)
+    assert said == ["round 1: 1 papers from 1 queries", "search agent: g", 'round 2: searching "q2"',
+                    "round 2: +1 new papers", "search agent: done, the results cover the topic (g)"]
+
+
+async def test_agent_failure_is_shown_as_progress():
+    from app.domain.errors import AllProvidersFailed
+    said = []
+
+    async def say(message):
+        said.append(message)
+
+    service = DiscoveryService({"openalex": FakeSource("openalex")}, None, None,
+                               agent=ScriptedAgent(AllProvidersFailed([])), agent_rounds=2)
+    await service.search_only("t", plan=plan(biomedical=False), say=say)
+    assert said[-1] == "search agent unavailable: continuing with the papers found so far"

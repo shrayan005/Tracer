@@ -66,6 +66,15 @@ class FakeUsage:
     async def usage(self, run_id):
         return 1234, 0.0
 
+    async def steps(self, run_id):
+        return [{"purpose": "plan", "provider": "groq", "calls": 2, "errors": 1, "tokens": 800, "avg_ms": 700,
+                 "cost_usd": 0.0, "last_error": "429"}]
+
+    async def traces(self, run_id):
+        return [SimpleNamespace(id=5, created_at=datetime.now(timezone.utc), purpose="plan", provider="groq",
+                                model="m", input_tokens=700, output_tokens=100, thinking_tokens=0,
+                                latency_ms=700, prompt="### user: topic", response="{}")]
+
     async def user_usage_since(self, user_id, since):
         assert since.hour == 0 and since.minute == 0           # counted from midnight UTC
         return FakeUsage.TODAY, 0.01
@@ -94,10 +103,10 @@ def fakes(monkeypatch):
 
 
 def service(fail_enqueue=False, budget=0) -> JobService:
-    async def enqueue(job_id):
+    async def enqueue(job_id, defer_s=0):
         if fail_enqueue:
             raise ConnectionError("redis is down")
-        EVENTS.append(f"queued {job_id}")
+        EVENTS.append(f"queued {job_id}" + (f" in {defer_s:.0f}s" if defer_s else ""))
     return JobService(fake_unit_of_work, enqueue, daily_token_budget=budget)
 
 
@@ -105,7 +114,9 @@ class FakeResearch:
     def __init__(self, error=None, cancel=False):
         self.error, self.cancel, self.seen_run_id = error, cancel, None
 
-    async def research(self, topic, user_id, progress=None):
+    async def research(self, topic, user_id, progress=None, *, index=True, papers=None):
+        self.seen_papers = papers
+        self.seen_index = index
         self.seen_run_id, self.seen_user_id = current_run_id(), current_user_id()
         await progress("planning and searching...")
         await progress("summarising 10 selected papers...")
@@ -115,7 +126,8 @@ class FakeResearch:
             raise self.error
         return SimpleNamespace(topic_id=259)
 
-    async def analyze_topic(self, topic_id, user_id, *, refresh=False, progress=None):
+    async def analyze_topic(self, topic_id, user_id, *, refresh=False, progress=None, index=True):
+        self.seen_index = index
         await progress(f"analysing topic {topic_id} (refresh={refresh})")
         return SimpleNamespace(topic_id=topic_id)
 
@@ -279,7 +291,9 @@ class MemoryJobEvents:
 class SlowResearch(FakeResearch):
     """Like FakeResearch, but takes a moment between steps (as a real run does)."""
 
-    async def research(self, topic, user_id, progress=None):
+    async def research(self, topic, user_id, progress=None, *, index=True, papers=None):
+        self.seen_papers = papers
+        self.seen_index = index
         for step in ("planning and searching...", "screening 40 papers...", "summarising 10 papers..."):
             await asyncio.sleep(0.02)
             await progress(step)
@@ -361,3 +375,83 @@ async def test_the_events_endpoint_streams_the_job_until_it_ends():
             assert (await client.get("/api/jobs/999/events")).status_code == 404
     finally:
         app.dependency_overrides.clear()
+
+
+# ---------- preparing for questions happens IN the run, and continues by itself ----------
+
+def preparing(*outcomes):
+    """A FakeResearch whose prepare() returns the given outcomes in order."""
+    from app.services.research_service import PrepareOutcome
+    research = FakeResearch()
+    research.indexer = object()                           # questions switched on
+    research.prepared = []
+    script = [o if isinstance(o, PrepareOutcome) else PrepareOutcome(**o) for o in outcomes]
+
+    async def prepare(topic_id, user_id, progress=None, time_budget_s=None):
+        research.prepared.append((topic_id, time_budget_s))
+        return script.pop(0)
+    research.prepare = prepare
+    return research
+
+
+async def test_a_research_job_saves_then_prepares_in_the_same_run():
+    s, research = service(), preparing({"done": True})
+    job = await s.submit("research", {"topic": "creatine"}, user_id=1)
+    await s.run(job.id, research)
+    assert research.seen_index is False                   # not inside research(): after its results are saved
+    assert research.prepared[0][0] == 259 and research.prepared[0][1] > 600   # most of the 15 minutes left
+    assert ROWS[1].status == "done" and len(ROWS) == 1
+    assert ROWS[1].progress[-1]["message"] == "ready for questions"
+
+
+async def test_a_quota_stop_continues_by_itself_after_the_wait():
+    s, research = service(), preparing({"done": False, "reason": "quota", "retry_after": 1284})
+    job = await s.submit("research", {"topic": "creatine"}, user_id=1)
+    await s.run(job.id, research)
+    assert ROWS[1].status == "done"                       # the research itself succeeded
+    follow = ROWS[2]
+    assert follow.kind == "index" and follow.params["topic_id"] == 259 and follow.params["attempt"] == 1
+    assert "queued 2 in 1289s" in EVENTS                  # Google's wait + 5 s
+    assert "continues by itself at" in ROWS[1].progress[-1]["message"]
+
+
+async def test_the_follow_up_job_keeps_going_until_done():
+    s, research = service(), preparing({"done": False, "reason": "time"}, {"done": True})
+    job = await s.submit("index", {"topic_id": 7, "attempt": 1}, user_id=1)
+    await s.run(job.id, research)                         # stops: time is up -> attempt 2, right away
+    assert ROWS[1].status == "done" and ROWS[2].params["attempt"] == 2 and "queued 2" in EVENTS
+    await s.run(2, research)
+    assert ROWS[2].status == "done" and len(ROWS) == 2
+
+
+async def test_it_gives_up_after_the_last_try():
+    s, research = service(), preparing({"done": False, "reason": "quota", "retry_after": 60})
+    job = await s.submit("index", {"topic_id": 7, "attempt": js.MAX_PREPARE_TRIES - 1}, user_id=1)
+    await s.run(job.id, research)
+    assert ROWS[1].status == "failed" and "after 6 tries" in ROWS[1].error and len(ROWS) == 1
+
+
+async def test_a_failed_follow_up_queue_never_fails_the_research():
+    s, research = service(budget=1), preparing({"done": False, "reason": "quota", "retry_after": 60})
+    job = await s.submit("research", {"topic": "x"}, user_id=1)
+    FakeUsage.TODAY = 5                                   # budget used up by the research itself
+    await s.run(job.id, research)
+    assert ROWS[1].status == "done" and len(ROWS) == 1
+    assert "open the Ask tab" in ROWS[1].progress[-1]["message"]
+
+
+async def test_details_show_steps_and_traces_only_to_the_owner():
+    s = service()
+    job = await s.submit("research", {"topic": "x"}, user_id=1)
+    details = await s.details(job.id, user_id=1)
+    assert details.steps[0].purpose == "plan" and details.steps[0].errors == 1
+    assert details.traces[0].tokens == 800 and details.traces[0].prompt == "### user: topic"
+    with pytest.raises(NotFoundError):
+        await s.details(job.id, user_id=2)
+
+
+async def test_the_chosen_paper_count_reaches_the_research():
+    s, research = service(), FakeResearch()
+    job = await s.submit("research", {"topic": "creatine", "papers": 15}, user_id=1)
+    await s.run(job.id, research)
+    assert research.seen_papers == 15

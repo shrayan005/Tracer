@@ -30,7 +30,7 @@ from sqlalchemy.exc import IntegrityError
 from app.common.logging import get_logger
 from app.common.progress import Progress
 from app.domain.errors import ConflictError, NotFoundError, QuotaExceededError
-from app.domain.schemas import JobInfo, ProviderUsage, UsageInfo
+from app.domain.schemas import JobDetails, JobInfo, JobStepUsage, LlmTrace, ProviderUsage, UsageInfo
 from app.integrations.job_events import JobEvents, NoJobEvents
 from app.integrations.llm.run_context import run_scope, user_scope
 from app.repositories.job_repository import JobRepository
@@ -39,7 +39,9 @@ from app.repositories.models import Job
 from app.services.discovery_service import UnitOfWork
 
 log = get_logger(__name__)
-Enqueue = Callable[[int], Awaitable[None]]          # put a job id on the queue
+Enqueue = Callable[..., Awaitable[None]]            # put a job id on the queue (optionally: defer_s=seconds)
+MAX_PREPARE_TRIES = 6        # preparing for questions continues by itself at most this many times
+PREPARE_MARGIN_S = 60        # stop preparing this long before the job's time limit (save + queue the rest)
 KINDS = ("research", "analyze", "index")
 ACTIVE = ("queued", "running")
 
@@ -47,8 +49,9 @@ ACTIVE = ("queued", "running")
 class JobService:
     def __init__(self, unit_of_work: UnitOfWork, enqueue: Enqueue, daily_token_budget: int = 0,
                  events: JobEvents | NoJobEvents | None = None, follow_check_s: float = 15.0,
-                 follow_max_s: float = 60.0):
+                 follow_max_s: float = 60.0, job_timeout_s: float = 15 * 60):
         self.unit_of_work = unit_of_work
+        self.job_timeout_s = job_timeout_s                  # the worker's limit per job (preparing stops before it)
         self.enqueue = enqueue
         self.daily_token_budget = daily_token_budget        # 0 = no limit
         self.events = events or NoJobEvents()               # "job changed" signals (SSE step 6)
@@ -57,7 +60,8 @@ class JobService:
 
     # ---------- what users do ----------
 
-    async def submit(self, kind: str, params: dict, user_id: int, retry_of: int | None = None) -> JobInfo:
+    async def submit(self, kind: str, params: dict, user_id: int, retry_of: int | None = None,
+                     defer_s: float = 0) -> JobInfo:
         if kind not in KINDS:
             raise ValueError(f"unknown job kind {kind!r} (known: {', '.join(KINDS)})")
         await self.check_budget(user_id)
@@ -74,7 +78,7 @@ class JobService:
                 raise busy from None
             raise
         try:
-            await self.enqueue(job_id)
+            await (self.enqueue(job_id, defer_s=defer_s) if defer_s > 0 else self.enqueue(job_id))
         except Exception as e:                               # Redis down: say so instead of 'queued' forever
             async with self.unit_of_work() as session:
                 await JobRepository(session).fail(job_id, f"could not queue the job: {e}")
@@ -89,6 +93,18 @@ class JobService:
                 raise NotFoundError(f"job {job_id} does not exist")
             tokens, cost = await LlmCallRepository(session).usage(job.id)
             return to_info(job, tokens, cost)
+
+    async def details(self, job_id: int, user_id: int) -> JobDetails:
+        """What happened inside one of the user's jobs: LLM use per step + the traced prompts/answers."""
+        await self.get(job_id, user_id)                      # ownership: another user's job is 'missing'
+        async with self.unit_of_work() as session:
+            calls = LlmCallRepository(session)
+            steps = [JobStepUsage(**s) for s in await calls.steps(job_id)]
+            traces = [LlmTrace(id=c.id, created_at=c.created_at, purpose=c.purpose, provider=c.provider,
+                               model=c.model, tokens=c.input_tokens + c.output_tokens + c.thinking_tokens,
+                               latency_ms=c.latency_ms, prompt=c.prompt, response=c.response)
+                      for c in await calls.traces(job_id)]
+        return JobDetails(job_id=job_id, steps=steps, traces=traces)
 
     async def follow(self, job_id: int, user_id: int) -> AsyncIterator[JobInfo | None]:
         """SSE step 6: the job now, then again each time it changes, until it is done or failed.
@@ -157,17 +173,25 @@ class JobService:
             kind, params, user_id = job.kind, dict(job.params), job.user_id
         await self.events.publish(job_id)                    # queued -> running
         say = self._progress(job_id)
+        started = time.monotonic()
         try:
             with run_scope(job_id), user_scope(user_id):     # every LLM call: its job (cost) and user (budget)
                 if kind == "research":
-                    report = await research.research(params["topic"], user_id, progress=say)
+                    topic_id = (await research.research(params["topic"], user_id, progress=say, index=False,
+                                                        papers=params.get("papers"))).topic_id
                 elif kind == "index":
-                    report = await research.index_topic(params["topic_id"], user_id, progress=say)
+                    if getattr(research, "indexer", None) is None:
+                        raise RuntimeError("questions are switched off (INDEX_ENABLED=false)")
+                    topic_id = params["topic_id"]
                 else:
-                    report = await research.analyze_topic(params["topic_id"], user_id,
-                                                          refresh=bool(params.get("refresh")), progress=say)
+                    topic_id = (await research.analyze_topic(params["topic_id"], user_id, index=False,
+                                                             refresh=bool(params.get("refresh")),
+                                                             progress=say)).topic_id
+                if getattr(research, "indexer", None) is not None:   # the results are saved: now prepare
+                    left = self.job_timeout_s - (time.monotonic() - started) - PREPARE_MARGIN_S
+                    await self._prepare(research, topic_id, user_id, say, int(params.get("attempt", 0)), left)
             async with self.unit_of_work() as session:
-                await JobRepository(session).finish(job_id, report.topic_id)
+                await JobRepository(session).finish(job_id, topic_id)
             await self.events.publish(job_id)                # done
         except asyncio.CancelledError:                       # the worker's time limit, or it is shutting down
             await self._fail(job_id, "stopped: the job took too long or the worker was shut down")
@@ -175,6 +199,36 @@ class JobService:
         except Exception as e:                               # noqa: BLE001 (any failure ends up on the job)
             log.exception("job %s failed", job_id)
             await self._fail(job_id, f"{type(e).__name__}: {e}")
+
+    async def _prepare(self, research, topic_id: int, user_id: int, say: Progress, attempt: int,
+                       time_left_s: float) -> None:
+        """Prepare the papers for questions INSIDE the run, after its results are saved (measured 24 Nov
+        2026: embedding ~900 passages takes ~10 min on the free tier; when that ran out the job's time, the
+        unsaved report was lost). If it can't finish (Gemini's limit, or the run's time is up), the run still
+        ends 'done' and preparing continues BY ITSELF in a follow-up job, after the wait Google asked for.
+        Only after MAX_PREPARE_TRIES does it give up (an index job then fails; the Ask tab offers a retry)."""
+        outcome = await research.prepare(topic_id, user_id, progress=say, time_budget_s=max(30.0, time_left_s))
+        if outcome.done:
+            await say("ready for questions")
+            return
+        if attempt + 1 >= MAX_PREPARE_TRIES:
+            message = f"not ready for questions after {MAX_PREPARE_TRIES} tries: {outcome.reason}"
+            if attempt > 0:                                  # a follow-up index job: this is its failure
+                raise RuntimeError(message)
+            await say(message)
+            return
+        wait = (outcome.retry_after + 5) if outcome.retry_after else 0
+        at = datetime.now(timezone.utc) + timedelta(seconds=wait)
+        try:
+            job = await self.submit("index", {"topic_id": topic_id, "attempt": attempt + 1,
+                                              "not_before": at.isoformat()}, user_id, defer_s=wait)
+        except Exception as e:                               # noqa: BLE001 (never fail a saved research)
+            log.warning("could not queue the follow-up index job for topic %s: %s", topic_id, e)
+            await say(f"not ready for questions yet ({outcome.reason}); open the Ask tab to try again")
+            return
+        why = ("Gemini's embedding limit is reached" if outcome.retry_after else outcome.reason)
+        when = f"at {at:%H:%M} UTC" if wait else "now"
+        await say(f"{why}: preparing for questions continues by itself {when} (job #{job.id})")
 
     def _progress(self, job_id: int) -> Progress:
         async def say(message: str) -> None:                 # own short transaction: visible at once

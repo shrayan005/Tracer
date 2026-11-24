@@ -46,6 +46,10 @@ def render(report: ResearchReport) -> str:
         f"**Topic id:** {report.topic_id}")
     add(f"- **Sources:** {', '.join(report.sources_used) or 'none'}")
     add("- **Search queries:** " + "; ".join(f"`{q}`" for q in plan.queries))
+    for r in report.search_agent:
+        if r.new_queries:
+            add(f"  - **Search agent, round {r.round}** (+{r.new_papers} papers): "
+                + "; ".join(f"`{q}`" for q in r.new_queries) + f" · *gap: {r.gaps}*")
     skipped = (f" ({counts['skipped']} more not needed: enough relevant papers already)"
                if counts.get("skipped") else "")
     add(f"- **Pipeline:** {counts.get('found', 0)} papers found → {counts.get('prefiltered', 0)} pre-filtered → "

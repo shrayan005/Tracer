@@ -59,6 +59,8 @@ def main() -> None:
     r = sub.add_parser("research", help="full pipeline: find, screen, select, summarise -> Markdown report")
     r.add_argument("topic", nargs="+")
     r.add_argument("--out", default=None, help="folder for the report (default: REPORTS_DIR)")
+    r.add_argument("--papers", type=int, choices=[5, 10, 15, 20], default=10,
+                   help="how many papers to pick, read and prepare for questions (default 10)")
     rp = sub.add_parser("report", help="rebuild a topic's report from the database (no LLM calls)")
     rp.add_argument("topic_id", type=int)
     rp.add_argument("--out", default=None, help="folder for the report (default: REPORTS_DIR)")
@@ -132,7 +134,7 @@ async def dispatch(args: argparse.Namespace) -> None:
         print_discovery(result, args.show)
     elif args.command == "research":
         report = await get_research_service().research(" ".join(args.topic), await get_current_user_id(),
-                                                       progress=printer())
+                                                       progress=printer(), papers=args.papers)
         save_report(report, args.out)
     elif args.command == "report":
         try:

@@ -38,6 +38,40 @@ class LlmCallRecord(BaseModel):
     run_id: int | None = None
     user_id: int | None = None          # whose budget it counts against (7.4); None = admin / evals
     created_at: datetime = Field(default_factory=datetime.now)
+    prompt: str | None = None           # only for traced purposes (LLM_TRACE_PURPOSES)
+    response: str | None = None
+
+
+class JobStepUsage(BaseModel):
+    """One step (purpose) of a job on one provider: how many calls, how many failed, tokens, time."""
+    purpose: str
+    provider: str
+    calls: int
+    errors: int
+    tokens: int                         # successful calls only (what counts)
+    avg_ms: int
+    cost_usd: float = 0.0
+    last_error: str | None = None
+
+
+class LlmTrace(BaseModel):
+    """One traced LLM call: exactly what the model was sent and what it answered."""
+    id: int
+    created_at: datetime
+    purpose: str
+    provider: str
+    model: str
+    tokens: int
+    latency_ms: int
+    prompt: str
+    response: str | None = None
+
+
+class JobDetails(BaseModel):
+    """What happened inside a job: every step's LLM use, plus the traced prompts and answers."""
+    job_id: int
+    steps: list[JobStepUsage]
+    traces: list[LlmTrace]
 
 
 # ---------- Health ----------
@@ -231,6 +265,15 @@ class ReportPaper(BaseModel):
     analysis: "AnalyzedPaper | None" = None           # claims + appraisal (milestone 5)
 
 
+class SearchAgentRound(BaseModel):
+    """One extra search round the search agent decided on (saved in the topic's run_stats)."""
+    round: int
+    gaps: str
+    done: bool
+    new_queries: list[str] = Field(default_factory=list)
+    new_papers: int = 0
+
+
 class ResearchReport(BaseModel):
     """The result of the research pipeline, rebuilt from the database (so it is always reproducible)."""
     topic_id: int
@@ -246,6 +289,7 @@ class ResearchReport(BaseModel):
     connections: list["Connection"] = Field(default_factory=list)      # milestone 5 (old reports: empty)
     gaps: "EvidenceGaps | None" = None
     synthesis_flags: list[str] = Field(default_factory=list)
+    search_agent: list[SearchAgentRound] = Field(default_factory=list)   # old reports / agent off: empty
 
 
 # ---------- Full text (milestone 4) ----------

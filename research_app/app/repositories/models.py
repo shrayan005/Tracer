@@ -276,3 +276,5 @@ class LlmCall(Base):
     latency_ms: Mapped[int] = mapped_column(Integer, default=0)
     cost_usd: Mapped[Decimal | None] = mapped_column(Numeric(12, 6))
     error: Mapped[str | None] = mapped_column(Text)
+    prompt: Mapped[str | None] = mapped_column(Text)                 # traced purposes only (config)
+    response: Mapped[str | None] = mapped_column(Text)

@@ -1,13 +1,14 @@
 """Jobs (step 7.2): start a research, follow any job, retry a failed one. Long work runs in the worker (7.1)."""
 
 from collections.abc import AsyncIterator
+from typing import Literal
 
 from fastapi import APIRouter, Depends, Query, status
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
 from app.dependencies import require_user_id, get_job_service
-from app.domain.schemas import JobInfo, UsageInfo
+from app.domain.schemas import JobDetails, JobInfo, UsageInfo
 from app.presentation.api.sse import keep_alive, retry_after, sse, stream
 from app.services.job_service import JobService
 
@@ -17,6 +18,9 @@ router = APIRouter(prefix="/api", tags=["jobs"])
 class ResearchRequest(BaseModel):
     """Length limits stop empty topics and pasted essays (prompt-injection hygiene)."""
     topic: str = Field(min_length=3, max_length=300, examples=["creatine supplementation in older adults"])
+    # how many papers to pick, read in full text (where free) and prepare for chat: fixed choices keep every
+    # run within free-tier limits and the job's time limit
+    papers: Literal[5, 10, 15, 20] = 10
 
 
 @router.post("/research", response_model=JobInfo, status_code=status.HTTP_202_ACCEPTED)
@@ -24,7 +28,7 @@ async def start_research(request: ResearchRequest, jobs: JobService = Depends(ge
                          user_id: int = Depends(require_user_id)) -> JobInfo:
     """Queue a research job and return it at once (202). Follow it with GET /api/jobs/{id}.
     409 if you already have a research running; 429 if your daily LLM budget is used up."""
-    return await jobs.submit("research", {"topic": request.topic.strip()}, user_id)
+    return await jobs.submit("research", {"topic": request.topic.strip(), "papers": request.papers}, user_id)
 
 
 @router.get("/jobs", response_model=list[JobInfo])
@@ -38,6 +42,14 @@ async def get_job(job_id: int, jobs: JobService = Depends(get_job_service),
                   user_id: int = Depends(require_user_id)) -> JobInfo:
     """Status, progress messages, the topic when done, the error when failed, and its LLM use."""
     return await jobs.get(job_id, user_id)
+
+
+@router.get("/jobs/{job_id}/details", response_model=JobDetails)
+async def get_job_details(job_id: int, jobs: JobService = Depends(get_job_service),
+                          user_id: int = Depends(require_user_id)) -> JobDetails:
+    """What happened inside the job: LLM calls, errors, tokens and time per step, and for traced steps
+    (LLM_TRACE_PURPOSES, e.g. the search agent) the exact prompt and answer."""
+    return await jobs.details(job_id, user_id)
 
 
 @router.get("/jobs/{job_id}/events", response_class=StreamingResponse,
