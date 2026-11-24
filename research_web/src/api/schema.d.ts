@@ -165,6 +165,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/jobs/{job_id}/details": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Job Details
+         * @description What happened inside the job: LLM calls, errors, tokens and time per step, and for traced steps
+         *     (LLM_TRACE_PURPOSES, e.g. the search agent) the exact prompt and answer.
+         */
+        get: operations["get_job_details_api_jobs__job_id__details_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/jobs/{job_id}/events": {
         parameters: {
             query?: never;
@@ -809,6 +830,18 @@ export interface components {
             components: components["schemas"]["ComponentHealth"][];
         };
         /**
+         * JobDetails
+         * @description What happened inside a job: every step's LLM use, plus the traced prompts and answers.
+         */
+        JobDetails: {
+            /** Job Id */
+            job_id: number;
+            /** Steps */
+            steps: components["schemas"]["JobStepUsage"][];
+            /** Traces */
+            traces: components["schemas"]["LlmTrace"][];
+        };
+        /**
          * JobInfo
          * @description What a user sees about one of their jobs (CLI now, API in 7.2).
          */
@@ -863,6 +896,58 @@ export interface components {
             at: string;
             /** Message */
             message: string;
+        };
+        /**
+         * JobStepUsage
+         * @description One step (purpose) of a job on one provider: how many calls, how many failed, tokens, time.
+         */
+        JobStepUsage: {
+            /** Purpose */
+            purpose: string;
+            /** Provider */
+            provider: string;
+            /** Calls */
+            calls: number;
+            /** Errors */
+            errors: number;
+            /** Tokens */
+            tokens: number;
+            /** Avg Ms */
+            avg_ms: number;
+            /**
+             * Cost Usd
+             * @default 0
+             */
+            cost_usd: number;
+            /** Last Error */
+            last_error?: string | null;
+        };
+        /**
+         * LlmTrace
+         * @description One traced LLM call: exactly what the model was sent and what it answered.
+         */
+        LlmTrace: {
+            /** Id */
+            id: number;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Purpose */
+            purpose: string;
+            /** Provider */
+            provider: string;
+            /** Model */
+            model: string;
+            /** Tokens */
+            tokens: number;
+            /** Latency Ms */
+            latency_ms: number;
+            /** Prompt */
+            prompt: string;
+            /** Response */
+            response?: string | null;
         };
         /**
          * PaperAnalysis
@@ -1135,6 +1220,8 @@ export interface components {
             gaps?: components["schemas"]["EvidenceGaps"] | null;
             /** Synthesis Flags */
             synthesis_flags?: string[];
+            /** Search Agent */
+            search_agent?: components["schemas"]["SearchAgentRound"][];
         };
         /**
          * ResearchRequest
@@ -1143,6 +1230,31 @@ export interface components {
         ResearchRequest: {
             /** Topic */
             topic: string;
+            /**
+             * Papers
+             * @default 10
+             * @enum {integer}
+             */
+            papers: 5 | 10 | 15 | 20;
+        };
+        /**
+         * SearchAgentRound
+         * @description One extra search round the search agent decided on (saved in the topic's run_stats).
+         */
+        SearchAgentRound: {
+            /** Round */
+            round: number;
+            /** Gaps */
+            gaps: string;
+            /** Done */
+            done: boolean;
+            /** New Queries */
+            new_queries?: string[];
+            /**
+             * New Papers
+             * @default 0
+             */
+            new_papers: number;
         };
         /**
          * SearchHit
@@ -1507,6 +1619,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["JobInfo"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_job_details_api_jobs__job_id__details_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["JobDetails"];
                 };
             };
             /** @description Validation Error */

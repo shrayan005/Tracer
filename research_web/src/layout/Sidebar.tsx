@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Logo } from "../components/Logo";
 import { SkeletonList } from "../components/Skeleton";
+import { UsageMeter } from "../components/UsageMeter";
 import { isActive, useChats, useJobs, useLogout, usePrefetchTopic, useTopics } from "../api/queries";
 import { jobTitle } from "../lib/format";
 import type { UserInfo } from "../api/types";
@@ -30,6 +31,7 @@ export function Sidebar({ user, open, onClose }: Props) {
           <button className={tab === "runs" ? "side-tab active" : "side-tab"} onClick={() => setTab("runs")}>Runs</button>
         </div>
         <div className="side-list">{tab === "topics" ? <TopicList /> : tab === "chats" ? <ChatList /> : <RunList />}</div>
+        <UsageMeter />
         <div className="account">
           <span className="avatar" aria-hidden="true">{(user.display_name || user.email)[0].toUpperCase()}</span>
           <span className="account-email" title={user.email}>{user.display_name || user.email}</span>

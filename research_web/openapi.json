@@ -304,6 +304,49 @@
     }
    }
   },
+  "/api/jobs/{job_id}/details": {
+   "get": {
+    "tags": [
+     "jobs"
+    ],
+    "summary": "Get Job Details",
+    "description": "What happened inside the job: LLM calls, errors, tokens and time per step, and for traced steps\n(LLM_TRACE_PURPOSES, e.g. the search agent) the exact prompt and answer.",
+    "operationId": "get_job_details_api_jobs__job_id__details_get",
+    "parameters": [
+     {
+      "name": "job_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Job Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/JobDetails"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
   "/api/jobs/{job_id}/events": {
    "get": {
     "tags": [
@@ -1860,6 +1903,36 @@
     ],
     "title": "HealthReport"
    },
+   "JobDetails": {
+    "properties": {
+     "job_id": {
+      "type": "integer",
+      "title": "Job Id"
+     },
+     "steps": {
+      "items": {
+       "$ref": "#/components/schemas/JobStepUsage"
+      },
+      "type": "array",
+      "title": "Steps"
+     },
+     "traces": {
+      "items": {
+       "$ref": "#/components/schemas/LlmTrace"
+      },
+      "type": "array",
+      "title": "Traces"
+     }
+    },
+    "type": "object",
+    "required": [
+     "job_id",
+     "steps",
+     "traces"
+    ],
+    "title": "JobDetails",
+    "description": "What happened inside a job: every step's LLM use, plus the traced prompts and answers."
+   },
    "JobInfo": {
     "properties": {
      "id": {
@@ -1998,6 +2071,122 @@
      "message"
     ],
     "title": "JobProgress"
+   },
+   "JobStepUsage": {
+    "properties": {
+     "purpose": {
+      "type": "string",
+      "title": "Purpose"
+     },
+     "provider": {
+      "type": "string",
+      "title": "Provider"
+     },
+     "calls": {
+      "type": "integer",
+      "title": "Calls"
+     },
+     "errors": {
+      "type": "integer",
+      "title": "Errors"
+     },
+     "tokens": {
+      "type": "integer",
+      "title": "Tokens"
+     },
+     "avg_ms": {
+      "type": "integer",
+      "title": "Avg Ms"
+     },
+     "cost_usd": {
+      "type": "number",
+      "title": "Cost Usd",
+      "default": 0.0
+     },
+     "last_error": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Last Error"
+     }
+    },
+    "type": "object",
+    "required": [
+     "purpose",
+     "provider",
+     "calls",
+     "errors",
+     "tokens",
+     "avg_ms"
+    ],
+    "title": "JobStepUsage",
+    "description": "One step (purpose) of a job on one provider: how many calls, how many failed, tokens, time."
+   },
+   "LlmTrace": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "purpose": {
+      "type": "string",
+      "title": "Purpose"
+     },
+     "provider": {
+      "type": "string",
+      "title": "Provider"
+     },
+     "model": {
+      "type": "string",
+      "title": "Model"
+     },
+     "tokens": {
+      "type": "integer",
+      "title": "Tokens"
+     },
+     "latency_ms": {
+      "type": "integer",
+      "title": "Latency Ms"
+     },
+     "prompt": {
+      "type": "string",
+      "title": "Prompt"
+     },
+     "response": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Response"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "created_at",
+     "purpose",
+     "provider",
+     "model",
+     "tokens",
+     "latency_ms",
+     "prompt"
+    ],
+    "title": "LlmTrace",
+    "description": "One traced LLM call: exactly what the model was sent and what it answered."
    },
    "PaperAnalysis": {
     "properties": {
@@ -2750,6 +2939,13 @@
       },
       "type": "array",
       "title": "Synthesis Flags"
+     },
+     "search_agent": {
+      "items": {
+       "$ref": "#/components/schemas/SearchAgentRound"
+      },
+      "type": "array",
+      "title": "Search Agent"
      }
     },
     "type": "object",
@@ -2777,6 +2973,17 @@
       "examples": [
        "creatine supplementation in older adults"
       ]
+     },
+     "papers": {
+      "type": "integer",
+      "enum": [
+       5,
+       10,
+       15,
+       20
+      ],
+      "title": "Papers",
+      "default": 10
      }
     },
     "type": "object",
@@ -2785,6 +2992,42 @@
     ],
     "title": "ResearchRequest",
     "description": "Length limits stop empty topics and pasted essays (prompt-injection hygiene)."
+   },
+   "SearchAgentRound": {
+    "properties": {
+     "round": {
+      "type": "integer",
+      "title": "Round"
+     },
+     "gaps": {
+      "type": "string",
+      "title": "Gaps"
+     },
+     "done": {
+      "type": "boolean",
+      "title": "Done"
+     },
+     "new_queries": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "New Queries"
+     },
+     "new_papers": {
+      "type": "integer",
+      "title": "New Papers",
+      "default": 0
+     }
+    },
+    "type": "object",
+    "required": [
+     "round",
+     "gaps",
+     "done"
+    ],
+    "title": "SearchAgentRound",
+    "description": "One extra search round the search agent decided on (saved in the topic's run_stats)."
    },
    "SearchHit": {
     "properties": {

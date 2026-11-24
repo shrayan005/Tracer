@@ -2,6 +2,7 @@ import { Check, CircleAlert, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { JobInfo } from "../api/types";
 import { jobTitle } from "../lib/format";
+import { JobDetailsPanel } from "./JobDetailsPanel";
 
 /** The steps of a run, as they happen (like "Searched PubMed → Importing to library…" in a plain list).
  *  Each message is one step; the last one spins while the job runs. */
@@ -33,6 +34,7 @@ export function JobSteps({ job }: { job: JobInfo }) {
         {statusText(job)} · <Elapsed job={job} />
         {job.tokens ? ` · ${job.tokens.toLocaleString()} tokens` : ""}
       </p>
+      <JobDetailsPanel job={job} />
     </div>
   );
 }

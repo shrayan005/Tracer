@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { ReportPaper } from "../api/types";
 import {
-  authorsShort, bareCitation, describeNotes, formatSeconds, groupWarnings, highlightParts, jobTitle, orderTimings,
+  authorsShort, bareCitation, compactTokens, providerState, describeNotes, formatSeconds, groupWarnings, highlightParts, jobTitle, orderTimings,
   paperLink, parseQuality, relativeDate, sortPapers, surname, trustText,
 } from "./format";
 
@@ -101,5 +101,20 @@ describe("small helpers (7.8)", () => {
     expect(jobTitle({ kind: "research", params: { topic: "creatine" } })).toBe("creatine");
     expect(jobTitle({ kind: "index", params: { topic_id: 7 } })).toBe("Prepare topic #7 for questions");
     expect(jobTitle({ kind: "analyze", params: { topic_id: 7 } })).toBe("Analyse topic #7");
+  });
+});
+
+describe("usage meter", () => {
+  it("shortens token counts", () => {
+    expect([850, 1_500, 40_000, 249_600, 1_250_000].map(compactTokens)).toEqual(["850", "1.5k", "40k", "250k", "1.3M"]);
+  });
+
+  it("flags a provider only while its failures are recent", () => {
+    const now = new Date("2026-11-24T12:00:00Z");
+    const at = (minutesAgo: number) => new Date(now.getTime() - minutesAgo * 60_000).toISOString();
+    expect(providerState({ ok_calls: 9, failed_calls: 0 }, now)).toBe("ok");
+    expect(providerState({ ok_calls: 0, failed_calls: 3, last_error_at: at(2) }, now)).toBe("down");
+    expect(providerState({ ok_calls: 5, failed_calls: 3, last_error_at: at(2) }, now)).toBe("warn");
+    expect(providerState({ ok_calls: 0, failed_calls: 3, last_error_at: at(60) }, now)).toBe("ok");   // old news
   });
 });

@@ -3,7 +3,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { api, post, postStream } from "./client";
-import type { AskResult, ChatInfo, JobInfo, Readiness, ResearchReport, SearchHit, TopicSummary, UsageInfo,
+import type { AskResult, ChatInfo, JobDetails, JobInfo, Readiness, ResearchReport, SearchHit, TopicSummary, UsageInfo,
   UserInfo } from "./types";
 
 export const keys = {
@@ -88,13 +88,18 @@ export function useJob(id: number | null) {
 }
 
 export function useUsage() {
-  return useQuery({ queryKey: ["usage"], queryFn: () => api<UsageInfo>("/api/usage") });
+  // every minute too: a provider that starts failing (free tier used up) shows while a job still runs
+  return useQuery({ queryKey: ["usage"], queryFn: () => api<UsageInfo>("/api/usage"), refetchInterval: 60_000 });
 }
+
+/** How many papers a research picks, reads in full text (where free) and prepares for chat. */
+export type PaperCount = 5 | 10 | 15 | 20;
 
 export function useStartResearch() {
   const client = useQueryClient();
   return useMutation({
-    mutationFn: (topic: string) => post<JobInfo>("/api/research", { topic }),
+    mutationFn: ({ topic, papers }: { topic: string; papers: PaperCount }) =>
+      post<JobInfo>("/api/research", { topic, papers }),
     onSuccess: (job) => {
       client.setQueryData(["job", job.id], job);
       client.invalidateQueries({ queryKey: keys.jobs });
@@ -227,5 +232,16 @@ export function useSearch(query: string) {
     queryFn: () => api<SearchHit[]>(`/api/search?q=${encodeURIComponent(query)}`),
     enabled: query.trim().length >= 2,
     staleTime: 5 * 60_000,
+  });
+}
+
+/** What happened inside a job (LLM use per step + traced prompts). Loaded only when `enabled` (panel open);
+ *  refreshed every few seconds while the job still runs. */
+export function useJobDetails(id: number, enabled: boolean, running: boolean) {
+  return useQuery({
+    queryKey: ["job", id, "details"],
+    queryFn: () => api<JobDetails>(`/api/jobs/${id}/details`),
+    enabled,
+    refetchInterval: running ? 4000 : false,
   });
 }

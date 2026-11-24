@@ -19,23 +19,54 @@ export function AskView({ topicId, onOpen }: Props) {
   return <Conversation topicId={topicId} onOpen={onOpen} prepared={readiness.data.prepared} papers={readiness.data.papers} />;
 }
 
+/** Not prepared yet. Preparing is part of the RESEARCH RUN (after its results are saved) and continues by itself
+ *  when Gemini's limit or the run's time stops it, so this tab mostly just shows where it is. Only two cases ask
+ *  anything of you: a topic researched before this existed (started once by itself), and giving up after all
+ *  automatic tries (then "Try again"). */
 function Prepare({ topicId }: { topicId: number }) {
   const prepare = usePrepare(topicId);
   const jobs = useJobs();
-  const running = (jobs.data ?? []).find((j) => j.kind === "index" && j.params.topic_id === topicId && isActive(j));
+  const mine = (jobs.data ?? []).filter((j) => j.topic_id === topicId || j.params.topic_id === topicId);
+  const running = mine.find(isActive);
+  const lastIndex = mine.filter((j) => j.kind === "index").sort((a, b) => b.id - a.id)[0];
+  const gaveUp = !running && !prepare.isPending && (lastIndex?.status === "failed" || !!prepare.error);
+  const noText = !running && !prepare.isPending && lastIndex?.status === "done";   // finished, nothing to search
+  const started = useRef(false);
+
+  useEffect(() => {          // old topics only: nothing ran for this topic yet -> start once, by itself
+    if (!jobs.isSuccess || running || lastIndex || started.current || prepare.isPending || prepare.error) return;
+    started.current = true;
+    prepare.mutate();
+  }, [jobs.isSuccess, running, lastIndex, prepare]);
+
+  const waitUntil = running?.kind === "index" && typeof running.params.not_before === "string"
+    ? new Date(running.params.not_before) : null;
+  const waiting = waitUntil !== null && waitUntil.getTime() > Date.now();
+
   return (
     <div className="empty empty-card">
       <Sparkle size={22} className="empty-icon" />
-      <strong>Not ready for questions yet</strong>
-      <p>Tracer splits the papers into passages and prepares them for search. This takes a few minutes, once.</p>
-      {running ? (
-        <p><Loader2 size={14} className="spin" /> Preparing… <Link className="link-button" to={`/app/new?job=${running.id}`}>follow the steps</Link></p>
+      <strong>{gaveUp ? "Couldn't prepare for questions" : noText ? "Nothing to ask yet" : "Preparing the papers for questions"}</strong>
+      {gaveUp ? (
+        <>
+          <p>Tracer tried several times by itself. You can try again now.</p>
+          <button className="primary-button" onClick={() => prepare.mutate()}>Try again</button>
+          {(prepare.error?.message ?? lastIndex?.error) && <p className="error">{prepare.error?.message ?? lastIndex?.error}</p>}
+        </>
+      ) : noText ? (
+        <p>None of this topic's papers has text that can be searched (no abstract or full text).</p>
       ) : (
-        <button className="primary-button" disabled={prepare.isPending} onClick={() => prepare.mutate()}>
-          {prepare.isPending ? "Starting…" : "Prepare for questions"}
-        </button>
+        <>
+          <p>This happens by itself as part of the research. You don't need to do anything.</p>
+          <p className="muted inline-flex">
+            <Loader2 size={14} className="spin" />
+            {waiting ? `Gemini's free limit was reached: it continues by itself at ${waitUntil!.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`
+              : running && running.kind !== "index" ? "Finishing the research, then preparing…"
+              : "Preparing…"}
+            {running && <Link className="link-button" to={`/app/new?job=${running.id}`}>follow the steps</Link>}
+          </p>
+        </>
       )}
-      {prepare.error && <p className="error">{prepare.error.message}</p>}
     </div>
   );
 }

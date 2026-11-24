@@ -170,3 +170,25 @@ export function highlightParts(passage: string, quote: string): [string, string,
   if (at < 0) return null;
   return [text.slice(0, at), text.slice(at, at + needle.length), text.slice(at + needle.length)];
 }
+
+/** 850 -> "850", 40_000 -> "40k", 1_250_000 -> "1.3M": short enough for the sidebar meter. */
+export function compactTokens(n: number): string {
+  if (n < 1000) return String(n);
+  if (n < 1_000_000) return `${+(n / 1000).toFixed(n < 10_000 ? 1 : 0)}k`;
+  return `${+(n / 1_000_000).toFixed(1)}M`;
+}
+
+/** Failures this recent count as "trouble now"; older ones (the gateway already moved on) only as history. */
+export const RECENT_FAILURE_MINUTES = 15;
+
+/** A provider's state today: "down" = only failures and the latest is recent (e.g. the free tier is used up),
+ *  "warn" = it also answered, but failed recently (rate limits: the gateway retries or switches), else "ok". */
+export function providerState(
+  p: { ok_calls: number; failed_calls: number; last_error_at?: string | null },
+  now: Date = new Date(),
+): "ok" | "warn" | "down" {
+  if (!p.failed_calls || !p.last_error_at) return "ok";
+  const minutes = (now.getTime() - new Date(p.last_error_at).getTime()) / 60_000;
+  if (minutes > RECENT_FAILURE_MINUTES) return "ok";
+  return p.ok_calls ? "warn" : "down";
+}

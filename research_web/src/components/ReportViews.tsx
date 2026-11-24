@@ -193,6 +193,8 @@ export function OverviewView({ report }: { report: ResearchReport }) {
   const total = timings.reduce((s, [, v]) => s + v, 0);
   const { bySource, other } = groupWarnings(report.warnings);
   const notes = [...other, ...(report.synthesis_flags ?? [])];
+  // rounds where the search agent actually searched (a "done" round adds nothing to show)
+  const agentRounds = (report.search_agent ?? []).filter((r) => (r.new_queries ?? []).length > 0);
   const meta = [
     report.created_at && relativeDate(report.created_at),
     `${report.papers.length} papers`,
@@ -227,10 +229,22 @@ export function OverviewView({ report }: { report: ResearchReport }) {
       </section>
 
       <section className="doc-card">
-        <Label aside={`${report.plan.queries.length} queries`}>Searches</Label>
+        <Label aside={`${report.plan.queries.length + agentRounds.reduce((n, r) => n + (r.new_queries?.length ?? 0), 0)} queries`}>Searches</Label>
         <div className="query-list">
           {report.plan.queries.map((q) => <span key={q} className="query"><Search size={13} />{q}</span>)}
         </div>
+        {agentRounds.map((r) => (
+          <div key={r.round} className="agent-round">
+            <p className="agent-round-head">
+              <strong>Search agent · round {r.round}</strong>
+              <span className="muted"> +{r.new_papers ?? 0} papers</span>
+            </p>
+            <p className="agent-round-gap muted">Gap it saw: {r.gaps}</p>
+            <div className="query-list">
+              {(r.new_queries ?? []).map((q) => <span key={q} className="query query-agent"><Search size={13} />{q}</span>)}
+            </div>
+          </div>
+        ))}
       </section>
 
       {total > 0 && (
