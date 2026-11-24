@@ -1,0 +1,3128 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "Research Paper Assistant",
+  "version": "0.4.0"
+ },
+ "paths": {
+  "/api/health": {
+   "get": {
+    "tags": [
+     "health"
+    ],
+    "summary": "Health",
+    "description": "Check database, Redis and LLM providers. ?deep=true also makes a tiny real LLM call.\n\n`async def`: runs on the event loop. Safe because everything below it awaits\n(no blocking calls), so other requests keep being served while we wait.",
+    "operationId": "health_api_health_get",
+    "parameters": [
+     {
+      "name": "deep",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "boolean",
+       "default": false,
+       "title": "Deep"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HealthReport"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/auth/register": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Register",
+    "description": "Create an account and log in (403 if registration is closed, 409 if the email is taken).",
+    "operationId": "register_api_auth_register_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/Registration"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UserInfo"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/auth/login": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Login",
+    "description": "401 'wrong email or password' for every failure; 429 after too many.",
+    "operationId": "login_api_auth_login_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/Credentials"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UserInfo"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/auth/logout": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Logout",
+    "description": "End the session on the server AND remove the cookie (works even if already logged out).",
+    "operationId": "logout_api_auth_logout_post",
+    "responses": {
+     "204": {
+      "description": "Successful Response"
+     }
+    }
+   }
+  },
+  "/api/auth/me": {
+   "get": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Me",
+    "description": "Who is logged in (401 if nobody). The React app calls this on start.",
+    "operationId": "me_api_auth_me_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UserInfo"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/research": {
+   "post": {
+    "tags": [
+     "jobs"
+    ],
+    "summary": "Start Research",
+    "description": "Queue a research job and return it at once (202). Follow it with GET /api/jobs/{id}.\n409 if you already have a research running; 429 if your daily LLM budget is used up.",
+    "operationId": "start_research_api_research_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ResearchRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "202": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/JobInfo"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/jobs": {
+   "get": {
+    "tags": [
+     "jobs"
+    ],
+    "summary": "List Jobs",
+    "operationId": "list_jobs_api_jobs_get",
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 100,
+       "minimum": 1,
+       "default": 20,
+       "title": "Limit"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/JobInfo"
+         },
+         "title": "Response List Jobs Api Jobs Get"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/jobs/{job_id}": {
+   "get": {
+    "tags": [
+     "jobs"
+    ],
+    "summary": "Get Job",
+    "description": "Status, progress messages, the topic when done, the error when failed, and its LLM use.",
+    "operationId": "get_job_api_jobs__job_id__get",
+    "parameters": [
+     {
+      "name": "job_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Job Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/JobInfo"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/jobs/{job_id}/events": {
+   "get": {
+    "tags": [
+     "jobs"
+    ],
+    "summary": "Job Events",
+    "description": "Follow a job live (Server-Sent Events), instead of asking GET /api/jobs/{id} again and again.\nA GET with the login cookie, so the browser's own EventSource can read it. The stream ends when the job\ndoes, or after a minute (the browser then reconnects by itself): a short stream never blocks a server\nreload or sits forever in a proxy.",
+    "operationId": "job_events_api_jobs__job_id__events_get",
+    "parameters": [
+     {
+      "name": "job_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Job Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "event `job` (a JobInfo) now and after every change, until done or failed; keep-alive comments in between",
+      "content": {
+       "text/event-stream": {}
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/jobs/{job_id}/retry": {
+   "post": {
+    "tags": [
+     "jobs"
+    ],
+    "summary": "Retry Job",
+    "description": "Start a failed job again, as a NEW job (409 if it did not fail).",
+    "operationId": "retry_job_api_jobs__job_id__retry_post",
+    "parameters": [
+     {
+      "name": "job_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Job Id"
+      }
+     }
+    ],
+    "responses": {
+     "202": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/JobInfo"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/usage": {
+   "get": {
+    "tags": [
+     "jobs"
+    ],
+    "summary": "Usage",
+    "description": "Your LLM use today (UTC) against your daily budget.",
+    "operationId": "usage_api_usage_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UsageInfo"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/topics": {
+   "get": {
+    "tags": [
+     "topics"
+    ],
+    "summary": "List Topics",
+    "operationId": "list_topics_api_topics_get",
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 200,
+       "minimum": 1,
+       "default": 50,
+       "title": "Limit"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/TopicSummary"
+         },
+         "title": "Response List Topics Api Topics Get"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/topics/{topic_id}": {
+   "get": {
+    "tags": [
+     "topics"
+    ],
+    "summary": "Get Report",
+    "description": "The full report as JSON. 404 if it isn't yours or doesn't exist; 409 if it has no results yet.",
+    "operationId": "get_report_api_topics__topic_id__get",
+    "parameters": [
+     {
+      "name": "topic_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Topic Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ResearchReport"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/topics/{topic_id}/report.md": {
+   "get": {
+    "tags": [
+     "topics"
+    ],
+    "summary": "Get Report Markdown",
+    "operationId": "get_report_markdown_api_topics__topic_id__report_md_get",
+    "parameters": [
+     {
+      "name": "topic_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Topic Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "text/plain": {
+        "schema": {
+         "type": "string"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/topics/{topic_id}/papers/{rank}": {
+   "get": {
+    "tags": [
+     "topics"
+    ],
+    "summary": "Get Paper",
+    "operationId": "get_paper_api_topics__topic_id__papers__rank__get",
+    "parameters": [
+     {
+      "name": "topic_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Topic Id"
+      }
+     },
+     {
+      "name": "rank",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Rank"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/PaperDetail"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/topics/{topic_id}/analyze": {
+   "post": {
+    "tags": [
+     "topics"
+    ],
+    "summary": "Analyze Topic",
+    "description": "Queue claims + quality + connections + gaps for this topic. Checked BEFORE queueing: a topic that\nisn't yours (404) or has no results yet (409) never becomes a job that fails later.",
+    "operationId": "analyze_topic_api_topics__topic_id__analyze_post",
+    "parameters": [
+     {
+      "name": "topic_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Topic Id"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "anyOf": [
+         {
+          "$ref": "#/components/schemas/AnalyzeRequest"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "title": "Request"
+       }
+      }
+     }
+    },
+    "responses": {
+     "202": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/JobInfo"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/topics/{topic_id}/ask": {
+   "post": {
+    "tags": [
+     "questions"
+    ],
+    "summary": "Ask",
+    "description": "Answer from this topic's papers only; every sentence cites a passage whose quote code checked.\n409 if the topic isn't prepared for questions yet; 429 if the daily budget is used up.",
+    "operationId": "ask_api_topics__topic_id__ask_post",
+    "parameters": [
+     {
+      "name": "topic_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Topic Id"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/AskRequest"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/AskResult"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/topics/{topic_id}/ask/stream": {
+   "post": {
+    "tags": [
+     "questions"
+    ],
+    "summary": "Ask Stream",
+    "description": "The same answer as /ask, but each step is sent the moment it happens (Server-Sent Events).\nBudget (429), ownership (404) and readiness (409) are checked BEFORE the stream starts, so they still\ncome back as normal JSON errors. Once streaming, the status is already 200: a failure is an `error` event.",
+    "operationId": "ask_stream_api_topics__topic_id__ask_stream_post",
+    "parameters": [
+     {
+      "name": "topic_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Topic Id"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/AskRequest"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "events: stage (searching, reading, writing, checking); while writing: text ({index, text}: a sentence so far), sentence ({index, part}: finished and checked; part null = dropped), reset (forget the preview); then done (the AskResult) or error ({detail})",
+      "content": {
+       "text/event-stream": {}
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/topics/{topic_id}/readiness": {
+   "get": {
+    "tags": [
+     "questions"
+    ],
+    "summary": "Readiness",
+    "operationId": "readiness_api_topics__topic_id__readiness_get",
+    "parameters": [
+     {
+      "name": "topic_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Topic Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Readiness"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/topics/{topic_id}/prepare": {
+   "post": {
+    "tags": [
+     "questions"
+    ],
+    "summary": "Prepare",
+    "description": "Prepare a topic's papers for questions, as a background job (minutes on Gemini's free tier).",
+    "operationId": "prepare_api_topics__topic_id__prepare_post",
+    "parameters": [
+     {
+      "name": "topic_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Topic Id"
+      }
+     }
+    ],
+    "responses": {
+     "202": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/JobInfo"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/chats": {
+   "get": {
+    "tags": [
+     "questions"
+    ],
+    "summary": "List Chats",
+    "operationId": "list_chats_api_chats_get",
+    "parameters": [
+     {
+      "name": "topic_id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Topic Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/ChatInfo"
+         },
+         "title": "Response List Chats Api Chats Get"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/chats/{chat_id}": {
+   "get": {
+    "tags": [
+     "questions"
+    ],
+    "summary": "Get Chat",
+    "operationId": "get_chat_api_chats__chat_id__get",
+    "parameters": [
+     {
+      "name": "chat_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Chat Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ChatInfo"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "questions"
+    ],
+    "summary": "Delete Chat",
+    "operationId": "delete_chat_api_chats__chat_id__delete",
+    "parameters": [
+     {
+      "name": "chat_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Chat Id"
+      }
+     }
+    ],
+    "responses": {
+     "204": {
+      "description": "Successful Response"
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/search": {
+   "get": {
+    "tags": [
+     "questions"
+    ],
+    "summary": "Search",
+    "description": "Passages across your papers (or one topic's), by meaning and keywords. No LLM.",
+    "operationId": "search_api_search_get",
+    "parameters": [
+     {
+      "name": "q",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "minLength": 2,
+       "maxLength": 300,
+       "title": "Q"
+      }
+     },
+     {
+      "name": "topic_id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Topic Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/SearchHit"
+         },
+         "title": "Response Search Api Search Get"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "AnalyzeRequest": {
+    "properties": {
+     "refresh": {
+      "type": "boolean",
+      "title": "Refresh",
+      "default": false
+     }
+    },
+    "type": "object",
+    "title": "AnalyzeRequest"
+   },
+   "AnalyzedPaper": {
+    "properties": {
+     "analysis": {
+      "$ref": "#/components/schemas/PaperAnalysis"
+     },
+     "based_on": {
+      "type": "string",
+      "enum": [
+       "full text",
+       "abstract"
+      ],
+      "title": "Based On"
+     },
+     "flags": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Flags"
+     }
+    },
+    "type": "object",
+    "required": [
+     "analysis",
+     "based_on"
+    ],
+    "title": "AnalyzedPaper",
+    "description": "The analysis plus what CODE found when checking it."
+   },
+   "Answer": {
+    "properties": {
+     "parts": {
+      "items": {
+       "$ref": "#/components/schemas/AnswerPart"
+      },
+      "type": "array",
+      "title": "Parts"
+     },
+     "answered": {
+      "type": "boolean",
+      "title": "Answered"
+     },
+     "missing": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Missing"
+     },
+     "passages_searched": {
+      "type": "integer",
+      "title": "Passages Searched",
+      "default": 0
+     },
+     "flags": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Flags"
+     }
+    },
+    "type": "object",
+    "required": [
+     "answered"
+    ],
+    "title": "Answer",
+    "description": "A CHECKED answer: every sentence points at a passage, and code checked its quote and numbers."
+   },
+   "AnswerPart": {
+    "properties": {
+     "text": {
+      "type": "string",
+      "title": "Text"
+     },
+     "citation": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Citation"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "flags": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Flags"
+     }
+    },
+    "type": "object",
+    "required": [
+     "text"
+    ],
+    "title": "AnswerPart"
+   },
+   "Appraisal": {
+    "properties": {
+     "sample_size": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Sample Size",
+      "description": "number of participants/subjects analysed; null if not applicable"
+     },
+     "sample_size_quote": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Sample Size Quote"
+     },
+     "sex": {
+      "type": "string",
+      "enum": [
+       "male",
+       "female",
+       "mixed",
+       "not reported",
+       "not applicable"
+      ],
+      "title": "Sex"
+     },
+     "duration": {
+      "type": "string",
+      "enum": [
+       "single session",
+       "under 3 months",
+       "3 months or more",
+       "not applicable",
+       "not reported"
+      ],
+      "title": "Duration"
+     },
+     "control_group": {
+      "$ref": "#/components/schemas/Fact",
+      "description": "a control or comparison group/condition"
+     },
+     "randomized": {
+      "$ref": "#/components/schemas/Fact",
+      "description": "participants or conditions randomly assigned/ordered"
+     },
+     "blinded": {
+      "$ref": "#/components/schemas/Fact",
+      "description": "participants or assessors blinded"
+     },
+     "statistics_reported": {
+      "$ref": "#/components/schemas/Fact",
+      "description": "statistical tests with p-values or confidence intervals"
+     },
+     "effect_sizes": {
+      "$ref": "#/components/schemas/Fact",
+      "description": "effect sizes reported (e.g. Cohen's d, eta squared)"
+     },
+     "conflicts_declared": {
+      "$ref": "#/components/schemas/Fact",
+      "description": "a conflict-of-interest / competing-interests statement"
+     },
+     "data_available": {
+      "$ref": "#/components/schemas/Fact",
+      "description": "data or code availability statement"
+     }
+    },
+    "type": "object",
+    "required": [
+     "sample_size",
+     "sex",
+     "duration",
+     "control_group",
+     "randomized",
+     "blinded",
+     "statistics_reported",
+     "effect_sizes",
+     "conflicts_declared",
+     "data_available"
+    ],
+    "title": "Appraisal",
+    "description": "How the study was done: the facts a quality checklist asks for (scored by code in 5.2)."
+   },
+   "AskRequest": {
+    "properties": {
+     "question": {
+      "type": "string",
+      "maxLength": 500,
+      "minLength": 3,
+      "title": "Question",
+      "examples": [
+       "What daily dose of creatine did the trials use?"
+      ]
+     },
+     "chat_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Chat Id"
+     }
+    },
+    "type": "object",
+    "required": [
+     "question"
+    ],
+    "title": "AskRequest"
+   },
+   "AskResult": {
+    "properties": {
+     "chat_id": {
+      "type": "integer",
+      "title": "Chat Id"
+     },
+     "question": {
+      "$ref": "#/components/schemas/ChatMessageInfo"
+     },
+     "answer": {
+      "$ref": "#/components/schemas/ChatMessageInfo"
+     }
+    },
+    "type": "object",
+    "required": [
+     "chat_id",
+     "question",
+     "answer"
+    ],
+    "title": "AskResult"
+   },
+   "ChatInfo": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "topic_id": {
+      "type": "integer",
+      "title": "Topic Id"
+     },
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+     },
+     "messages": {
+      "items": {
+       "$ref": "#/components/schemas/ChatMessageInfo"
+      },
+      "type": "array",
+      "title": "Messages"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "topic_id",
+     "title",
+     "created_at",
+     "updated_at"
+    ],
+    "title": "ChatInfo"
+   },
+   "ChatMessageInfo": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "role": {
+      "type": "string",
+      "enum": [
+       "user",
+       "assistant"
+      ],
+      "title": "Role"
+     },
+     "content": {
+      "type": "string",
+      "title": "Content"
+     },
+     "answer": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Answer"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "role",
+     "content",
+     "created_at"
+    ],
+    "title": "ChatMessageInfo"
+   },
+   "Citation": {
+    "properties": {
+     "paper_id": {
+      "type": "integer",
+      "title": "Paper Id"
+     },
+     "rank": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Rank"
+     },
+     "label": {
+      "type": "string",
+      "title": "Label"
+     },
+     "section": {
+      "type": "string",
+      "title": "Section"
+     },
+     "quote": {
+      "type": "string",
+      "title": "Quote"
+     },
+     "chunk_id": {
+      "type": "integer",
+      "title": "Chunk Id"
+     },
+     "passage": {
+      "type": "string",
+      "title": "Passage",
+      "default": ""
+     }
+    },
+    "type": "object",
+    "required": [
+     "paper_id",
+     "label",
+     "section",
+     "quote",
+     "chunk_id"
+    ],
+    "title": "Citation"
+   },
+   "Claim": {
+    "properties": {
+     "outcome": {
+      "type": "string",
+      "title": "Outcome",
+      "description": "what was measured, e.g. 'long head EMG amplitude'"
+     },
+     "factor": {
+      "type": "string",
+      "title": "Factor",
+      "description": "what was varied or compared, e.g. 'narrow vs wide grip' or 'training (before vs after)'"
+     },
+     "population": {
+      "type": "string",
+      "title": "Population",
+      "description": "who or what was studied, e.g. '10 healthy young men'"
+     },
+     "direction": {
+      "type": "string",
+      "enum": [
+       "increase",
+       "decrease",
+       "no difference",
+       "association",
+       "other"
+      ],
+      "title": "Direction",
+      "description": "how the outcome changed with the factor"
+     },
+     "magnitude": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Magnitude",
+      "description": "size as reported, e.g. '+18.5%', 'p < 0.05'"
+     },
+     "quote": {
+      "type": "string",
+      "title": "Quote",
+      "description": "exact passage from the paper that states this result"
+     }
+    },
+    "type": "object",
+    "required": [
+     "outcome",
+     "factor",
+     "population",
+     "direction",
+     "quote"
+    ],
+    "title": "Claim",
+    "description": "One result of a study, written so it can be compared with other papers' results."
+   },
+   "ComponentHealth": {
+    "properties": {
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "ok": {
+      "type": "boolean",
+      "title": "Ok"
+     },
+     "detail": {
+      "type": "string",
+      "title": "Detail",
+      "default": ""
+     }
+    },
+    "type": "object",
+    "required": [
+     "name",
+     "ok"
+    ],
+    "title": "ComponentHealth"
+   },
+   "Connection": {
+    "properties": {
+     "question": {
+      "type": "string",
+      "title": "Question"
+     },
+     "relation": {
+      "type": "string",
+      "enum": [
+       "agree",
+       "contradict",
+       "mixed"
+      ],
+      "title": "Relation"
+     },
+     "finding": {
+      "type": "string",
+      "title": "Finding"
+     },
+     "why_differ": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Why Differ"
+     },
+     "members": {
+      "items": {
+       "$ref": "#/components/schemas/ConnectionMember"
+      },
+      "type": "array",
+      "title": "Members"
+     }
+    },
+    "type": "object",
+    "required": [
+     "question",
+     "relation",
+     "finding",
+     "members"
+    ],
+    "title": "Connection",
+    "description": "A CHECKED group: the relation is computed by code, members point at real papers and claims."
+   },
+   "ConnectionMember": {
+    "properties": {
+     "paper": {
+      "type": "integer",
+      "title": "Paper"
+     },
+     "claim": {
+      "type": "integer",
+      "title": "Claim"
+     },
+     "stance": {
+      "type": "string",
+      "enum": [
+       "supports",
+       "opposes",
+       "no effect"
+      ],
+      "title": "Stance"
+     },
+     "claim_snapshot": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Claim"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "paper",
+     "claim",
+     "stance"
+    ],
+    "title": "ConnectionMember"
+   },
+   "Credentials": {
+    "properties": {
+     "email": {
+      "type": "string",
+      "maxLength": 320,
+      "title": "Email",
+      "examples": [
+       "you@example.com"
+      ]
+     },
+     "password": {
+      "type": "string",
+      "maxLength": 128,
+      "title": "Password"
+     }
+    },
+    "type": "object",
+    "required": [
+     "email",
+     "password"
+    ],
+    "title": "Credentials"
+   },
+   "DocumentInfo": {
+    "properties": {
+     "content_type": {
+      "type": "string",
+      "title": "Content Type"
+     },
+     "source_url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Source Url"
+     },
+     "size_bytes": {
+      "type": "integer",
+      "title": "Size Bytes"
+     },
+     "page_count": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Page Count"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     },
+     "error": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Error"
+     },
+     "sections": {
+      "items": {
+       "$ref": "#/components/schemas/SectionInfo"
+      },
+      "type": "array",
+      "title": "Sections"
+     }
+    },
+    "type": "object",
+    "required": [
+     "content_type",
+     "source_url",
+     "size_bytes",
+     "page_count",
+     "status"
+    ],
+    "title": "DocumentInfo",
+    "description": "The full text a paper was read from (steps 4.3/4.4)."
+   },
+   "EvidenceGaps": {
+    "properties": {
+     "n_papers": {
+      "type": "integer",
+      "title": "N Papers"
+     },
+     "gaps": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Gaps"
+     },
+     "notes": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Notes"
+     },
+     "shared_limitations": {
+      "items": {
+       "$ref": "#/components/schemas/SharedLimitation"
+      },
+      "type": "array",
+      "title": "Shared Limitations"
+     },
+     "papers_with_limitations": {
+      "type": "integer",
+      "title": "Papers With Limitations",
+      "default": 0
+     },
+     "write_up": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/GapWriteUp"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "flags": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Flags"
+     }
+    },
+    "type": "object",
+    "required": [
+     "n_papers",
+     "gaps"
+    ],
+    "title": "EvidenceGaps",
+    "description": "What this body of evidence is missing: found by code, optionally written up by the LLM."
+   },
+   "Fact": {
+    "properties": {
+     "value": {
+      "type": "string",
+      "enum": [
+       "yes",
+       "no",
+       "not reported",
+       "not applicable"
+      ],
+      "title": "Value"
+     },
+     "quote": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Quote",
+      "description": "exact passage that shows it (needed for 'yes')"
+     }
+    },
+    "type": "object",
+    "required": [
+     "value"
+    ],
+    "title": "Fact"
+   },
+   "Finding": {
+    "properties": {
+     "statement": {
+      "type": "string",
+      "title": "Statement",
+      "description": "one key result, in plain words"
+     },
+     "quote": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Quote",
+      "description": "exact passage copied from the paper text that supports it"
+     }
+    },
+    "type": "object",
+    "required": [
+     "statement"
+    ],
+    "title": "Finding",
+    "description": "One key result, with the passage from the paper that supports it (step 4.5)."
+   },
+   "GapWriteUp": {
+    "properties": {
+     "summary": {
+      "type": "string",
+      "title": "Summary",
+      "description": "2-4 sentences: what the evidence base is missing, using ONLY the facts given"
+     },
+     "next_studies": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "maxItems": 4,
+      "title": "Next Studies",
+      "description": "concrete study ideas that would fill these gaps"
+     }
+    },
+    "type": "object",
+    "required": [
+     "summary"
+    ],
+    "title": "GapWriteUp",
+    "description": "What the LLM writes from the counted facts (it may not add gaps or numbers)."
+   },
+   "HTTPValidationError": {
+    "properties": {
+     "detail": {
+      "items": {
+       "$ref": "#/components/schemas/ValidationError"
+      },
+      "type": "array",
+      "title": "Detail"
+     }
+    },
+    "type": "object",
+    "title": "HTTPValidationError"
+   },
+   "HealthReport": {
+    "properties": {
+     "status": {
+      "type": "string",
+      "enum": [
+       "ok",
+       "degraded"
+      ],
+      "title": "Status"
+     },
+     "components": {
+      "items": {
+       "$ref": "#/components/schemas/ComponentHealth"
+      },
+      "type": "array",
+      "title": "Components"
+     }
+    },
+    "type": "object",
+    "required": [
+     "status",
+     "components"
+    ],
+    "title": "HealthReport"
+   },
+   "JobInfo": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "kind": {
+      "type": "string",
+      "enum": [
+       "research",
+       "analyze",
+       "index"
+      ],
+      "title": "Kind"
+     },
+     "params": {
+      "additionalProperties": true,
+      "type": "object",
+      "title": "Params"
+     },
+     "status": {
+      "type": "string",
+      "enum": [
+       "queued",
+       "running",
+       "done",
+       "failed"
+      ],
+      "title": "Status"
+     },
+     "progress": {
+      "items": {
+       "$ref": "#/components/schemas/JobProgress"
+      },
+      "type": "array",
+      "title": "Progress"
+     },
+     "topic_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Topic Id"
+     },
+     "error": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Error"
+     },
+     "retry_of": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Retry Of"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "started_at": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date-time"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Started At"
+     },
+     "finished_at": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date-time"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Finished At"
+     },
+     "tokens": {
+      "type": "integer",
+      "title": "Tokens",
+      "default": 0
+     },
+     "cost_usd": {
+      "type": "number",
+      "title": "Cost Usd",
+      "default": 0.0
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "kind",
+     "params",
+     "status",
+     "created_at"
+    ],
+    "title": "JobInfo",
+    "description": "What a user sees about one of their jobs (CLI now, API in 7.2)."
+   },
+   "JobProgress": {
+    "properties": {
+     "at": {
+      "type": "string",
+      "title": "At"
+     },
+     "message": {
+      "type": "string",
+      "title": "Message"
+     }
+    },
+    "type": "object",
+    "required": [
+     "at",
+     "message"
+    ],
+    "title": "JobProgress"
+   },
+   "PaperAnalysis": {
+    "properties": {
+     "claims": {
+      "items": {
+       "$ref": "#/components/schemas/Claim"
+      },
+      "type": "array",
+      "maxItems": 6,
+      "minItems": 1,
+      "title": "Claims"
+     },
+     "appraisal": {
+      "$ref": "#/components/schemas/Appraisal"
+     }
+    },
+    "type": "object",
+    "required": [
+     "claims",
+     "appraisal"
+    ],
+    "title": "PaperAnalysis",
+    "description": "What the LLM returns for ONE paper (step 5.1)."
+   },
+   "PaperDetail": {
+    "properties": {
+     "topic_id": {
+      "type": "integer",
+      "title": "Topic Id"
+     },
+     "topic": {
+      "type": "string",
+      "title": "Topic"
+     },
+     "field_family": {
+      "type": "string",
+      "enum": [
+       "biomedical",
+       "sport_biomechanics",
+       "cs",
+       "physics_math",
+       "general"
+      ],
+      "title": "Field Family"
+     },
+     "n_papers": {
+      "type": "integer",
+      "title": "N Papers"
+     },
+     "paper": {
+      "$ref": "#/components/schemas/ReportPaper"
+     },
+     "connections": {
+      "items": {
+       "$ref": "#/components/schemas/Connection"
+      },
+      "type": "array",
+      "title": "Connections"
+     },
+     "labels": {
+      "additionalProperties": {
+       "type": "string"
+      },
+      "type": "object",
+      "title": "Labels"
+     },
+     "ranks": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "type": "object",
+      "title": "Ranks"
+     },
+     "document": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/DocumentInfo"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "topic_id",
+     "topic",
+     "field_family",
+     "n_papers",
+     "paper"
+    ],
+    "title": "PaperDetail",
+    "description": "Everything known about ONE selected paper of a topic."
+   },
+   "PaperRecord": {
+    "properties": {
+     "source": {
+      "type": "string",
+      "title": "Source"
+     },
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "doi": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Doi"
+     },
+     "openalex_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Openalex Id"
+     },
+     "s2_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "S2 Id"
+     },
+     "pmid": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Pmid"
+     },
+     "arxiv_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Arxiv Id"
+     },
+     "authors": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Authors"
+     },
+     "venue": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Venue"
+     },
+     "venue_type": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Venue Type"
+     },
+     "publication_type": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Publication Type"
+     },
+     "pub_types": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Pub Types"
+     },
+     "year": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Year"
+     },
+     "published_date": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Published Date"
+     },
+     "abstract": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Abstract"
+     },
+     "tldr": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Tldr"
+     },
+     "citation_count": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Citation Count"
+     },
+     "influential_citation_count": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Influential Citation Count"
+     },
+     "is_open_access": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Is Open Access"
+     },
+     "is_retracted": {
+      "type": "boolean",
+      "title": "Is Retracted",
+      "default": false
+     },
+     "pdf_url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Pdf Url"
+     },
+     "landing_url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Landing Url"
+     },
+     "found_by_query": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Found By Query"
+     }
+    },
+    "type": "object",
+    "required": [
+     "source",
+     "title"
+    ],
+    "title": "PaperRecord",
+    "description": "One paper as returned by ONE source, converted to a common shape.\nEvery source client returns these, so services never see API-specific formats."
+   },
+   "PaperSummary": {
+    "properties": {
+     "tldr": {
+      "type": "string",
+      "title": "Tldr",
+      "description": "one plain-English sentence with the main result"
+     },
+     "objective": {
+      "type": "string",
+      "title": "Objective",
+      "description": "what the study set out to find"
+     },
+     "methods": {
+      "type": "string",
+      "title": "Methods",
+      "description": "design, participants (how many, who), what was measured and how"
+     },
+     "key_findings": {
+      "items": {
+       "$ref": "#/components/schemas/Finding"
+      },
+      "type": "array",
+      "maxItems": 5,
+      "minItems": 1,
+      "title": "Key Findings"
+     },
+     "limitations": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Limitations",
+      "description": "limitations the authors themselves state; empty if none"
+     },
+     "why_relevant": {
+      "type": "string",
+      "title": "Why Relevant",
+      "description": "one sentence on how the paper relates to the research brief"
+     }
+    },
+    "type": "object",
+    "required": [
+     "tldr",
+     "objective",
+     "methods",
+     "key_findings",
+     "why_relevant"
+    ],
+    "title": "PaperSummary",
+    "description": "What the LLM returns for ONE paper (from the full text if we have it, else the abstract)."
+   },
+   "ProviderUsage": {
+    "properties": {
+     "provider": {
+      "type": "string",
+      "title": "Provider"
+     },
+     "ok_calls": {
+      "type": "integer",
+      "title": "Ok Calls"
+     },
+     "failed_calls": {
+      "type": "integer",
+      "title": "Failed Calls"
+     },
+     "tokens": {
+      "type": "integer",
+      "title": "Tokens"
+     },
+     "last_error": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Last Error"
+     },
+     "last_error_at": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date-time"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Last Error At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "provider",
+     "ok_calls",
+     "failed_calls",
+     "tokens"
+    ],
+    "title": "ProviderUsage",
+    "description": "One LLM provider's share of a user's calls today: which provider did the work, and which one fails."
+   },
+   "Readiness": {
+    "properties": {
+     "papers": {
+      "type": "integer",
+      "title": "Papers"
+     },
+     "prepared": {
+      "type": "integer",
+      "title": "Prepared"
+     },
+     "passages": {
+      "type": "integer",
+      "title": "Passages"
+     }
+    },
+    "type": "object",
+    "required": [
+     "papers",
+     "prepared",
+     "passages"
+    ],
+    "title": "Readiness",
+    "description": "Is a topic ready for questions? (passages + embeddings, step 7.6a)"
+   },
+   "Registration": {
+    "properties": {
+     "email": {
+      "type": "string",
+      "maxLength": 320,
+      "title": "Email",
+      "examples": [
+       "you@example.com"
+      ]
+     },
+     "password": {
+      "type": "string",
+      "maxLength": 128,
+      "title": "Password"
+     },
+     "display_name": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 200
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Display Name"
+     }
+    },
+    "type": "object",
+    "required": [
+     "email",
+     "password"
+    ],
+    "title": "Registration"
+   },
+   "ReportPaper": {
+    "properties": {
+     "rank": {
+      "type": "integer",
+      "title": "Rank"
+     },
+     "paper_id": {
+      "type": "integer",
+      "title": "Paper Id"
+     },
+     "paper": {
+      "$ref": "#/components/schemas/PaperRecord"
+     },
+     "relevance": {
+      "type": "integer",
+      "title": "Relevance"
+     },
+     "relevance_reason": {
+      "type": "string",
+      "title": "Relevance Reason"
+     },
+     "study_type": {
+      "type": "string",
+      "enum": [
+       "meta_analysis",
+       "systematic_review",
+       "narrative_review",
+       "randomized_trial",
+       "cohort",
+       "case_control",
+       "cross_sectional",
+       "case_report",
+       "lab_experiment",
+       "computational",
+       "theoretical",
+       "other"
+      ],
+      "title": "Study Type"
+     },
+     "trust": {
+      "$ref": "#/components/schemas/TrustAssessment"
+     },
+     "score": {
+      "type": "number",
+      "title": "Score"
+     },
+     "score_parts": {
+      "additionalProperties": {
+       "type": "number"
+      },
+      "type": "object",
+      "title": "Score Parts"
+     },
+     "summary": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/SummarizedPaper"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "apa": {
+      "type": "string",
+      "title": "Apa"
+     },
+     "in_text": {
+      "type": "string",
+      "title": "In Text"
+     },
+     "bibtex_key": {
+      "type": "string",
+      "title": "Bibtex Key"
+     },
+     "bibtex": {
+      "type": "string",
+      "title": "Bibtex"
+     },
+     "base_trust": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/TrustAssessment"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "analysis": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/AnalyzedPaper"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "rank",
+     "paper_id",
+     "paper",
+     "relevance",
+     "relevance_reason",
+     "study_type",
+     "trust",
+     "score",
+     "score_parts",
+     "summary",
+     "apa",
+     "in_text",
+     "bibtex_key",
+     "bibtex"
+    ],
+    "title": "ReportPaper",
+    "description": "One selected paper with everything the report shows about it."
+   },
+   "ResearchPlan": {
+    "properties": {
+     "field": {
+      "type": "string",
+      "title": "Field",
+      "description": "main academic field, e.g. 'sports science', 'computer science', 'economics'"
+     },
+     "is_biomedical": {
+      "type": "boolean",
+      "title": "Is Biomedical",
+      "description": "true if the topic belongs to medicine, biology, health, physiology or sports science"
+     },
+     "is_cs_math_physics": {
+      "type": "boolean",
+      "title": "Is Cs Math Physics",
+      "description": "true if the topic belongs to computer science, AI, mathematics, statistics or physics"
+     },
+     "research_brief": {
+      "type": "string",
+      "title": "Research Brief",
+      "description": "one or two sentences: what the user wants to learn"
+     },
+     "queries": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "maxItems": 6,
+      "minItems": 1,
+      "title": "Queries",
+      "description": "3 to 5 short search queries (3-8 words each) covering different angles; use technical terms and synonyms"
+     }
+    },
+    "type": "object",
+    "required": [
+     "field",
+     "is_biomedical",
+     "is_cs_math_physics",
+     "research_brief",
+     "queries"
+    ],
+    "title": "ResearchPlan",
+    "description": "The LLM's plan for searching a topic (planning step)."
+   },
+   "ResearchReport": {
+    "properties": {
+     "topic_id": {
+      "type": "integer",
+      "title": "Topic Id"
+     },
+     "topic": {
+      "type": "string",
+      "title": "Topic"
+     },
+     "created_at": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date-time"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Created At"
+     },
+     "plan": {
+      "$ref": "#/components/schemas/ResearchPlan"
+     },
+     "field_family": {
+      "type": "string",
+      "enum": [
+       "biomedical",
+       "sport_biomechanics",
+       "cs",
+       "physics_math",
+       "general"
+      ],
+      "title": "Field Family"
+     },
+     "sources_used": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Sources Used"
+     },
+     "counts": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "type": "object",
+      "title": "Counts"
+     },
+     "timings_s": {
+      "additionalProperties": {
+       "type": "number"
+      },
+      "type": "object",
+      "title": "Timings S"
+     },
+     "warnings": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Warnings"
+     },
+     "papers": {
+      "items": {
+       "$ref": "#/components/schemas/ReportPaper"
+      },
+      "type": "array",
+      "title": "Papers"
+     },
+     "connections": {
+      "items": {
+       "$ref": "#/components/schemas/Connection"
+      },
+      "type": "array",
+      "title": "Connections"
+     },
+     "gaps": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/EvidenceGaps"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "synthesis_flags": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Synthesis Flags"
+     }
+    },
+    "type": "object",
+    "required": [
+     "topic_id",
+     "topic",
+     "plan",
+     "field_family",
+     "sources_used",
+     "counts",
+     "timings_s",
+     "warnings",
+     "papers"
+    ],
+    "title": "ResearchReport",
+    "description": "The result of the research pipeline, rebuilt from the database (so it is always reproducible)."
+   },
+   "ResearchRequest": {
+    "properties": {
+     "topic": {
+      "type": "string",
+      "maxLength": 300,
+      "minLength": 3,
+      "title": "Topic",
+      "examples": [
+       "creatine supplementation in older adults"
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "topic"
+    ],
+    "title": "ResearchRequest",
+    "description": "Length limits stop empty topics and pasted essays (prompt-injection hygiene)."
+   },
+   "SearchHit": {
+    "properties": {
+     "paper_id": {
+      "type": "integer",
+      "title": "Paper Id"
+     },
+     "topic_id": {
+      "type": "integer",
+      "title": "Topic Id"
+     },
+     "rank": {
+      "type": "integer",
+      "title": "Rank"
+     },
+     "label": {
+      "type": "string",
+      "title": "Label"
+     },
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "section": {
+      "type": "string",
+      "title": "Section"
+     },
+     "snippet": {
+      "type": "string",
+      "title": "Snippet"
+     }
+    },
+    "type": "object",
+    "required": [
+     "paper_id",
+     "topic_id",
+     "rank",
+     "label",
+     "title",
+     "section",
+     "snippet"
+    ],
+    "title": "SearchHit",
+    "description": "A passage found by the Search page (no LLM)."
+   },
+   "SectionInfo": {
+    "properties": {
+     "kind": {
+      "type": "string",
+      "title": "Kind"
+     },
+     "title": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Title"
+     },
+     "characters": {
+      "type": "integer",
+      "title": "Characters"
+     }
+    },
+    "type": "object",
+    "required": [
+     "kind",
+     "title",
+     "characters"
+    ],
+    "title": "SectionInfo"
+   },
+   "SharedLimitation": {
+    "properties": {
+     "theme": {
+      "type": "string",
+      "title": "Theme"
+     },
+     "papers": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Papers"
+     }
+    },
+    "type": "object",
+    "required": [
+     "theme",
+     "papers"
+    ],
+    "title": "SharedLimitation"
+   },
+   "SummarizedPaper": {
+    "properties": {
+     "summary": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/PaperSummary"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "based_on": {
+      "type": "string",
+      "enum": [
+       "full text",
+       "abstract",
+       "title only"
+      ],
+      "title": "Based On"
+     },
+     "flags": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Flags"
+     }
+    },
+    "type": "object",
+    "required": [
+     "summary",
+     "based_on"
+    ],
+    "title": "SummarizedPaper",
+    "description": "A summary plus what CODE knows about it: what it was based on, and any warnings."
+   },
+   "TopicSummary": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "query": {
+      "type": "string",
+      "title": "Query"
+     },
+     "field": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Field"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "has_results": {
+      "type": "boolean",
+      "title": "Has Results"
+     },
+     "papers": {
+      "type": "integer",
+      "title": "Papers"
+     },
+     "analysed": {
+      "type": "boolean",
+      "title": "Analysed"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "query",
+     "created_at",
+     "has_results",
+     "papers",
+     "analysed"
+    ],
+    "title": "TopicSummary",
+    "description": "One row of 'my topics'."
+   },
+   "TrustAssessment": {
+    "properties": {
+     "level": {
+      "type": "integer",
+      "title": "Level"
+     },
+     "label": {
+      "type": "string",
+      "enum": [
+       "high",
+       "moderate",
+       "low",
+       "very low",
+       "retracted"
+      ],
+      "title": "Label"
+     },
+     "reasons": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Reasons"
+     }
+    },
+    "type": "object",
+    "required": [
+     "level",
+     "label",
+     "reasons"
+    ],
+    "title": "TrustAssessment",
+    "description": "How much to trust a paper as evidence: a level, a label, and the reasons (never a mystery number)."
+   },
+   "UsageInfo": {
+    "properties": {
+     "tokens_today": {
+      "type": "integer",
+      "title": "Tokens Today"
+     },
+     "cost_today_usd": {
+      "type": "number",
+      "title": "Cost Today Usd"
+     },
+     "daily_budget": {
+      "type": "integer",
+      "title": "Daily Budget"
+     },
+     "remaining": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Remaining"
+     },
+     "resets_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Resets At"
+     },
+     "providers": {
+      "items": {
+       "$ref": "#/components/schemas/ProviderUsage"
+      },
+      "type": "array",
+      "title": "Providers",
+      "default": []
+     }
+    },
+    "type": "object",
+    "required": [
+     "tokens_today",
+     "cost_today_usd",
+     "daily_budget",
+     "remaining",
+     "resets_at"
+    ],
+    "title": "UsageInfo",
+    "description": "A user's LLM use today (UTC) against their daily budget (step 7.4)."
+   },
+   "UserInfo": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "email": {
+      "type": "string",
+      "title": "Email"
+     },
+     "display_name": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Display Name"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "email"
+    ],
+    "title": "UserInfo",
+    "description": "Who is logged in (never the password hash)."
+   },
+   "ValidationError": {
+    "properties": {
+     "loc": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "integer"
+        }
+       ]
+      },
+      "type": "array",
+      "title": "Location"
+     },
+     "msg": {
+      "type": "string",
+      "title": "Message"
+     },
+     "type": {
+      "type": "string",
+      "title": "Error Type"
+     },
+     "input": {
+      "title": "Input"
+     },
+     "ctx": {
+      "type": "object",
+      "title": "Context"
+     }
+    },
+    "type": "object",
+    "required": [
+     "loc",
+     "msg",
+     "type"
+    ],
+    "title": "ValidationError"
+   }
+  }
+ }
+}
