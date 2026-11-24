@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+data/
+*.log
+
+# generated research reports
+reports/
+
+# frozen eval inputs contain full texts of papers (like data/files)
+evals/cases/

@@ -1,0 +1,25 @@
+# Direct dependencies (exact versions of everything are in requirements.lock.txt)
+fastapi
+uvicorn[standard]
+sqlalchemy>=2.0
+alembic
+psycopg[binary]
+pgvector
+pydantic>=2
+pydantic-settings
+openai
+redis
+arq
+argon2-cffi
+rq
+requests
+pypdf
+python-dotenv
+pytest
+httpx              # async HTTP client (replaces requests)
+greenlet           # needed by SQLAlchemy's async mode
+pytest-asyncio     # async tests
+pymupdf            # PDF reading (AGPL: used only in extraction/pdf.py; swap before other users)
+pymupdf4llm        # PDF -> Markdown with headings and tables
+defusedxml         # safe XML parsing for files from outside
+pyyaml             # eval label files (evals/gold/*.yaml)
