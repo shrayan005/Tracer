@@ -1,0 +1,60 @@
+{
+ "suite": "grounding",
+ "run_id": 1795170338,
+ "started_at": "2026-11-20T10:25:38.299505Z",
+ "seconds": 333.7,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "5.3",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite"
+ },
+ "metrics": {
+  "claims": 29.0,
+  "supported_share": 0.5862068965517241,
+  "partly_share": 0.034482758620689655,
+  "unsupported_share": 0.1724137931034483,
+  "other_study_share": 0.10344827586206896,
+  "quote_not_found_share": 0.10344827586206896,
+  "planted_caught_share": 0.7714285714285715,
+  "planted_opposite_caught": 1.0,
+  "planted_population_caught": 0.5,
+  "planted_other_study_caught": 0.8333333333333334
+ },
+ "details": [
+  "items for labelling: /mnt/c/Users/Dell/Desktop/LLM/research_app/evals/results/1795170338-grounding-items.yaml",
+  "creatine · (Michalak et al., 2026) · claim 1: quote not found in the paper",
+  "creatine · (Michalak et al., 2026) · claim 2: quote not found in the paper",
+  "creatine · (Michalak et al., 2026) · claim 3: quote not found in the paper",
+  "creatine · (Stares & Bains, 2019) · does not support: upper and/or lower body strength, functional capacity, and lean mass INCREASED — factor: creatine supplementat — Paragraph only suggests requirements, no evidence of increase",
+  "creatine · (Ramos-Hernández et al., 2025) · does not support: fat mass DECREASED (p < 0.05) — factor: CRE + HMB vs placebo (before vs after) — in: 30 physically active olde — No significant decrease in fat mass reported",
+  "creatine · (Michalak et al., 2026) · other study: areal bone mineral density DID NOT CHANGE — factor: creatine supplementation (stand‑alone) vs no supplementati — Quote comes from a review summarizing other research, not the study's own result",
+  "creatine · (Bodrick & Zakariya, 2025) · other study: muscular hypertrophy, exercise endurance, and recovery INCREASED — factor: creatine and whey protein supplemen — Paragraph is a review of prior research, not the study's own data",
+  "creatine · (Bodrick & Zakariya, 2025) · does not support: muscular hypertrophy INCREASED — factor: post-exercise supplementation vs pre-exercise supplementation — in: o — Quote compares timing, not a hypertrophy increase",
+  "creatine · (Bodrick & Zakariya, 2025) · other study: anxiety DECREASED — factor: creatine and whey protein supplementation vs no supplementation — in: older males  — Paragraph reports reduced anxiety but is a review of other work",
+  "creatine · (Bodrick & Zakariya, 2025) · does not support: adverse safety events DID NOT CHANGE — factor: recommended dosage supplementation vs higher/unsafe dosage — in — Quote mentions safety but does not address change in adverse events",
+  "triceps · (Mansour et al., 2025) · partly: correlation coefficient R for predicting elbow joint moments and triceps force INCREASED (R = 0.98374) — facto — Population details differ from claim",
+  "triceps · (Werner et al., 1993) · opposite: biceps and triceps activity DECREASED — factor: Elbow extension before ball release (before vs after) — in: Se — Paragraph reports biceps decreased but triceps increased, contradicting claim of both decreasing",
+  "MISSED planted wrong population ((Brose et al., 2003)): judge said supports — Paragraph reports greater increases matching claim",
+  "MISSED planted wrong population ((Candow et al., 2025)): judge said other study — Quote is from a narrative review, not the study's own results",
+  "MISSED planted wrong population ((Michalak et al., 2026)): judge said other study — Quote is from a general review, not specific to elderly men with heart failure",
+  "MISSED planted wrong population ((Bodrick & Zakariya, 2025)): judge said other study — Paragraph summarizes other studies, not the study's own result",
+  "MISSED planted wrong population ((Kholinne et al., 2018)): judge said other study — Quote describes results from healthy participants, not elderly men with heart failure",
+  "MISSED planted wrong population ((Peterson et al., 2017)): judge said supports — Paragraph reports greater voluntary activation for biceps transfer, matching claim of increase.",
+  "MISSED planted other study ((Mansour et al., 2025)): judge said does not support — Quote does not address the claimed result",
+  "MISSED planted wrong population ((Werner et al., 1993)): judge said opposite — Paragraph reports biceps decreased but triceps increased, contradicting claim of both decreasing"
+ ],
+ "cost": {
+  "judge · groq": {
+   "calls": 20,
+   "tokens": 54143,
+   "seconds": 24.334
+  }
+ }
+}

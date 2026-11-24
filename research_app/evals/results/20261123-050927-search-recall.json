@@ -1,0 +1,74 @@
+{
+ "suite": "search-recall",
+ "run_id": 1795410567,
+ "started_at": "2026-11-23T05:09:27.848760Z",
+ "seconds": 8.0,
+ "cases": [
+  "creatine"
+ ],
+ "settings": {
+  "analysis_version": "5.3",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite",
+  "results_per_query": "15",
+  "prefilter_keep": "40"
+ },
+ "metrics": {
+  "gold_size": 29.0,
+  "candidates": 116.0,
+  "recall_found": 0.2413793103448276,
+  "recall_prefiltered": 0.20689655172413793,
+  "recall_screened": 0.13793103448275862,
+  "recall_relevant": 0.13793103448275862,
+  "source_errors": 0.0,
+  "results_europepmc": 74.0,
+  "gold_found_by_europepmc": 1.0,
+  "gold_only_europepmc": 1.0,
+  "results_openalex": 90.0,
+  "gold_found_by_openalex": 6.0,
+  "gold_only_openalex": 6.0
+ },
+ "details": [
+  "creatine · queries: ['creatine supplementation and muscle strength in older adults', 'creatine supplementation muscle strength older adults', 'phosphocreatine metabolism aging muscle', 'dose response creatine elderly resistance training', 'review creatine supplementation older population', 'muscle protein synthesis creatine aging']",
+  "LOST AT SEARCH · creatine · 2001 Creatine supplementation combined with resistance training in older men",
+  "LOST AT SEARCH · creatine · 1998 Effects of creatine monohydrate ingestion in sedentary and weight‐trained older adult",
+  "LOST AT SEARCH · creatine · 2012 Long-term creatine supplementation improves muscular performance during resistance tr",
+  "LOST AT SEARCH · creatine · 2008 Low-Dose Creatine Combined with Protein during Resistance Training in Older Men",
+  "LOST AT SEARCH · creatine · 2014 Creatine supplementation and resistance training in vulnerable older women: A randomi",
+  "LOST AT SEARCH · creatine · 2003 Effects of creatine supplementation and exercise training on fitness in men 55–75 yr ",
+  "NOT SCREENED (adaptive stop) · creatine · 2016 Impact of creatine supplementation in combination with resistance training on lean ma (prefilter rank 27)",
+  "LOST AT SEARCH · creatine · 2008 The effects of creatine and whey protein supplementation on body composition in men a",
+  "LOST AT SEARCH · creatine · 2000 Acute Creatine Supplementation in Older Men",
+  "LOST AT SEARCH · creatine · 2007 Creatine Monohydrate and Conjugated Linoleic Acid Improve Strength and Body Compositi",
+  "LOST AT PREFILTER · creatine · 2002 Creatine supplementation improves muscular performance in older men (found by openalex)",
+  "LOST AT SEARCH · creatine · 2007 Creatine supplementation improves muscular performance in older women",
+  "LOST AT SEARCH · creatine · 2014 Creatine supplementation post-exercise does not enhance training-induced adaptations ",
+  "LOST AT SEARCH · creatine · 2005 Does Nutritional Supplementation Influence Adaptability of Muscle to Resistance Train",
+  "LOST AT SEARCH · creatine · 2007 Effects of creatine supplementation on the onset of neuromuscular fatigue threshold a",
+  "LOST AT SEARCH · creatine · 2015 Effects of long-term low-dose dietary creatine supplementation in older women",
+  "LOST AT SEARCH · creatine · 2001 Neuromuscular properties and fatigue in older men following acute creatine supplement",
+  "LOST AT SEARCH · creatine · 2006 DOES CREATINE SUPPLEMENTATION IMPROVE FUNCTIONAL CAPACITY IN ELDERLY WOMEN?",
+  "LOST AT SEARCH · creatine · 2016 Effect of creatine supplementation and drop-set resistance training in untrained agin",
+  "LOST AT SEARCH · creatine · 2007 Effect of creatine supplementation during resistance training on muscle accretion in ",
+  "LOST AT SEARCH · creatine · 1999 Effects of 30 days of creatine ingestion in older men",
+  "LOST AT SEARCH · creatine · 2026 Effects of high-load, velocity-intentional variable resistance training combined with",
+  "NOT SCREENED (adaptive stop) · creatine · 2017 Efficacy of a novel formulation of L-Carnitine, creatine, and leucine on lean body ma (prefilter rank 21)",
+  "LOST AT SEARCH · creatine · 2014 Periodized resistance training with and without supplementation improve body composit",
+  "LOST AT SEARCH · creatine · 2016 RESISTANCE TRAINING AND CO-SUPPLEMENTATION WITH CREATINE AND PROTEIN IN OLDER SUBJECT"
+ ],
+ "cost": {
+  "plan · groq": {
+   "calls": 1,
+   "tokens": 688,
+   "seconds": 0.829
+  },
+  "screen · groq": {
+   "calls": 2,
+   "tokens": 5205,
+   "seconds": 3.573
+  }
+ }
+}

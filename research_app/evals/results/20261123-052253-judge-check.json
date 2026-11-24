@@ -1,0 +1,41 @@
+{
+ "suite": "judge-check",
+ "run_id": 1795411373,
+ "started_at": "2026-11-23T05:22:53.707679Z",
+ "seconds": 104.1,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "5.3",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite",
+  "results_per_query": "15",
+  "prefilter_keep": "40"
+ },
+ "metrics": {
+  "labelled": 26.0,
+  "judged": 26.0,
+  "agreement": 0.7692307692307693,
+  "agreement_supported_or_not": 0.8461538461538461
+ },
+ "details": [
+  "creatine-2785-1 ((Stares & Bains, 2019)): you said partly, judge said does not support — Paragraph suggests additive effects require specific regimen, not that strength/lean mass increased",
+  "creatine-2740-2 ((Ramos-Hernández et al., 2025)): you said partly, judge said supports — Paragraph reports significant fat mass reduction with CRE+HMB",
+  "creatine-2816-1 ((Bodrick & Zakariya, 2025)): you said partly, judge said supports — Paragraph states supplementation increased hypertrophy, endurance, and recovery as claimed",
+  "creatine-2816-2 ((Bodrick & Zakariya, 2025)): you said partly, judge said other study — the paragraph reports a review summary rather than the paper's own original result",
+  "creatine-2745-4 ((Brose et al., 2003)): you said partly, judge said supports — Significant increase in intramuscular total creatine reported",
+  "creatine-2741-5 ((Michalak et al., 2026)): you said other study, judge said supports — Paragraph notes creatine supplementation increases total creatine and PCr availability"
+ ],
+ "cost": {
+  "judge · groq": {
+   "calls": 6,
+   "tokens": 20908,
+   "seconds": 7.366
+  }
+ }
+}

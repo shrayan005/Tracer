@@ -1,0 +1,45 @@
+how_to: 'Questions with a known answer in the frozen cases. expect = the paper keys (case paper keys) that hold
+  the answer; answerable: false = the papers do NOT cover it (the app must decline, not guess).'
+labeled_by: claude
+questions:
+- case: creatine
+  question: Did any study find no effect of creatine on muscle mass?
+  expect: [2742]            # Yao et al. 2026: no clear benefit for muscle mass
+- case: creatine
+  question: What daily dose of creatine did Brose et al. give?
+  expect: [2745]            # 5 g/d
+- case: creatine
+  question: Did creatine combined with HMB improve strength in older adults?
+  expect: [2740]            # Ramos-Hernandez et al. 2025
+- case: creatine
+  question: Is creatine safe for the kidneys of older adults?
+  expect: [2741, 2785]      # Michalak (renal function), Stares & Bains (safe)
+- case: creatine
+  question: How much did lean tissue mass increase with creatine in the meta-analysis of 22 studies?
+  expect: [2738]            # Chilibeck et al. 2017: 1.37 kg
+- case: creatine
+  question: Did resistance training with creatine change malondialdehyde or other oxidative stress markers?
+  expect: [2739]            # Amiri & Sheikholeslami-Vatani 2023
+- case: creatine
+  question: Does creatine supplementation cause hair loss?
+  expect: []
+  answerable: false
+- case: triceps
+  question: Which head of the triceps produces the most force at 0 degrees of shoulder elevation?
+  expect: [16]              # Kholinne et al. 2018: the long head
+- case: triceps
+  question: How does exercise intensity affect the rate of fatigue of the triceps heads?
+  expect: [35]              # Hussain et al. 2020
+- case: triceps
+  question: Did a few days of training change triceps muscle thickness?
+  expect: [1924]            # Roberts et al. 2026: no change
+- case: triceps
+  question: Which machine learning model best predicted the elbow joint moment?
+  expect: [137]             # Mansour et al. 2025: LSTM
+- case: triceps
+  question: Is voluntary activation higher after a biceps transfer or after a deltoid transfer?
+  expect: [18]              # Peterson et al. 2017: biceps transfer
+- case: triceps
+  question: Which protein powder brand is best for building bigger triceps?
+  expect: []
+  answerable: false

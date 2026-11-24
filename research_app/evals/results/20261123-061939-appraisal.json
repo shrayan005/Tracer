@@ -1,0 +1,69 @@
+{
+ "suite": "appraisal",
+ "run_id": 1795414779,
+ "started_at": "2026-11-23T06:19:39.882132Z",
+ "seconds": 75.2,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "6.7",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite",
+  "results_per_query": "15",
+  "prefilter_keep": "40"
+ },
+ "metrics": {
+  "papers": 9.0,
+  "facts": 90.0,
+  "fact_accuracy": 0.9222222222222223,
+  "false_yes": 1.0,
+  "false_yes_rate": 0.03225806451612903,
+  "missed_yes": 3.0,
+  "missed_yes_rate": 0.09090909090909091,
+  "sample_size_accuracy": 1.0,
+  "trust_agreement": 0.8888888888888888,
+  "accuracy_sex": 1.0,
+  "accuracy_duration": 0.8888888888888888,
+  "accuracy_control_group": 0.8888888888888888,
+  "accuracy_randomized": 0.8888888888888888,
+  "accuracy_blinded": 1.0,
+  "accuracy_statistics_reported": 0.8888888888888888,
+  "accuracy_effect_sizes": 0.6666666666666666,
+  "accuracy_conflicts_declared": 1.0,
+  "accuracy_data_available": 1.0
+ },
+ "details": [
+  "creatine · (Yao et al., 2026) · duration: AI not applicable, you not reported",
+  "creatine · (Amiri & Sheikholeslami‐Vatani, 2023) · effect_sizes: AI yes, you not reported",
+  "triceps: could not analyse: Voluntary activation of biceps-to-triceps and deltoid-to-triceps transfers in qu",
+  "triceps · (Akima et al., 2021) · statistics_reported: AI not reported, you yes",
+  "triceps · (Akima et al., 2021) · effect_sizes: AI not reported, you yes",
+  "triceps · (Akima et al., 2021) · TRUST: AI's facts give 2, yours give 3",
+  "triceps · (Peterson et al., 2017): no analysis",
+  "triceps · (Mansour et al., 2025) · control_group: AI not applicable, you not reported",
+  "triceps · (Mansour et al., 2025) · randomized: AI not applicable, you not reported",
+  "triceps · (Stasinaki et al., 2018) · effect_sizes: AI not reported, you yes"
+ ],
+ "cost": {
+  "analyze · gemini": {
+   "calls": 9,
+   "tokens": 62819,
+   "seconds": 23.105
+  },
+  "analyze · groq": {
+   "calls": 1,
+   "tokens": 6920,
+   "seconds": 2.296
+  },
+  "analyze · openrouter": {
+   "calls": 1,
+   "tokens": 10809,
+   "seconds": 25.996
+  }
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "suite": "connections",
+ "run_id": 1795416401,
+ "started_at": "2026-11-23T06:46:41.346159Z",
+ "seconds": 81.7,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "6.7",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite",
+  "results_per_query": "15",
+  "prefilter_keep": "40"
+ },
+ "metrics": {
+  "pair_precision": 0.7850529100529101,
+  "pair_recall": 0.828125,
+  "groups_found": 0.9166666666666666,
+  "relation_accuracy": 1.0,
+  "stance_accuracy": 1.0,
+  "ai_groups": 2.3333333333333335,
+  "runs": 3.0
+ },
+ "details": [
+  "CHECK · creatine · P5.C1 already used in another group: dropped here",
+  "CHECK · creatine · P7.C1 already used in another group: dropped here",
+  "CHECK · creatine · P8.C2: found an effect, cannot be 'no effect': dropped from group",
+  "CHECK · creatine · P5.C1 already used in another group: dropped here",
+  "CHECK · creatine · P7.C1 already used in another group: dropped here",
+  "FALSE LINK · creatine · P1.C1 ↔ P10.C1",
+  "FALSE LINK · creatine · P1.C1 ↔ P10.C2",
+  "FALSE LINK · creatine · P1.C1 ↔ P6.C1",
+  "FALSE LINK · creatine · P1.C2 ↔ P5.C1",
+  "FALSE LINK · creatine · P1.C2 ↔ P7.C1",
+  "FALSE LINK · creatine · P1.C2 ↔ P8.C1",
+  "FALSE LINK · creatine · P1.C3 ↔ P5.C1",
+  "FALSE LINK · creatine · P1.C3 ↔ P7.C1",
+  "FALSE LINK · creatine · P1.C3 ↔ P8.C1",
+  "FALSE LINK · creatine · P10.C1 ↔ P2.C2",
+  "CHECK · triceps · P1.C1 dropped from 'Does training/intensity affect fatigue rate?': a different kind of question than the rest (a change over time), so not a contradiction",
+  "CHECK · triceps · group 'Does training/intensity affect fatigue rate?' dropped: fewer than 2 papers left"
+ ],
+ "cost": {
+  "connect · gemini": {
+   "calls": 1,
+   "tokens": 2520,
+   "seconds": 1.535
+  },
+  "connect · groq": {
+   "calls": 5,
+   "tokens": 17521,
+   "seconds": 14.063
+  }
+ }
+}

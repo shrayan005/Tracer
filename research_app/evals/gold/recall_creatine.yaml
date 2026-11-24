@@ -1,0 +1,1535 @@
+how_to: 'Gold = the studies a good search for this topic should find. `include: true` was pre-marked (cited by 2+
+  reviews, or the title matches the topic). Set include: false for background papers (methods, physiology, other
+  populations) and true for any study that belongs. Then set `reviewed: true`.'
+case: creatine
+topic: creatine supplementation and muscle strength in older adults
+reviews:
+- (Chilibeck et al., 2017)
+- (Yao et al., 2026)
+- (Stares & Bains, 2019)
+- (Devries & Phillips, 2014)
+reviewed: true
+papers:
+- openalex_id: W2028293262
+  doi: 10.1097/00005768-200112000-00021
+  title: Creatine supplementation combined with resistance training in older men
+  year: 2001
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  - (Stares & Bains, 2019)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W2168090573
+  doi: 10.1093/gerona/58.1.b11
+  title: Creatine Supplementation Enhances Isometric Strength and Body Composition Improvements Following Strength
+    Exercise Training in Older Adults
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  - (Stares & Bains, 2019)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W2050404455
+  doi: 10.1046/j.1365-201x.1998.00427.x
+  title: Effects of creatine monohydrate ingestion in sedentary and weight‐trained older adults
+  year: 1998
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  - (Stares & Bains, 2019)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W2078448015
+  doi: 10.1007/s00421-012-2514-6
+  title: Long-term creatine supplementation improves muscular performance during resistance training in older women
+  year: 2012
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  - (Stares & Bains, 2019)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W2046113663
+  doi: 10.1249/mss.0b013e318176b310
+  title: Low-Dose Creatine Combined with Protein during Resistance Training in Older Men
+  year: 2008
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  - (Stares & Bains, 2019)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W2035129329
+  doi: 10.1016/j.exger.2014.02.003
+  title: 'Creatine supplementation and resistance training in vulnerable older women: A randomized double-blind
+    placebo-controlled clinical trial'
+  year: 2014
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  - (Stares & Bains, 2019)
+  include: true
+- openalex_id: W2072529815
+  doi: 10.1371/journal.pone.0076301
+  title: 'Creatine Supplementation Associated or Not with Strength Training upon Emotional and Cognitive Measures
+    in Older Women: A Randomized Double-Blind Study'
+  year: 2013
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2100745775
+  doi: 10.1152/japplphysiol.00891.2002
+  title: Effects of creatine supplementation and exercise training on fitness in men 55–75 yr old
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Stares & Bains, 2019)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W2413020823
+  doi: 10.1002/jcsm.12094
+  title: Impact of creatine supplementation in combination with resistance training on lean mass in the elderly
+  year: 2016
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  - (Stares & Bains, 2019)
+  include: true
+- openalex_id: W2094374136
+  doi: 10.1249/01.mss.0000162690.39830.27
+  title: Increased IGF mRNA in Human Skeletal Muscle after Creatine Supplementation
+  year: 2005
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W1979965500
+  doi: 10.1007/bf02982622
+  title: The effects of creatine and whey protein supplementation on body composition in men aged 48 to 72 years
+    during resistance training
+  year: 2008
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Stares & Bains, 2019)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W2031160043
+  doi: 10.1007/s12603-009-0124-8
+  title: The effects of supplementation with creatine and protein on muscle strength following a traditional resistance
+    training program in middle-aged and older men
+  year: 2009
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Stares & Bains, 2019)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W2015396260
+  doi: 10.1055/s-2000-8859
+  title: Acute Creatine Supplementation in Older Men
+  year: 2000
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W1986215651
+  doi: 10.1016/0197-2456(95)00134-4
+  title: 'Assessing the quality of reports of randomized clinical trials: Is blinding necessary?'
+  year: 1996
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2016719673
+  doi: 10.1249/mss.0b013e3182118592
+  title: Beneficial Effect of Creatine Supplementation in Knee Osteoarthritis
+  year: 2011
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2075790630
+  doi: 10.1007/s00726-011-0875-5
+  title: Creatine as an antioxidant
+  year: 2011
+  type: review
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W1990601449
+  doi: 10.1371/journal.pone.0000991
+  title: Creatine Monohydrate and Conjugated Linoleic Acid Improve Strength and Body Composition Following Resistance
+    Exercise in Older Adults
+  year: 2007
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Stares & Bains, 2019)
+  include: true
+- openalex_id: W2400420523
+  doi: null
+  title: Creatine monohydrate and resistance training increase bone mineral content and density in older men.
+  year: 2005
+  type: article
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2129445892
+  doi: 10.1152/jappl.1998.85.4.1349
+  title: Creatine supplementation and age influence muscle metabolism during exercise
+  year: 1998
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W1928790458
+  doi: 10.1113/jphysiol.2006.107359
+  title: Creatine supplementation augments the increase in satellite cell and myonuclei number in human skeletal
+    muscle induced by strength training
+  year: 2006
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W1988673287
+  doi: 10.1249/mss.0000000000000220
+  title: Creatine Supplementation during Resistance Training in Older Adults—A Meta-analysis
+  year: 2014
+  type: review
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2047699089
+  doi: 10.1097/00005768-200203000-00023
+  title: Creatine supplementation improves muscular performance in older men
+  year: 2002
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W2043582685
+  doi: 10.1007/s00421-007-0580-y
+  title: Creatine supplementation improves muscular performance in older women
+  year: 2007
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W2339045168
+  doi: 10.1007/s00726-016-2239-7
+  title: 'Creatine supplementation in the aging population: effects on skeletal muscle, bone and brain'
+  year: 2016
+  type: review
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2028697377
+  doi: 10.1007/s00421-014-2866-1
+  title: Creatine supplementation post-exercise does not enhance training-induced adaptations in middle to older
+    aged males
+  year: 2014
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Stares & Bains, 2019)
+  include: true
+- openalex_id: W2082292155
+  doi: 10.1046/j.1365-201x.2002.00924.x
+  title: Differential response of muscle phosphocreatine to creatine supplementation in young and old subjects
+  year: 2002
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2066912226
+  doi: 10.1519/00139143-200508000-00002
+  title: Does Nutritional Supplementation Influence Adaptability of Muscle to Resistance Training in Men Aged 48
+    to 72 Years
+  year: 2005
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W2162299360
+  doi: 10.1177/0269215510367995
+  title: 'Effect of creatine supplementation as a potential adjuvant therapy to exercise training in cardiac patients:
+    a randomized controlled trial'
+  year: 2010
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2765246109
+  doi: 10.2147/oajsm.s123529
+  title: 'Effect of creatine supplementation during resistance training on lean tissue mass and muscular strength
+    in older adults: a meta-analysis'
+  year: 2017
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W1827448306
+  doi: 10.1152/jappl.2001.91.3.1041
+  title: Effects of acute creatine monohydrate supplementation on leucine kinetics and mixed-muscle protein synthesis
+  year: 2001
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W1966709543
+  doi: 10.1249/mss.0000000000000571
+  title: Effects of Creatine and Resistance Training on Bone Health in Postmenopausal Women
+  year: 2014
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W174696346
+  doi: null
+  title: Effects of creatine supplementation on the onset of neuromuscular fatigue threshold and muscle strength
+    in elderly men and women (64 - 86 years).
+  year: 2007
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W932613641
+  doi: 10.1016/j.exger.2015.07.012
+  title: Effects of long-term low-dose dietary creatine supplementation in older women
+  year: 2015
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  include: true
+  label_sure: false
+  label_reason: 'low-dose dietary creatine in older women: body composition and bone outcomes'
+- openalex_id: W2117347524
+  doi: 10.1152/physiolgenomics.00157.2007
+  title: Global and targeted gene expression and protein content in skeletal muscle of young men following short-term
+    creatine monohydrate supplementation
+  year: 2007
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2625882999
+  doi: 10.1186/s12970-017-0173-z
+  title: 'International Society of Sports Nutrition position stand: safety and efficacy of creatine supplementation
+    in exercise, sport, and medicine'
+  year: 2017
+  type: review
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2014367835
+  doi: 10.1007/s004210000373
+  title: Neuromuscular properties and fatigue in older men following acute creatine supplementation
+  year: 2001
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W2064497600
+  doi: 10.1164/rccm.200710-1508oc
+  title: Randomized Controlled Trial of Dietary Creatine as an Adjunct Therapy to Physical Training in Chronic Obstructive
+    Pulmonary Disease
+  year: 2008
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2139136466
+  doi: 10.1139/apnm-2014-0498
+  title: Strategic creatine supplementation and resistance training in healthy older adults
+  year: 2015
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  - (Stares & Bains, 2019)
+  include: true
+- openalex_id: W2012676520
+  doi: 10.1007/s00726-011-0855-9
+  title: Use of creatine in the elderly and evidence for effects on cognitive function in young and old
+  year: 2011
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W1888165090
+  doi: 10.1093/rheumatology/kev088.080
+  title: 080. Can Creatine Supplementation Improve Body Composition and Objective Physical Function in Rheumatoid
+    Arthritis Patients? A Randomized Controlled Trial
+  year: 2015
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2041174073
+  doi: 10.1176/appi.ajp.2012.12010009
+  title: A Randomized, Double-Blind Placebo-Controlled Trial of Oral Creatine Monohydrate Augmentation for Enhanced
+    Response to a Selective Serotonin Reuptake Inhibitor in Women With Major Depressive Disorder
+  year: 2012
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2096657471
+  doi: 10.1093/geronj/49.2.m85
+  title: 'A Short Physical Performance Battery Assessing Lower Extremity Function: Association With Self-Reported
+    Disability and Prediction of Mortality and Nursing Home Admission'
+  year: 1994
+  type: article
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2060568090
+  doi: 10.1097/00005768-200002000-00007
+  title: Acute creatine loading increases fat-free mass, but does not affect blood pressure, plasma creatinine,
+    or CK activity in men and women
+  year: 2000
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2058909003
+  doi: 10.1053/j.jrn.2006.04.025
+  title: Acute Renal Failure in a Young Weight Lifter Taking Multiple Food Supplements, Including Creatine Monohydrate
+  year: 2006
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2169194859
+  doi: 10.1152/jappl.1997.83.5.1581
+  title: Age and gender comparisons of muscle strength in 654 women and men aged 20–93 yr
+  year: 1997
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2128116691
+  doi: 10.1113/expphysiol.2005.032771
+  title: Age and sex affect human muscle fibre adaptations to heavy‐resistance strength training
+  year: 2006
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2138234866
+  doi: 10.1139/h11-135
+  title: Age-related changes in oxidative capacity differ between locomotory muscles and are associated with physical
+    activity behavior
+  year: 2012
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W4293162149
+  doi: 10.1093/nutrit/nuac062
+  title: 'Age-related muscle anabolic resistance: inevitable or preventable?'
+  year: 2022
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W1987892459
+  doi: 10.1139/h93-002
+  title: 'Ageing and Human Muscle: Observations From Sweden'
+  year: 1993
+  type: review
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2116786244
+  doi: 10.1123/japa.12.1.101
+  title: Aging, Physical Activity, and Hormones in Women—A Review
+  year: 2004
+  type: review
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2137242866
+  doi: 10.1007/s00726-011-0874-6
+  title: Analysis of the efficacy, safety, and regulatory status of novel forms of creatine
+  year: 2011
+  type: review
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W1480729244
+  doi: 10.1159/000369778
+  title: 'Aspirin plus Clopidogrel as Secondary Prevention after Stroke or Transient Ischemic Attack: A Systematic
+    Review and Meta-Analysis'
+  year: 2014
+  type: review
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W1796007782
+  doi: 10.1152/jappl.1977.43.4.700
+  title: Biochemical adaptation of human skeletal muscle to heavy resistance training and immobilization
+  year: 1977
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2145598324
+  doi: 10.1249/mss.0b013e3181c854f6
+  title: Body Composition and Strength Changes in Women with Milk and Resistance Exercise
+  year: 2010
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2141278900
+  doi: 10.1002/acr.22747
+  title: Can Creatine Supplementation Improve Body Composition and Objective Physical Function in Rheumatoid Arthritis
+    Patients? A Randomized Controlled Trial
+  year: 2016
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2173720144
+  doi: 10.1152/ajpendo.1996.271.5.e821
+  title: Carbohydrate ingestion augments skeletal muscle creatine accumulation during creatine supplementation in
+    humans
+  year: 1996
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W14027502
+  doi: 10.1123/ijsnem.10.3.326
+  title: Carbohydrate Supplementation Attenuates Muscle Glycogen Loss during Acute Bouts of Resistance Exercise
+  year: 2000
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2118780394
+  doi: 10.1113/eph8702382
+  title: Changes in Human Muscle Transverse Relaxation Following Short‐Term Creatine Supplementation
+  year: 2002
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2974450979
+  doi: 10.1002/9781119536604.ch6
+  title: Choosing effect measures and computing estimates of effect
+  year: 2019
+  type: book-chapter
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2906992465
+  doi: null
+  title: Cochrane handbook for systematic reviews of interventions. Version 5.1.0 [updated March 2011]. The Cochrane
+    Collaboration
+  year: 2011
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W4416052316
+  doi: 10.1016/j.jnha.2025.100718
+  title: 'Comparative Effectiveness of Exercise and Protein-Based Interventions on Muscle Strength, Mass, and Function
+    in Sarcopenia: A Systematic Review and Network Meta-Analysis'
+  year: 2025
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2170175926
+  doi: 10.1093/ajcn/86.2.373
+  title: Consumption of fat-free fluid milk after resistance exercise promotes greater lean mass accretion than
+    does consumption of soy or carbohydrate in young, novice, male weightlifters
+  year: 2007
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2162234541
+  doi: 10.1152/physrev.2000.80.3.1107
+  title: Creatine and Creatinine Metabolism
+  year: 2000
+  type: review
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2067155827
+  doi: 10.1007/s12017-008-8053-y
+  title: Creatine and Its Potential Therapeutic Value for Targeting Cellular Energy Impairment in Neurodegenerative
+    Diseases
+  year: 2008
+  type: review
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2023315248
+  doi: 10.1073/pnas.69.8.2250
+  title: Creatine and the Control of Myosin Synthesis in Differentiating Skeletal Muscle
+  year: 1972
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2069395011
+  doi: 10.1152/ajpcell.00162.2007
+  title: Creatine enhances differentiation of myogenic C2C12 cells by activating both p38 and Akt/PKB pathways
+  year: 2007
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W1983783341
+  doi: 10.2165/00007256-199418040-00005
+  title: Creatine in Humans with Special Reference to Creatine Supplementation
+  year: 1994
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W1995706489
+  doi: 10.1249/mss.0b013e3181fcee7d
+  title: 'Creatine in Type 2 Diabetes: A Randomized, Double-Blind, Placebo-Controlled Trial'
+  year: 2010
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2129254209
+  doi: 10.1016/s0014-5793(03)01504-7
+  title: Creatine increases IGF‐I and myogenic regulatory factor mRNA in C2C12 cells
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2111453406
+  doi: 10.1016/j.freeradbiomed.2005.10.035
+  title: Creatine supplementation affords cytoprotection in oxidatively injured cultured mammalian cells via direct
+    antioxidant activity
+  year: 2005
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2079093921
+  doi: 10.1007/s12020-013-0070-4
+  title: Creatine supplementation and aging musculoskeletal health
+  year: 2013
+  type: review
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2129264419
+  doi: 10.1080/13825580600788100
+  title: Creatine Supplementation and Cognitive Performance in Elderly Individuals
+  year: 2007
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W1975066065
+  doi: 10.1523/jneurosci.3113-14.2015
+  title: Creatine Supplementation Enhances Corticomotor Excitability and Cognitive Performance during Oxygen Deprivation
+  year: 2015
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2110199151
+  doi: 10.1186/1550-2783-9-33
+  title: 'Creatine supplementation with specific view to exercise/sports performance: an update'
+  year: 2012
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2101657904
+  doi: 10.1123/ijsnem.13.1.97
+  title: 'Creatine Supplementation: A Comparison of Loading and Maintenance Protocols on Creatine Uptake by Human
+    Skeletal Muscle'
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2168661366
+  doi: 10.1016/s0899-9007(97)00482-6
+  title: 'Creatine: A Review of Its Nutritional Applications in Sport'
+  year: 1998
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2002973721
+  doi: 10.1073/pnas.0501559102
+  title: Decline in skeletal muscle mitochondrial function with aging in humans
+  year: 2005
+  type: article
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W4408875896
+  doi: 10.1136/bmj-2024-081199
+  title: 'Development of ROBUST-RCT: Risk Of Bias instrument for Use in SysTematic reviews-for Randomised Controlled
+    Trials'
+  year: 2025
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W1998432767
+  doi: 10.1055/s-2000-8848
+  title: Dietary Creatine Monohydrate Supplementation Increases Satellite Cell Mitotic Activity During Compensatory
+    Hypertrophy
+  year: 2000
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2147758671
+  doi: 10.1093/gerona/60.2.148
+  title: Differences in Size, Strength, and Power of Upper and Lower Body Muscle Groups in Young and Older Men
+  year: 2005
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2061547574
+  doi: 10.1519/00124278-200602000-00004
+  title: DOES CREATINE SUPPLEMENTATION IMPROVE FUNCTIONAL CAPACITY IN ELDERLY WOMEN?
+  year: 2006
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: true
+- openalex_id: W188766472
+  doi: null
+  title: Does oral creatine supplementation improve strength? A meta-analysis.
+  year: 2002
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2621052097
+  doi: 10.1152/japplphysiol.00248.2017
+  title: Effect of age, diet, and tissue type on PCr response to creatine supplementation
+  year: 2017
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2412496262
+  doi: 10.1042/cs0580553
+  title: Effect of Aging on Energy-Rich Phosphagens in Human Skeletal Muscles
+  year: 1980
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2022145423
+  doi: 10.1249/01.mss.0000093614.17517.79
+  title: Effect of Creatine and Weight Training on Muscle Creatine and Performance in Vegetarians
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2511211215
+  doi: 10.1016/j.exger.2016.08.005
+  title: Effect of creatine supplementation and drop-set resistance training in untrained aging adults
+  year: 2016
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: true
+- openalex_id: W2137457916
+  doi: 10.1123/ijsnem.18.4.389
+  title: Effect of Creatine Supplementation and Resistance-Exercise Training on Muscle Insulin-Like Growth Factor
+    in Young Adults
+  year: 2008
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W158654657
+  doi: null
+  title: Effect of creatine supplementation during resistance training on muscle accretion in the elderly.
+  year: 2007
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: true
+- openalex_id: W2163911721
+  doi: 10.1123/ijsnem.13.2.198
+  title: 'Effect of Creatine Supplementation on Body Composition and Performance: A Meta-analysis'
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2031467847
+  doi: 10.1139/h11-014
+  title: Effect of creatine supplementation on measured glomerular filtration rate in postmenopausal women
+  year: 2011
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2160016532
+  doi: 10.1152/japplphysiol.00755.2002
+  title: 'Effect of dietary supplements on lean mass and strength gains with resistance exercise: a meta-analysis'
+  year: 2003
+  type: review
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W1883863901
+  doi: 10.1152/ajpendo.1995.268.2.e268
+  title: Effect of growth hormone and resistance exercise on muscle growth and strength in older men
+  year: 1995
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2063578471
+  doi: 10.1007/s10522-012-9385-4
+  title: Effect of nutritional interventions and resistance exercise on aging muscle mass and strength
+  year: 2012
+  type: review
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2064957965
+  doi: 10.1007/s004210050570
+  title: Effects of 30 days of creatine ingestion in older men
+  year: 1999
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: true
+- openalex_id: W4403835094
+  doi: 10.3390/nu16213665
+  title: 'Effects of Creatine Supplementation and Resistance Training on Muscle Strength Gains in Adults <50 Years
+    of Age: A Systematic Review and Meta-Analysis'
+  year: 2024
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W7149504732
+  doi: 10.1016/j.exger.2026.113122
+  title: 'Effects of high-load, velocity-intentional variable resistance training combined with creatine supplementation
+    on neuroplasticity, oxidative stress, inflammation, physical function, cognitive performance and quality of
+    life in older adults: A randomized, double-blind, placebo-controlled trial'
+  year: 2026
+  type: article
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: true
+  label_sure: false
+  label_reason: title cut off; looks like an older-adult RCT cited by Yao 2026
+- openalex_id: W1992309148
+  doi: 10.1249/01.mss.0000069746.05241.f0
+  title: Effects of Oral Creatine and Resistance Training on Myogenic Regulatory Factor Expression
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2044279551
+  doi: 10.1097/00005768-200110000-00010
+  title: Effects of oral creatine and resistance training on myosin heavy chain expression
+  year: 2001
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2069796182
+  doi: 10.1016/j.mce.2009.12.019
+  title: Effects of oral creatine and resistance training on serum myostatin and GASP-1
+  year: 2009
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2109129960
+  doi: 10.1152/japplphysiol.00873.2007
+  title: Effects of resistance exercise with and without creatine supplementation on gene expression and cell signaling
+    in human skeletal muscle
+  year: 2007
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2073397713
+  doi: 10.2165/00007256-200434050-00005
+  title: Effects of Resistance Training on Older Adults
+  year: 2004
+  type: review
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W4403424692
+  doi: 10.1007/s40279-024-02123-z
+  title: 'Effects of Resistance Training Volume on Physical Function, Lean Body Mass and Lower-Body Muscle Hypertrophy
+    and Strength in Older Adults: A Systematic Review and Network Meta-analysis of 151 Randomised Trials'
+  year: 2024
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2793724983
+  doi: 10.1093/ageing/afy009
+  title: 'Effects of resistance training, endurance training and whole-body vibration on lean body mass, muscle
+    strength and physical performance in older people: a systematic review and network meta-analysis'
+  year: 2018
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2038693293
+  doi: 10.1159/000351405
+  title: 'Efficacy and Safety of Tadalafil Monotherapy for Lower Urinary Tract Symptoms Secondary to Benign Prostatic
+    Hyperplasia: A Meta-Analysis'
+  year: 2013
+  type: review
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2577296060
+  doi: 10.1186/s12986-016-0158-y
+  title: 'Efficacy of a novel formulation of L-Carnitine, creatine, and leucine on lean body mass and functional
+    muscle strength in healthy older adults: a randomized, double-blind placebo-controlled study'
+  year: 2017
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: true
+  label_sure: false
+  label_reason: multi-ingredient product (carnitine + creatine + leucine), not creatine alone
+- openalex_id: W2154292868
+  doi: 10.1093/gerona/gls241
+  title: Elderly Men and Women Benefit Equally From Prolonged Resistance-Type Exercise Training
+  year: 2012
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W1997065495
+  doi: 10.1111/j.1600-0838.2006.00534.x
+  title: Enhanced satellite cell proliferation with resistance training in elderly men and women
+  year: 2006
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2532414435
+  doi: 10.20982/tqmp.12.3.p154
+  title: 'Fitting three-level meta-analytic models in R: A step-by-step tutorial'
+  year: 2016
+  type: article
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2110914305
+  doi: 10.1152/ajpregu.00270.2003
+  title: Histological assessment of intermediate- and long-term creatine monohydrate supplementation in mice and
+    rats
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W4414933956
+  doi: 10.1186/s11556-025-00384-9
+  title: 'Impact of creatine supplementation and exercise training in older adults: a systematic review and meta-analysis'
+  year: 2025
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W1996494400
+  doi: 10.1016/j.meatsci.2006.11.015
+  title: In vitro and in vivo studies of creatine monohydrate supplementation to Duroc and Landrace pigs
+  year: 2007
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2150995624
+  doi: 10.1093/ajcn/60.2.167
+  title: Increased energy requirements and changes in body composition with resistance training in older adults
+  year: 1994
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2146458354
+  doi: 10.3945/ajcn.2008.26401
+  title: Ingested protein dose response of muscle and albumin protein synthesis after resistance exercise in young
+    men
+  year: 2008
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2132829439
+  doi: 10.1152/ajpendo.1999.277.1.e135
+  title: Insulin-like growth factor I in skeletal muscle after weight-lifting exercise in frail elders
+  year: 1999
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W1967018480
+  doi: 10.1002/mrm.21068
+  title: Intake of 13C‐4 creatine enables simultaneous assessment of creatine and phosphocreatine pools in human
+    skeletal muscle by 13C MR spectroscopy
+  year: 2006
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2106373992
+  doi: 10.1111/j.1365-2125.2012.04456.x
+  title: Interactions between exercise and nutrition to prevent muscle waste during ageing
+  year: 2013
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2253943807
+  doi: 10.1046/j.1524-4725.2001.110310_2.x
+  title: 'Joint position statement: nutrition and athletic performance'
+  year: 2001
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W133295433
+  doi: 10.1042/cs0810249
+  title: Muscle composition in relation to age and sex
+  year: 1991
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2147134030
+  doi: 10.1152/jappl.1991.70.5.1912
+  title: Muscle hypertrophy response to resistance training in older women
+  year: 1991
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2041829029
+  doi: 10.1139/y91-084
+  title: Muscle metabolism in older subjects using 31P magnetic resonance spectroscopy
+  year: 1991
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2135914921
+  doi: 10.1152/ajpendo.00195.2003
+  title: No effect of creatine supplementation on human myofibrillar and sarcoplasmic protein synthesis after resistance
+    exercise
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2105061478
+  doi: 10.1016/j.amjmed.2015.06.017
+  title: 'Nutritional, Physical, Cognitive, and Combination Interventions and Frailty Reversal Among Older Adults:
+    A Randomized Controlled Trial'
+  year: 2015
+  type: article
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W4416067870
+  doi: 10.1007/s40520-025-03235-w
+  title: 'Optimal resistance training prescriptions to improve muscle strength, physical function, and muscle mass
+    in older adults diagnosed with sarcopenia: a systematic review and meta-analysis'
+  year: 2025
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2054608602
+  doi: 10.2165/00007256-200232140-00003
+  title: Oral Creatine Supplementation and Skeletal Muscle Metabolism in Physical Exercise*
+  year: 2002
+  type: review
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W1993444633
+  doi: 10.1111/j.1469-7793.2001.0625c.xd
+  title: Oral creatine supplementation facilitates the rehabilitation of disuse atrophy and alters the expression
+    of muscle myogenic factors in humans
+  year: 2001
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2142483199
+  doi: 10.1111/j.1469-7793.2000.t01-1-00203.x
+  title: Oxidative capacity and ageing in human muscle
+  year: 2000
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W1979521327
+  doi: 10.1007/s00421-014-2821-1
+  title: Periodized resistance training with and without supplementation improve body composition and performance
+    in older men
+  year: 2014
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: true
+  label_sure: false
+  label_reason: '''with and without supplementation'': which supplement is not in the title'
+- openalex_id: W2979222282
+  doi: 10.1007/s12603-019-1273-z
+  title: 'Physical Frailty: ICFSR International Clinical Practice Guidelines for Identification and Management'
+  year: 2019
+  type: article
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W1984915052
+  doi: 10.1016/j.joca.2011.09.001
+  title: Pre-operative interventions (non-surgical and non-pharmacological) for patients with hip or knee osteoarthritis
+    awaiting joint replacement surgery – a systematic review and meta-analysis
+  year: 2011
+  type: review
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2156098321
+  doi: 10.1136/bmj.b2535
+  title: 'Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement'
+  year: 2009
+  type: review
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W4294215472
+  doi: 10.1371/journal.pmed.1000097
+  title: 'Preferred Reporting Items for Systematic Reviews and Meta-Analyses: The PRISMA Statement'
+  year: 2009
+  type: review
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2005501262
+  doi: 10.7326/0003-4819-151-4-200908180-00135
+  title: 'Preferred Reporting Items for Systematic Reviews and Meta-Analyses: The PRISMA Statement'
+  year: 2009
+  type: review
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W1548328331
+  doi: 10.1002/14651858.cd002759.pub2
+  title: Progressive resistance strength training for improving physical function in older adults
+  year: 2009
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2113082753
+  doi: 10.3945/ajcn.112.037556
+  title: 'Protein supplementation augments the adaptive response of skeletal muscle to resistance-type exercise
+    training: a meta-analysis'
+  year: 2012
+  type: review
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2119605658
+  doi: 10.1136/bmj.d4002
+  title: Recommendations for examining and interpreting funnel plot asymmetry in meta-analyses of randomised controlled
+    trials
+  year: 2011
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2056186011
+  doi: 10.1016/j.mad.2012.09.001
+  title: Reduced AMPK-ACC and mTOR signaling in muscle from older men, and effect of resistance exercise
+  year: 2012
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2037678131
+  doi: 10.1002/(sici)1099-1492(199602)9:1<8::aid-nbm387>3.0.co;2-f
+  title: Relationships between Fiber Composition and NMR Measurements in Human Skeletal Muscle
+  year: 1996
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2273652180
+  doi: 10.1152/jappl.1993.75.2.813
+  title: Relationships between in vivo and in vitro measurements of metabolism in young and old human calf muscles
+  year: 1993
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W4366418137
+  doi: 10.3390/brainsci13040679
+  title: Relative Neuroadaptive Effect of Resistance Training along the Descending Neuroaxis in Older Adults
+  year: 2023
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2102968146
+  doi: 10.1093/ptj/83.8.713
+  title: Reliability of the PEDro Scale for Rating Quality of Randomized Controlled Trials
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2114028666
+  doi: 10.1017/s0007114511007422
+  title: Resistance exercise enhances myofibrillar protein synthesis with graded intakes of whey protein in older
+    men
+  year: 2012
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2137046611
+  doi: 10.1152/japplphysiol.00307.2012
+  title: Resistance exercise load does not determine training-mediated hypertrophic gains in young men
+  year: 2012
+  type: article
+  cited_by_reviews:
+  - (Devries & Phillips, 2014)
+  include: false
+- openalex_id: W2399909463
+  doi: 10.14283/jfa.2016.85
+  title: RESISTANCE TRAINING AND CO-SUPPLEMENTATION WITH CREATINE AND PROTEIN IN OLDER SUBJECTS WITH FRAILTY
+  year: 2016
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: true
+- openalex_id: W2963713716
+  doi: 10.1519/jsc.0000000000003230
+  title: 'Resistance Training for Older Adults: Position Statement From the National Strength and Conditioning Association'
+  year: 2019
+  type: article
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W1973793244
+  doi: 10.1007/s00421-012-2466-x
+  title: Resistance training induced increase in muscle fiber size in young and older men
+  year: 2012
+  type: article
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2149921882
+  doi: 10.1177/1545968306293449
+  title: 'Resistance Training With Creatine Monohydrate Improves Upper-Body Strength in Patients With Parkinson
+    Disease: A Randomized Trial'
+  year: 2007
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2064958017
+  doi: 10.1139/h07-141
+  title: Resistance training, sarcopenia, and the mitochondrial theory of aging
+  year: 2008
+  type: review
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W1593442063
+  doi: 10.1001/jama.288.3.321
+  title: 'Risks and Benefits of Estrogen Plus Progestin in Healthy Postmenopausal Women: Principal Results From
+    the Women''s Health Initiative Randomized Controlled Trial'
+  year: 2002
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W4250868241
+  doi: 10.1097/00006250-200301000-00034
+  title: 'Risks and benefits of estrogen plus progestin in healthy postmenopausal women: Principal results from
+    the Womenʼs Health Initiative randomized controlled trial'
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2136346861
+  doi: 10.1152/jappl.1999.87.2.598
+  title: Role of submaximal exercise in promoting creatine and glycogen accumulation in human skeletal muscle
+  year: 1999
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W4211144975
+  doi: 10.1016/s0140-6736(19)31138-9
+  title: Sarcopenia
+  year: 2019
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2897430333
+  doi: 10.1152/physrev.00061.2017
+  title: 'Sarcopenia: Aging-Related Loss of Muscle Mass and Function'
+  year: 2018
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W1965927192
+  doi: 10.1016/j.jamda.2011.01.003
+  title: 'Sarcopenia: An Undiagnosed Condition in Older Adults. Current Consensus Definition: Prevalence, Etiology,
+    and Consequences. International Working Group on Sarcopenia'
+  year: 2011
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2102902846
+  doi: 10.1093/ageing/afq034
+  title: 'Sarcopenia: European consensus on definition and diagnosis'
+  year: 2010
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2981414419
+  doi: 10.1093/ageing/afz046
+  title: 'Sarcopenia: revised European consensus on definition and diagnosis'
+  year: 2019
+  type: article
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2124496828
+  doi: 10.1002/mus.10510
+  title: Satellite cells and myonuclei in young and elderly women and men
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2005997252
+  doi: 10.1007/s00018-013-1330-4
+  title: 'Skeletal muscle hypertrophy and regeneration: interplay between the myogenic regulatory factors (MRFs)
+    and insulin-like growth factors (IGFs) pathways'
+  year: 2013
+  type: review
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2095873444
+  doi: 10.1152/jappl.2000.89.3.1072
+  title: Skeletal muscle oxidative capacity in young and older women and men
+  year: 2000
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2129091958
+  doi: 10.1083/jcb.62.1.145
+  title: SPECIFICITY OF CREATINE IN THE CONTROL OF MUSCLE PROTEIN SYNTHESIS
+  year: 1974
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W178655038
+  doi: 10.22203/ecm.v010a02
+  title: Stimulatory effects of creatine on metabolic activity, differentiation and mineralization of primary osteoblast-like
+    cells in monolayer and micromass cell cultures
+  year: 2005
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2021780581
+  doi: 10.1590/s1517-86922011000400004
+  title: Suplementação com creatina associada ao treinamento resistido não altera as funções renal e hepática
+  year: 2011
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2017194081
+  doi: 10.1111/j.1471-4159.2010.06935.x
+  title: 'Synthesis and transport of creatine in the CNS: importance for cerebral functions'
+  year: 2010
+  type: review
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W125637027
+  doi: 10.1123/ijsnem.10.3.235
+  title: The Effect of Continuous Low Dose Creatine Supplementation on Force, Power, and Total Work
+  year: 2000
+  type: article
+  cited_by_reviews:
+  - (Stares & Bains, 2019)
+  include: false
+- openalex_id: W2034981115
+  doi: 10.1113/expphysiol.1998.sp004087
+  title: The effects of age on kinetics of oxygen uptake and phosphocreatine in humans during exercise
+  year: 1998
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W4367317704
+  doi: 10.3390/nu15092116
+  title: 'The Effects of Creatine Supplementation Combined with Resistance Training on Regional Measures of Muscle
+    Hypertrophy: A Systematic Review with Meta-Analysis'
+  year: 2023
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2101103861
+  doi: 10.1093/ndtplus/sfq177
+  title: The effects of the recommended dose of creatine monohydrate on kidney function
+  year: 2010
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W1500093205
+  doi: 10.1111/j.1532-5415.2004.52014.x
+  title: The Healthcare Costs of Sarcopenia in the United States
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W4417291010
+  doi: 10.1186/s11556-025-00392-9
+  title: 'The impact of creatine supplementation associated with resistance training on muscular strength and lean
+    tissue mass in the aged: a systematic review and meta-analysis'
+  year: 2025
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2041813409
+  doi: 10.1080/0963828031000137063
+  title: 'The International Classification of Functioning, Disability and Health: a new tool for understanding disability
+    and health'
+  year: 2003
+  type: article
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W3118615836
+  doi: 10.1136/bmj.n71
+  title: 'The PRISMA 2020 statement: an updated guideline for reporting systematic reviews'
+  year: 2021
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W4368376103
+  doi: 10.3389/fpubh.2023.1062832
+  title: The role of resistance training and creatine supplementation on oxidative stress, antioxidant defense,
+    muscle strength, and quality of life in older adults
+  year: 2023
+  type: article
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: true
+- openalex_id: W1971964948
+  doi: 10.1007/s11357-014-9699-z
+  title: The skeletal muscle satellite cell response to a single bout of resistance-type exercise is delayed with
+    aging in men
+  year: 2014
+  type: article
+  cited_by_reviews:
+  - (Chilibeck et al., 2017)
+  include: false
+- openalex_id: W2086645795
+  doi: 10.3758/s13428-012-0261-6
+  title: Three-level meta-analysis of dependent effect sizes
+  year: 2012
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+- openalex_id: W2965011577
+  doi: 10.3389/fnut.2019.00124
+  title: Variables Influencing the Effectiveness of Creatine Supplementation as a Therapeutic Intervention for Sarcopenia
+  year: 2019
+  type: review
+  cited_by_reviews:
+  - (Yao et al., 2026)
+  include: false
+labeled_by: claude
+gold_rule: 'primary studies of creatine supplementation in middle-aged or older adults measuring muscle, strength,
+  body composition or physical function. Excluded: reviews, methods papers, cell/animal work, young adults, disease-only
+  populations, cognition-only or bone-only outcomes.'

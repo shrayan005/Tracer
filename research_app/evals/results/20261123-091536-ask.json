@@ -1,0 +1,43 @@
+{
+ "suite": "ask",
+ "run_id": 1795425336,
+ "started_at": "2026-11-23T09:15:36.919981Z",
+ "seconds": 26.6,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "6.7",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,chat->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite",
+  "results_per_query": "15",
+  "prefilter_keep": "40"
+ },
+ "metrics": {
+  "questions": 13.0,
+  "retrieval_recall": 1.0,
+  "answered_correctly": 1.0,
+  "declined_correctly": 1.0,
+  "quotes_ok": 0.9230769230769231,
+  "sentences_per_answer": 1.0
+ },
+ "details": [
+  "FLAG · creatine · Is creatine safe for the kidneys of older adults? · quote not found in the passage"
+ ],
+ "cost": {
+  "chat · gemini": {
+   "calls": 13,
+   "tokens": 30731,
+   "seconds": 20.532
+  },
+  "embed · gemini": {
+   "calls": 13,
+   "tokens": 215,
+   "seconds": 5.464
+  }
+ }
+}

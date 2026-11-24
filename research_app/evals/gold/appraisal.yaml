@@ -1,0 +1,941 @@
+how_to: 'For each paper: check every `gold:` value (pre-filled with the AI''s answer) and correct the wrong ones,
+  then set `reviewed: true`. Facts: yes / no / not reported / not applicable. sex: male / female / mixed / not reported
+  / not applicable. duration: single session / under 3 months / 3 months or more / not reported / not applicable.
+  sample_size: a number or null.'
+papers:
+- id: creatine-2742
+  paper: '(Yao et al., 2026) Effects of resistance training combined with creatine supplementation on muscle strength,
+    physical function, and muscle mass in older adults: a systematic review and three-level meta-analysis'
+  link: https://doi.org/10.3389/fnut.2026.1919884
+  reviewed: true
+  facts:
+    sample_size:
+      ai: 11
+      ai_quote: Eleven randomized controlled trials were included.
+      hints:
+      - '[results] Most studies enrolled healthy, sedentary or community-dwelling older adults; only one study included
+        older adults with higher health risk or vulnerable status.'
+      - '[results] Sex composition varied across the included comparisons: three comparisons included men only,
+        three included women only and six included mixed-sex samples.'
+      gold: 11
+      label_sure: false
+      label_reason: 11 = number of trials; a participant total is not stated
+    sex:
+      ai: mixed
+      ai_quote: null
+      hints:
+      - '[results] Sex composition varied across the included comparisons: three comparisons included men only,
+        three included women only and six included mixed-sex samples.'
+      - '[results] (14)|RT + Cr|16<br>70.4 ± 6.4|27.9 ± 4.4|Canada|Sedentary/<br>moderately active<br>older men|Male|Creatine
+        monohydrate (0.3 g/kg/day for<br>5 days, then 0.07 g/kg/day) was mixed with<br>a sucrose-flour vehicle.'
+      gold: mixed
+    duration:
+      ai: not reported
+      ai_quote: null
+      hints:
+      - '[results] Similarly, conclusions from conventional twolevel random-effects meta-analyses following study-level
+        aggregation were consistent with those from the primary three-level models  ### TABLE 1 Characteristics
+        of the included studies  |ers inN|Study|Group|N<br>Mean…'
+      - '[results] Training<br>used 3 sets × 8 repetitions at approximately 80% 1RM with<br>progressive high-intensity
+        loading.| |||RT + Pl|8<br>69.3 ± 1.1|25.0 ± 1.7||||Glucose-only placebo, matched for flavor<br>and appearance,
+        dissolved in a warm or hot<br>beverage: 7 g four …'
+      gold: not reported
+      label_sure: false
+      label_reason: a meta-analysis of trials lasting different lengths (e.g. 8 weeks)
+    control_group:
+      ai: 'yes'
+      ai_quote: comparing creatine supplementation plus resistance training with resistance training alone or placebo
+        plus resistance training were included.
+      hints:
+      - '[methods] Studies were included if they met the following criteria: (1) participants were aged ≥60 years;
+        (2) the intervention group  received creatine supplementation combined with resistance training; (3) the
+        comparator group received placebo, non-creatine supplementa…'
+      - '[methods] For multi-arm trials, assessments were restricted to the comparison relevant to this review,
+        namely creatine supplementation versus placebo or non-creatine control under the same resistance training
+        program.'
+      gold: 'yes'
+    randomized:
+      ai: 'yes'
+      ai_quote: Randomized controlled trials enrolling older adults aged 60 years and older and comparing creatine
+        supplementation plus resistance training with resistance training alone or placebo plus resistance training
+        were included.
+      hints:
+      - '[introduction] Several randomized controlled trials have reported that creatine supplementation combined
+        with resistance training provides additional benefits over resistance training alone for selected measures
+        of muscle strength, fat-free mass, appendicular lean mass or fu…'
+      - '[methods] ### Data sources and search strategy  We systematically searched PubMed, Embase, the Cochrane
+        Library and Web of Science to identify randomized controlled trials evaluating the effects of creatine supplementation
+        combined with resistance training in older adul…'
+      gold: 'yes'
+    blinded:
+      ai: 'yes'
+      ai_quote: Most studies used placebo-controlled double-blind supplementation protocols
+      hints:
+      - '[methods] The assessment covered six core domains: random sequence generation, allocation concealment,
+        blinding of participants, blinding of intervention providers, blinding of outcome assessors and outcome
+        data not included in the analysis.'
+      - '[results] In contrast, random sequence generation, allocation concealment, blinding of participants, blinding
+        of intervention providers and blinding of outcome assessors did not lead to high-risk judgments.'
+      gold: 'yes'
+    statistics_reported:
+      ai: 'yes'
+      ai_quote: Three-level random-effects meta-analyses were conducted using the metafor package in R
+      hints:
+      - '[methods] Statistical analyses were performed using the metafor package in R.'
+      - '[methods] Continuous outcomes were expressed as standardized mean differences with small-sample correction,
+        reported as Hedges’ g with 95% confidence intervals.'
+      gold: 'yes'
+    effect_sizes:
+      ai: 'yes'
+      ai_quote: The three-level random-effects model showed a significant positive effect of creatine supplementation
+        combined with resistance training compared with resistance training alone (g = 0.31, 95% CI 0.18 to 0.45).
+      hints:
+      - '[introduction] Moreover, individual trials often report multiple correlated outcomes, and conventional
+        meta-analytic approaches may not adequately account for dependency among effect sizes.'
+      - '[introduction] Therefore, this study focused on adults aged 60 years and older and compared the effects
+        of creatine supplementation combined with resistance training versus resistance training alone on muscle
+        strength, muscle mass and physical function, using three-level met…'
+      gold: 'yes'
+    conflicts_declared:
+      ai: 'yes'
+      ai_quote: The author(s) declared that this work was conducted in the absence of any commercial or financial
+        relationships that could be construed as a potential conflict of interest.
+      hints:
+      - '[backmatter] The author(s) declared that this work was conducted in the absence of any commercial or financial
+        relationships that could be construed as a potential conflict of interest.'
+      gold: 'yes'
+    data_available:
+      ai: 'yes'
+      ai_quote: The original contributions presented in the study are included in the article/Supplementary material
+      hints:
+      - '[methods] When the required means or standard deviations were not reported in the original articles, data
+        were obtained, where possible, from figures, statistical conversions or Supplementary materials; if data
+        remained unavailable, corresponding authors were contacted.'
+      - '[backmatter] The original contributions presented in the study are included in the article/Supplementary
+        material, further inquiries can be directed to the corresponding author.'
+      gold: 'yes'
+  labeled_by: claude
+- id: creatine-2739
+  paper: (Amiri & Sheikholeslami‐Vatani, 2023) The role of resistance training and creatine supplementation on oxidative
+    stress, antioxidant defense, muscle strength, and quality of life in older adults
+  link: https://doi.org/10.3389/fpubh.2023.1062832
+  reviewed: true
+  facts:
+    sample_size:
+      ai: 45
+      ai_quote: 45 qualified people (with inclusion criteria) were randomly selected as subjects.
+      hints:
+      - '[methods] Exclusion criteria  TABLE 1 Baseline characteristics of subjects according to study groups.'
+      - '[results] $ Significant difference<br>with the control group.<br><!-- End of picture text -->  TABLE 2
+        Changes in subjects’ quality of life and muscle strength following 10-week of resistance training and creatine
+        supplementation.'
+      gold: 45
+    sex:
+      ai: mixed
+      ai_quote: null
+      hints:
+      - '[methods] The statistical population of the present study consisted of older men and women (age: 61.5 ±
+        5.7 y; height: 165.9 ± 11.1 cm; weight: 75.6 ± 19.8 kg; BMI: 27.8 ± 1.6 kg/m2 ) in Kermanshah city, Iran.'
+      - '[results] Ghahramani Moghadam’ s study also demonstrated a reduction in 8-OHdG levels in older women after
+        8 weeks of exercise training (34).'
+      gold: mixed
+    duration:
+      ai: under 3 months
+      ai_quote: null
+      hints:
+      - '[introduction] Additionally, Rahimi stated that consuming 20 g of creatine per day for 7 days reduces MDA
+        and 8-hydroxy-20 -deoxyguanosine (8-OHdG) after resistance training.'
+      - '[methods] They also did not have a history of taking dietary supplements or regular exercise training 3
+        months prior to the start of the study.'
+      gold: under 3 months
+    control_group:
+      ai: 'yes'
+      ai_quote: 'divided into three groups of 15: RT with creatine supplementation (RT + CS), RT with placebo (RT
+        + P) and control group.'
+      hints:
+      - '[methods] The current study was an experimental research with pre-test and post-test control group design.'
+      - '[methods] Subjects were then randomly, in a double-blind design, assigned to three groups of 15: resistance
+        training with creatine supplementation (RT + CS), resistance training with placebo (RT + P) and control
+        group (Table 1; Figure 1).'
+      gold: 'yes'
+    randomized:
+      ai: 'yes'
+      ai_quote: Subjects were then randomly, in a double-blind design, assigned to three groups of 15
+      hints:
+      - '[methods] After announcing the research call at parks and sport spaces of the city, 45 qualified people
+        (with inclusion criteria) were randomly selected as subjects.'
+      - '[methods] Subjects were then randomly, in a double-blind design, assigned to three groups of 15: resistance
+        training with creatine supplementation (RT + CS), resistance training with placebo (RT + P) and control
+        group (Table 1; Figure 1).'
+      gold: 'yes'
+    blinded:
+      ai: 'yes'
+      ai_quote: Subjects were then randomly, in a double-blind design, assigned to three groups of 15
+      hints:
+      - '[methods] Subjects were then randomly, in a double-blind design, assigned to three groups of 15: resistance
+        training with creatine supplementation (RT + CS), resistance training with placebo (RT + P) and control
+        group (Table 1; Figure 1).'
+      gold: 'yes'
+    statistics_reported:
+      ai: 'yes'
+      ai_quote: Analyses of variance (ANOVA) with repeated measure and Bonferroni post-hoc test were used to determine
+        within-group (time effect), between-group (group effect) and time–group interactions.
+      hints:
+      - '[methods] Analyses of variance (ANOVA) with repeated measure and Bonferroni post-hoc test were used to
+        determine withingroup (time effect), between-group (group effect) and time–group interactions.'
+      - '[methods] Data was analyzed with IBM SPSS software (version 23; IBM Corporation, Armonk, NY, United States),
+        and the statistical significance level was set at _p_ ≤ 0.05.'
+      gold: 'yes'
+    effect_sizes:
+      ai: 'yes'
+      ai_quote: GPX substantially increased in the RT + CS and RT + P groups after the 10-week intervention compared
+        with the pre-test (p = 0.001, eta = 0.87 and p = 0.001, eta = 0.86; Figure 2C).
+      hints: []
+      gold: not reported
+      label_sure: true
+      label_reason: no effect size (eta/Cohen's d) anywhere; the AI's quote is a group difference, not an effect
+        size
+    conflicts_declared:
+      ai: 'yes'
+      ai_quote: The authors declare that the research was conducted in the absence of any commercial or financial
+        relationships that could be construed as a potential conflict of interest.
+      hints:
+      - '[backmatter] The authors declare that the research was conducted in the absence of any commercial or financial
+        relationships that could be construed as a potential conflict of interest.'
+      gold: 'yes'
+    data_available:
+      ai: 'yes'
+      ai_quote: The raw data supporting the conclusions of this article will be made available by the authors, without
+        undue reservation.
+      hints: []
+      gold: 'yes'
+  labeled_by: claude
+- id: creatine-2740
+  paper: '(Ramos-Hernández et al., 2025) Combined creatine and HMB co-supplementation improves functional strength
+    independent of muscle mass in physically active older adults: a randomized crossover trial'
+  link: https://doi.org/10.1007/s11357-025-01889-y
+  reviewed: true
+  facts:
+    sample_size:
+      ai: 30
+      ai_quote: The final sample that completed all study phases consisted of 30 participants (10 women and 20 men).
+      hints:
+      - '[abstract] In a randomized, double-blind, placebo-controlled crossover trial, 30 older adults (20 men,
+        10 women; ≥ 60 years) completed two 6-week intervention periods (CRE + HMB or placebo) separated by a 3-week
+        washout.'
+      - '[methods] ### Study design and participants  This study was designed as a randomized, double-blind, placebo-controlled
+        crossover trial involving 30 physically active older adults (62.68 ± 5.28 years; range: 60–82 years; 20
+        men and 10 women).'
+      gold: 30
+    sex:
+      ai: mixed
+      ai_quote: null
+      hints:
+      - '[abstract] In a randomized, double-blind, placebo-controlled crossover trial, 30 older adults (20 men,
+        10 women; ≥ 60 years) completed two 6-week intervention periods (CRE + HMB or placebo) separated by a 3-week
+        washout.'
+      - '[methods] ### Study design and participants  This study was designed as a randomized, double-blind, placebo-controlled
+        crossover trial involving 30 physically active older adults (62.68 ± 5.28 years; range: 60–82 years; 20
+        men and 10 women).'
+      gold: mixed
+    duration:
+      ai: under 3 months
+      ai_quote: null
+      hints:
+      - '[methods] Each intervention period lasted 6 weeks and was separated by a 3-week washout phase to minimize
+        potential carryover effects.'
+      - '[methods] 1The study design flowchart illustrates the crossover protocol, including initial anthropometry
+        and strength assessments, 6 weeks of exercise with either CRE plus HMB supplementation or placebo, a 3-week
+        washout period and subsequent crossover to the alternate…'
+      gold: under 3 months
+    control_group:
+      ai: 'yes'
+      ai_quote: In a randomized, double-blind, placebo-controlled crossover trial, 30 older adults (20 men, 10 women;
+        ≥ 60 years) completed two 6-week intervention periods (CRE + HMB or placebo) separated by a 3-week washout.
+      hints:
+      - '[abstract] In a randomized, double-blind, placebo-controlled crossover trial, 30 older adults (20 men,
+        10 women; ≥ 60 years) completed two 6-week intervention periods (CRE + HMB or placebo) separated by a 3-week
+        washout.'
+      - '[abstract] The CRE + HMB group showed reductions in fat mass and body fat percentage, with slight numerical
+        increases in muscle parameters, whereas the placebo group exhibited opposite trends.'
+      gold: 'yes'
+    randomized:
+      ai: 'yes'
+      ai_quote: Participants were randomized into two groups (n = 15 each; 5 women per group) using a computer-generated
+        allocation sequence with a 1:1 ratio
+      hints:
+      - '[abstract] In a randomized, double-blind, placebo-controlled crossover trial, 30 older adults (20 men,
+        10 women; ≥ 60 years) completed two 6-week intervention periods (CRE + HMB or placebo) separated by a 3-week
+        washout.'
+      - '[methods] ### Study design and participants  This study was designed as a randomized, double-blind, placebo-controlled
+        crossover trial involving 30 physically active older adults (62.68 ± 5.28 years; range: 60–82 years; 20
+        men and 10 women).'
+      gold: 'yes'
+    blinded:
+      ai: 'yes'
+      ai_quote: In a randomized, double-blind, placebo-controlled crossover trial
+      hints:
+      - '[abstract] In a randomized, double-blind, placebo-controlled crossover trial, 30 older adults (20 men,
+        10 women; ≥ 60 years) completed two 6-week intervention periods (CRE + HMB or placebo) separated by a 3-week
+        washout.'
+      - '[methods] ### Study design and participants  This study was designed as a randomized, double-blind, placebo-controlled
+        crossover trial involving 30 physically active older adults (62.68 ± 5.28 years; range: 60–82 years; 20
+        men and 10 women).'
+      gold: 'yes'
+    statistics_reported:
+      ai: 'yes'
+      ai_quote: Significant time × group interactions were observed for fat mass, fat-free mass, total muscle mass,
+        skeletal muscle mass, appendicular skeletal muscle mass, muscle mass index, skeletal muscle index and ALM/BMI
+        (all p < 0.05).
+      hints:
+      - '[abstract] Significant time × group interactions were observed for fat mass, fat-free mass, total muscle
+        mass, skeletal muscle mass, appendicular skeletal muscle mass, muscle mass index, skeletal muscle index
+        and ALM/BMI (all p < 0.05).'
+      - '[abstract] However, within-group changes were not statistically significant.'
+      gold: 'yes'
+    effect_sizes:
+      ai: 'yes'
+      ai_quote: 'η2p: partial eta squared effect size'
+      hints:
+      - '[methods] Assuming a medium effect size (f = 0.25), α = 0.05 and 1–β = 0.80, the required total sample
+        size was N = 54 for a parallel-group design.'
+      - '[methods] Forty participants were initially recruited to account for attrition, and the final analyzed
+        sample (n = 30) achieved an observed power of 78.4% for the primary analyses, with effect sizes (η2p = 0.17–0.42)
+        exceeding the a priori assumption (f = 0.25), and att…'
+      gold: 'yes'
+    conflicts_declared:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    data_available:
+      ai: not reported
+      ai_quote: null
+      hints:
+      - '[abstract] ### Supplementary Information  The online version contains supplementary material available
+        at 10.1007/s11357-025-01889-y.'
+      - '[backmatter] Below is the link to the electronic supplementary material.ESM 1(DOCX 47.6 KB)'
+      gold: not reported
+  labeled_by: claude
+- id: creatine-2741
+  paper: '(Michalak et al., 2026) Impact of Creatine Supplementation on Muscle and Bone Strength in Older Adults:
+    A Narrative Review'
+  link: https://doi.org/10.12775/jehs.2026.88.68067
+  reviewed: true
+  facts:
+    sample_size:
+      ai: null
+      ai_quote: null
+      hints:
+      - '[results] Clinically, this supports two implications for older adults: 1) a decline in creatininebased
+        eGFR after starting creatine should be interpreted cautiously, and 2) if renal safety needs confirmation,
+        clinicians should consider confirmatory testing strategies be…'
+      - '[results] (39) examined 357 adults aged 55 years and older and compared the effects of creatine supplementation
+        combined with resistance training versus resistance training alone on skeletal muscle outcomes.'
+      gold: null
+    sex:
+      ai: not applicable
+      ai_quote: null
+      hints:
+      - '[introduction] Osteoporosis and fragility fractures represent major public health concerns, particularly
+        among postmenopausal women and older men, and are associated with substantial healthcare utilization and
+        long-term disability(9).'
+      - '[results] The total body creatine pool in an average adult male is commonly reported at ~120 g (free creatine
+        plus phosphocreatine), with substantial individual variability largely driven by muscle mass(15).'
+      gold: not applicable
+    duration:
+      ai: not applicable
+      ai_quote: null
+      hints:
+      - '[results] When it comes to studies in older men a small randomised trial of 29 men of median age of 71
+        showed a significant increase in leg bone mineral density after 12 weeks with creatine and resistance training
+        (50).'
+      - '[results] However another small randomised trial with a longer 8 month observation time of healthy ageing
+        adults found no benefit from creatine supplementation irrespective of dosing timing (51).'
+      gold: not applicable
+    control_group:
+      ai: not applicable
+      ai_quote: null
+      hints:
+      - '[results] A randomized placebo-controlled trial in humans showed that creatine supplementation markedly
+        upregulated expression of mRNA and proteins involved in processes related to protein synthesis, satellite
+        cell activity, DNA replication/repair, and cell survival; th…'
+      - '[results] In terms of dynamic strength, creatine supplementation in conjunction with resistance training
+        resulted in significantly greater improvements in leg press and chest press strength compared with resistance
+        training plus placebo.'
+      gold: not applicable
+    randomized:
+      ai: not applicable
+      ai_quote: null
+      hints:
+      - '[abstract] **Brief description of the state of knowledge:** Evidence from randomized trials and metaanalyses
+        indicates that creatine supplementation combined with progressive resistance training increases lean mass
+        and improves dynamic strength and functional performance…'
+      - '[results] A randomized placebo-controlled trial in humans showed that creatine supplementation markedly
+        upregulated expression of mRNA and proteins involved in processes related to protein synthesis, satellite
+        cell activity, DNA replication/repair, and cell survival; th…'
+      gold: not applicable
+    blinded:
+      ai: not applicable
+      ai_quote: null
+      hints: []
+      gold: not applicable
+    statistics_reported:
+      ai: not applicable
+      ai_quote: null
+      hints:
+      - '[results] The pooled analysis  demonstrated statistically significant increases in total body mass and
+        fat-free mass in the creatine groups.'
+      - '[results] Creatine supplementation was associated with a significant improvement in sit-to-stand performance
+        compared with placebo, with a pooled standardized mean difference of 0.51 (95% CI: 0.01–1.00; p = 0.04),
+        corresponding to a moderate effect size.'
+      gold: not applicable
+    effect_sizes:
+      ai: not applicable
+      ai_quote: null
+      hints:
+      - '[results] Creatine supplementation was associated with a significant improvement in sit-to-stand performance
+        compared with placebo, with a pooled standardized mean difference of 0.51 (95% CI: 0.01–1.00; p = 0.04),
+        corresponding to a moderate effect size.'
+      gold: not applicable
+    conflicts_declared:
+      ai: 'yes'
+      ai_quote: The author declare no conflict of interest.
+      hints:
+      - '[backmatter] The author declare no conflict of interest.'
+      gold: 'yes'
+    data_available:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+  labeled_by: claude
+- id: triceps-35
+  paper: (Hussain et al., 2020) Muscle Fatigue in the Three Heads of Triceps Brachii During Intensity and Speed
+    Variations of Triceps Push-Down Exercise
+  link: https://doi.org/10.3389/fphys.2020.00112
+  reviewed: true
+  facts:
+    sample_size:
+      ai: 25
+      ai_quote: Twenty-five healthy, untrained, active, male university students participated in this study.
+      hints: []
+      gold: 25
+    sex:
+      ai: male
+      ai_quote: null
+      hints:
+      - '[methods] Twenty-five healthy, untrained, active, male university students participated in this study.'
+      gold: male
+    duration:
+      ai: under 3 months
+      ai_quote: null
+      hints:
+      - '[backmatter] The effects of 6 months of progressive high effort resistance training methods upon strength,
+        body composition, function, and wellbeing of elderly adults.'
+      gold: under 3 months
+    control_group:
+      ai: not reported
+      ai_quote: null
+      hints:
+      - '[methods] Each participant performed the exercise until exhaustion, and the exercise was terminated if
+        the subject could not control the speed of the bar during the eccentric phase or maintain balance between
+        his dominant and non-dominant arms during two consecutive rep…'
+      - '[conclusion] In addition, our results may help roboticists and automation enthusiasts in the design and
+        control of TB related prosthetics for the disabled.'
+      gold: not reported
+    randomized:
+      ai: 'yes'
+      ai_quote: The exercises were randomly assigned to each subject upon his arrival at the experiment site.
+      hints:
+      - '[methods] The exercises were randomly assigned to each subject upon his arrival at the experiment site.'
+      gold: 'yes'
+    blinded:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    statistics_reported:
+      ai: not reported
+      ai_quote: null
+      hints:
+      - '[methods] One-way repeated-measures ANOVA was employed to perform the following comparisons: (1) ET and
+        NR between three intensities (30, 45, and 60% 1RM) and between three speeds (slow, medium, and fast), (2)
+        ROF between  the three heads in the exercises performed at d…'
+      - '[methods] Three-way repeated-measures ANOVA was used to study the main effects of (1) the exercise condition
+        (NF and Fa), heads (lateral, long, and medial) and intensity (30, 45, and 60% 1RM) and (2) the exercise
+        condition, heads and speed (slow, medium and fast).'
+      gold: 'yes'
+      label_sure: true
+      label_reason: 'Statistical Analysis: ''One-way repeated-measures ANOVA was employed ...'''
+    effect_sizes:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    conflicts_declared:
+      ai: not reported
+      ai_quote: null
+      hints:
+      - '[backmatter] 1109/IEMBS.1995.579663  **Conflict of Interest:** The authors declare that the research was
+        conducted in the absence of any commercial or financial relationships that could be construed as a potential
+        conflict of interest.'
+      gold: 'yes'
+      label_sure: true
+      label_reason: 'backmatter: ''Conflict of Interest: The authors declare that the research was conducted in
+        the absence of ...'''
+    data_available:
+      ai: 'no'
+      ai_quote: The datasets for this study will not be made publicly available because the Medical Research and
+        Ethics Committee (MREC) of Malaysia has imposed restrictions on making the underlying data of this study
+        publicly available.
+      hints: []
+      gold: 'no'
+  labeled_by: claude
+- id: triceps-1924
+  paper: (Roberts et al., 2026) Early Phase Adaptations in Strength, Muscle Size, and Co-activation Following Resistance
+    Training in Untrained Women
+  link: https://doi.org/10.70252/ijes2026705
+  reviewed: true
+  facts:
+    sample_size:
+      ai: 10
+      ai_quote: 'Twelve women volunteered to participate in the present study, but only 10 women (Mean ± SD: age
+        = 21.6 ± 1.0 years; height = 168.7 ± 4.9 cm; body mass = 65.2 ± 6.8 kg) were included in the final analyses.'
+      hints:
+      - '[abstract] Ten untrained women (age=21.6±1.0 years) completed four days of maximal, reciprocal, concenand
+        electromyographic co-activation (Co-Act).'
+      - '[abstract] Ten untrained women (age=21.6±1.0 years) comple **t** ric, isokinetic ed four days forearm extension
+        (FE) and flexion (FF) training with six sets of 10 repetitions at 180°∙sof maximal, reciprocal, concentric,
+        isokinetic forearm extension (FE) and flexion (FF) …'
+      gold: 10
+    sex:
+      ai: female
+      ai_quote: null
+      hints:
+      - '[abstract] Ten untrained women (age=21.6±1.0 years) completed four days of maximal, reciprocal, concenand
+        electromyographic co-activation (Co-Act).'
+      - '[abstract] Ten untrained women (age=21.6±1.0 years) comple **t** ric, isokinetic ed four days forearm extension
+        (FE) and flexion (FF) training with six sets of 10 repetitions at 180°∙sof maximal, reciprocal, concentric,
+        isokinetic forearm extension (FE) and flexion (FF) …'
+      gold: female
+    duration:
+      ai: under 3 months
+      ai_quote: null
+      hints: []
+      gold: under 3 months
+    control_group:
+      ai: not reported
+      ai_quote: null
+      hints:
+      - '[discussion] Lastly, although a control group was not included in the present research design, a familiarization
+        day was included to reduce the likelihood of subjects exhibiting learning effects (i.e., increases in PT
+        from increased familiarity, not physiological adaptatio…'
+      gold: 'no'
+      label_sure: true
+      label_reason: 'Discussion: ''a control group was not included in the present research design'''
+    randomized:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    blinded:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    statistics_reported:
+      ai: 'yes'
+      ai_quote: Separate two-way ANOVAs were used to analyze PT (Movement×Time), MT (Muscle×Time), and EMG Co-Act
+        (Movement×Time).
+      hints:
+      - '[introduction] However, there has been a growing interest in analyzing individual responses to resistance
+        training interventions, because inferences made from group mean statistical analyses can be limited by intra-
+        and inter-individual variability in how subjects respond to…'
+      - '[introduction] A variety of statistical techniques have been used to analyze individual responses, such
+        as the use of confidence intervals, smallest worthwhile change values, and minimal difference values.30,31
+        The minimal difference is calculated using the standard error of…'
+      gold: 'yes'
+    effect_sizes:
+      ai: 'yes'
+      ai_quote: The repeated measures ANOVA indicated no significant ( p = 0.494; ηp2 = 0.054) two-way interactions
+        for Movement
+      hints:
+      - '[methods] An a priori analysis (G*Power version 3.1.9.7, Düsseldorf, Germany) indicated that a sample size
+        of nine subjects was required based on an alpha of 0.05, a power of 0.80, and an estimated effect size of
+        0.57.'
+      - '[methods] The estimated effect size was based on a previous study10 that reported significant increases
+        in PT following three days of nonreciprocal, concentric, isokinetic FF training.'
+      gold: 'yes'
+    conflicts_declared:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    data_available:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+  labeled_by: claude
+- id: triceps-19
+  paper: (Akima et al., 2021) Effect of elbow joint angles on electromyographic activity versus force relationships
+    of synergistic muscles of the triceps brachii
+  link: https://doi.org/10.1371/journal.pone.0252644
+  reviewed: true
+  facts:
+    sample_size:
+      ai: 17
+      ai_quote: 7 men and 10 women performed force matching isometric tasks at 20%, 40%, 60%, and 80%maximum voluntary
+        contraction
+      hints:
+      - '[abstract] 7 men and 10 women performed force matching isometric tasks at 20%, 40%, 60%, and 80%maximum
+        voluntary contraction (MVC) at 60°, 90°, and 120° of extension.'
+      - '[methods] ### Subjects  The present study included seven men (age, 20.7 ± 0.4 years; height, 171.3 ± 2.7
+        cm; weight, 63.1 ± 3.8 kg) and 10 women (age, 19.6 ± 0.5 years; height, 160.0 ± 1.6 cm; weight, 52.2 ± 0.9
+        kg).'
+      gold: 17
+    sex:
+      ai: mixed
+      ai_quote: null
+      hints:
+      - '[abstract] 7 men and 10 women performed force matching isometric tasks at 20%, 40%, 60%, and 80%maximum
+        voluntary contraction (MVC) at 60°, 90°, and 120° of extension.'
+      - '[methods] ### Subjects  The present study included seven men (age, 20.7 ± 0.4 years; height, 171.3 ± 2.7
+        cm; weight, 63.1 ± 3.8 kg) and 10 women (age, 19.6 ± 0.5 years; height, 160.0 ± 1.6 cm; weight, 52.2 ± 0.9
+        kg).'
+      gold: mixed
+    duration:
+      ai: single session
+      ai_quote: null
+      hints: []
+      gold: single session
+    control_group:
+      ai: not applicable
+      ai_quote: null
+      hints:
+      - '[methods] The Mauchly sphericity test was applied; when violated, the Greenhouse-Geisser correction factor
+        was used to control for type I errors.'
+      - '[discussion] We found that the RMS of each muscle increased linearly with increasing force (Figs 4 and
+        5), suggesting that force control was finely modulated by the recruitment and/or firing rates of the MUs
+        of each muscle.'
+      gold: not applicable
+    randomized:
+      ai: 'yes'
+      ai_quote: The order of joint angles was randomized for each subject.
+      hints:
+      - '[methods] On the experiment day, subjects performed the MVC force test with a sustained force phase of
+        about 3 seconds, and a force matching task with a steady state phase of exerted force for 5 seconds using
+        their right arm at 20%, 40%, 60%, and 80%MVC at angles of 60°…'
+      - '[methods] The order of joint angles was randomized for each subject.'
+      gold: 'yes'
+    blinded:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    statistics_reported:
+      ai: 'yes'
+      ai_quote: There were significant force effects (60°, F2,127 = 984.2, P = 0.001, η2 = 0.943
+      hints:
+      - '[methods] The MVC force values at an elbow joint angle of 90° before and immediately after the end of the
+        experiment did not significantly differ (21.4 ± 3.2 Nm and 22.1 ± 2.8 Nm; P = 0.393).'
+      - '[methods] One-way analysis of variance (ANOVA) was used to compare MVC torques among tested three different
+        elbow joint angles.'
+      gold: 'yes'
+    effect_sizes:
+      ai: 'yes'
+      ai_quote: η2 = 0.943
+      hints:
+      - '[methods] The partial eta squared (η2) statistic was used to evaluate the effect size for each ANOVA.'
+      - '[methods] The effect size was defined as small if η2 < 0.01, medium when η2 < 0.06, and large when η2 <
+        0.14 [35].'
+      gold: 'yes'
+    conflicts_declared:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    data_available:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+  labeled_by: claude
+- id: triceps-18
+  paper: (Peterson et al., 2017) Voluntary activation of biceps-to-triceps and deltoid-to-triceps transfers in quadriplegia
+  link: https://doi.org/10.1371/journal.pone.0171141
+  reviewed: true
+  facts:
+    sample_size:
+      ai: 11
+      ai_quote: Thirteen arms (6 deltoid transfer; 7 biceps transfer) were assessed. [...] Data from two individuals
+        were excluded from the analyses because they had undergone biceps transfer to resolve biceps contracture
+      hints:
+      - '[methods] ### Participants  Voluntary activation was assessed in nine individuals with SCI who had undergone
+        either biceps or deltoid transfer (Table 1).'
+      - '[methods] Thirteen arms (6 deltoid transfer; 7 biceps transfer) were assessed.'
+      gold: 11
+      label_sure: false
+      label_reason: '13 arms in 9 people, 2 excluded: 11 arms analysed (people analysed unclear)'
+    sex:
+      ai: mixed
+      ai_quote: null
+      hints:
+      - '[discussion] The strongest two arms with deltoid transfer belonged to females.'
+      gold: mixed
+    duration:
+      ai: 3 months or more
+      ai_quote: null
+      hints:
+      - '[table] | | Post-operative Management | The elbow was casted in full extension for 3 to 4 weeks after surgery.'
+      - '[table] Strength training began 3 months post-surgery.'
+      gold: single session
+      label_sure: false
+      label_reason: cross-sectional testing; '10.2 years post-surgery' is time since surgery, not study duration
+    control_group:
+      ai: 'yes'
+      ai_quote: We compared voluntary activation during maximum isometric elbow extension following biceps transfer
+        (n = 5) and deltoid transfer (n = 6) in three functional postures.
+      hints:
+      - '[abstract] This difference in neural control augmented the greater force-generating capacity of the biceps
+        leading to increased elbow extension strength after biceps transfer (average 9.37 N-m across postures) relative
+        to deltoid transfer (average 2.76 N-m across posture…'
+      - '[discussion] This difference in neural control augmented the greater force-generating capacity of the biceps
+        leading to increased post-surgery elbow extension strength in our study cohort.'
+      gold: 'no'
+      label_sure: false
+      label_reason: two surgical groups compared (biceps vs deltoid transfer); no untreated/placebo control
+    randomized:
+      ai: 'yes'
+      ai_quote: Subjects completed randomized blocks of isometric elbow extension trials in each of three functional
+        postures
+      hints:
+      - '[introduction] Surgical outcomes described in a prospective study that randomly assigned arms to undergo
+        either biceps or deltoid transfer and evaluated strength via manual muscle testing post-surgery were consistent
+        with this expectation [11].'
+      - '[methods] ### Experimental protocol  Subjects completed randomized blocks of isometric elbow extension
+        trials in each of three functional postures (Fig 1) to account for posture-dependent changes in voluntary
+        activation and muscle moment-generating properties (force-len…'
+      gold: 'no'
+      label_sure: true
+      label_reason: 'groups not randomised: ''the transfer chosen was dictated by the surgeon''s experience and
+        preference''; the AI''s quote is about the ORDER of trial blocks'
+    blinded:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    statistics_reported:
+      ai: 'yes'
+      ai_quote: The main effect of transfer type (F1, 9 = 7.1, p = .03), and the interaction of transfer type and
+        posture (F2, 74 = 5.0, p = .01) were significant
+      hints:
+      - '[methods] ### Data and statistical analysis  Voluntary activation was computed as the elbow extension moment
+        generated during maximum voluntary effort divided by the maximum moment generated with full activation,
+        which was predicted from the experimental data (see detai…'
+      - '[methods] Post-hoc comparisons were performed when the main effects of transfer type and posture were significant
+        (p < .05).'
+      gold: 'yes'
+    effect_sizes:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    conflicts_declared:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    data_available:
+      ai: 'yes'
+      ai_quote: The data are freely available at https://simtk.org/projects/elbowtransfer.
+      hints: []
+      gold: 'yes'
+  labeled_by: claude
+- id: triceps-137
+  paper: (Mansour et al., 2025) Rapid Estimation of Elbow Joint Moment and Triceps Force During Triceps Dumbbell
+    Kickback
+  link: https://doi.org/10.2339/politeknik.1681703
+  reviewed: true
+  facts:
+    sample_size:
+      ai: 14
+      ai_quote: This investigation utilized kinematic assessments from a cohort of 14 participants with diverse
+        anthropometric profiles.
+      hints:
+      - '[methods] Seven machine learning and deep learning models were trained on these features and evaluated
+        using MSR, RMSE, MAE, and correlation coefficient (R) to predict elbow joint moments and triceps force.._  ###
+        Originality  _The novelty of this study lies in the crea…'
+      - '[abstract] Methods: This investigation utilized kinematic assessments from a cohort of 14 participants
+        with diverse anthropometric profiles.'
+      gold: 14
+    sex:
+      ai: female
+      ai_quote: null
+      hints:
+      - '[methods] Seven machine learning and deep learning models were trained on these features and evaluated
+        using MSR, RMSE, MAE, and correlation coefficient (R) to predict elbow joint moments and triceps force.._  ###
+        Originality  _The novelty of this study lies in the crea…'
+      - '[introduction] One of the important contributions of this study is the creation of a unique dataset containing
+        time-dependent kinematic and anthropometric data collected from 14 female participants during the RPTK exercise.'
+      gold: female
+    duration:
+      ai: single session
+      ai_quote: null
+      hints: []
+      gold: single session
+      label_sure: false
+      label_reason: data collected during one exercise; sessions are not described
+    control_group:
+      ai: not reported
+      ai_quote: null
+      hints:
+      - '[abstract] Accurate prediction of joint moments has significant implications for the real-time control
+        of assistive technologies, particularly active orthoses in the future.'
+      gold: not reported
+    randomized:
+      ai: not reported
+      ai_quote: null
+      hints:
+      - '[abstract] A range of machine learning and deep learning models were employed to predict joint torque and
+        triceps muscle force, including deep neural networks (DNN), long short-term memory networks (LSTM), convolutional
+        neural networks (CNN), decision trees (DT), linear …'
+      - '[methods] ### Random Forest  The main benefit of the RF algorithm is its adaptability to both regression
+        and classification problems, which are essential to many contemporary machine learning frameworks.'
+      gold: not reported
+    blinded:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    statistics_reported:
+      ai: 'yes'
+      ai_quote: IBM SPSS Statistics version 21 was used to do the statistical analysis of the gathered data. A one-way
+        analysis of variance (ANOVA) and a Tukey post hoc test were used...
+      hints:
+      - '[methods] IBM SPSS Statistics version 21 was used to do the statistical analysis of the gathered data.'
+      - '[methods] A one-way analysis of variance (ANOVA) and a Tukey post hoc test were used to assess variations
+        in mean values among experimental conditions.'
+      gold: 'yes'
+    effect_sizes:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    conflicts_declared:
+      ai: 'yes'
+      ai_quote: The authors declare that they have no conflict of interest.
+      hints:
+      - '[backmatter] The authors declare that they have no conflict of interest.'
+      gold: 'yes'
+    data_available:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+  labeled_by: claude
+- id: triceps-1852
+  paper: (Stasinaki et al., 2018) Triceps Brachii Muscle Strength and Architectural Adaptations with Resistance
+    Training Exercises at Short or Long Fascicle Length
+  link: https://doi.org/10.3390/jfmk3020028
+  reviewed: true
+  facts:
+    sample_size:
+      ai: 9
+      ai_quote: Nine young, novice, female participants, were trained for 6 weeks
+      hints:
+      - '[methods] Ten female first-year physical education students (mean _±_ SD; age 19.3 _±_ 0.4 years, height
+        166.3 _±_ 6.3 cm, body mass 60.1 _±_ 6.1 kg, one repetition maximum (1-RM) in bench press 36.2 _±_ 4.8 kg)
+        with no resistance training experience, participated in th…'
+      - '[methods] Five of the participants were randomly assigned  to perform S training with the dominant arm
+        and L training with the non-dominant arm.'
+      gold: 9
+    sex:
+      ai: female
+      ai_quote: null
+      hints:
+      - '[introduction] Exposure to chronic resistance training induces muscle hypertrophy as well as significant
+        health benefits both for female and male participants [1].'
+      - '[introduction] However, compared to males, females have lower muscle mass and therefore lower muscle strength
+        [2].'
+      gold: female
+    duration:
+      ai: under 3 months
+      ai_quote: null
+      hints:
+      - '[introduction] Recently, it has been reported that 8 weeks of isometric knee extension training at long
+        muscle length induced greater strength gains compared to training at short muscle length [5].'
+      - '[methods] To compare the effectiveness of dynamic resistance training of the elbow extensors with two different
+        resistance exercises that presumably force the triceps long head to work at short (S) and long (L) fascicle
+        length, respectively, young novice females perform…'
+      gold: under 3 months
+    control_group:
+      ai: 'yes'
+      ai_quote: performing 6 sets × 6-RM (repetition maximum) unilateral cable exercises either with push-downs
+        at short fascicle length (S) or overhead extensions with the contralateral arm at long fascicle length (L)
+      hints:
+      - '[methods] To compare the effectiveness of dynamic resistance training of the elbow extensors with two different
+        resistance exercises that presumably force the triceps long head to work at short (S) and long (L) fascicle
+        length, respectively, young novice females perform…'
+      - '[methods] In addition, cross-education effect (i.e., adaptations in the contralateral arm), seems to be
+        limited when both limbs are trained with different exercises, due to the fact that cross-education occurs
+        only if there is an absence of any contralateral repeatable …'
+      gold: 'no'
+      label_sure: true
+      label_reason: 'within-subject: each arm trained a different way (S vs L); no non-training control'
+    randomized:
+      ai: 'yes'
+      ai_quote: Five of the participants were randomly assigned to perform S training with the dominant arm and
+        L training with the non-dominant arm.
+      hints:
+      - '[methods] Five of the participants were randomly assigned  to perform S training with the dominant arm
+        and L training with the non-dominant arm.'
+      - '[methods] ICCs with 95% CI (two-way random effects with absolute agreement) were calculated for muscle
+        architecture and longitudinal muscle area.'
+      gold: 'yes'
+    blinded:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+    statistics_reported:
+      ai: 'yes'
+      ai_quote: 1-RM increased 40.1 ± 21.3% and 44.5 ± 20.1% (p < 0.01) after S and L, respectively.
+      hints:
+      - '[methods] The ICC for the measurement of muscle thickness was 0.984 (95% Confidence Intervals (CI): 0.951–0.995,
+        _p_ = 0.001), ICC for fascicle angle was 0.858 (95% CI: 0.626–0.952, _p_ = 0.001), and for fascicle length
+        it was 0.794 (95% CI: 0.483–0.928, _p_ = 0.001).'
+      - '[methods] The ICC for the measurement of longitudinal muscle area was 0.963 (95% CI: 0.887–0.988), _p_
+        = 0.001.'
+      gold: 'yes'
+    effect_sizes:
+      ai: not reported
+      ai_quote: null
+      hints:
+      - '[methods] A post hoc power analysis, was performed according to the study design, the number of the participants,
+        and the lower partial eta Squared of the significant contrasts or of the Pearson’s r correlations coefficient
+        that were found, which reveal an actual power …'
+      - '[methods] Partial eta squared was also performed; according to Richardson [16], partial eta squared can
+        be used as an indicator of effect size, and it can be classified as small (0.01 to 0.059), moderate (0.06
+        to 0.137), and large ( _≥_ 0.138).'
+      gold: 'yes'
+      label_sure: true
+      label_reason: '''Partial eta squared was also performed ... indicator of effect size''; results report η2
+        = 0.015'
+    conflicts_declared:
+      ai: not reported
+      ai_quote: null
+      hints:
+      - '[conclusion] **Conflicts of Interest:** The authors declare no conflict of interest'
+      gold: 'yes'
+      label_sure: true
+      label_reason: '''Conflicts of Interest: The authors declare no conflict of interest'' (extracted under Conclusions)'
+    data_available:
+      ai: not reported
+      ai_quote: null
+      hints: []
+      gold: not reported
+  labeled_by: claude
+labeled_by_note: 'gold checked by Claude (an AI) against the extracted full text, not by a person. label_sure: false
+  marks debatable values.'

@@ -1,0 +1,544 @@
+how_to: 'Each group = claims from different papers that answer the SAME question. Remove members that don''t belong,
+  add missed claims (ids like P3.C2), fix stances (supports, opposes, no effect), merge or split groups. Then set
+  `reviewed: true` for the case.'
+cases:
+- case: creatine
+  brief: Investigate how creatine supplementation influences muscle strength outcomes in older adult populations,
+    including mechanisms, dosage protocols, and comparative effectiveness.
+  reviewed: true
+  papers:
+  - key: 2738
+    label: (Chilibeck et al., 2017)
+    study_type: meta_analysis
+    n: 721
+    sex: mixed
+    duration: 3 months or more
+    claims:
+    - id: P1.C1
+      factor: creatine supplementation vs placebo during resistance training
+      outcome: lean tissue mass
+      direction: increase
+      population: older adults
+      magnitude: mean difference =1.37 kg [95% CI =0.97–1.76]; p <0.00001
+    - id: P1.C2
+      factor: creatine supplementation vs placebo during resistance training
+      outcome: chest press strength
+      direction: increase
+      population: older adults
+      magnitude: SMD =0.35 [0.16–0.53]; p =0.0002
+    - id: P1.C3
+      factor: creatine supplementation vs placebo during resistance training
+      outcome: leg press strength
+      direction: increase
+      population: older adults
+      magnitude: SMD =0.24 [0.05–0.43]; p =0.01
+  - key: 2742
+    label: (Yao et al., 2026)
+    study_type: meta_analysis
+    n: 11
+    sex: mixed
+    duration: not reported
+    claims:
+    - id: P2.C1
+      factor: creatine supplementation combined with resistance training vs resistance training alone
+      outcome: muscle strength
+      direction: increase
+      population: older adults aged 60 years and older
+      magnitude: g = 0.31, 95% CI 0.18 to 0.45
+    - id: P2.C2
+      factor: creatine supplementation combined with resistance training vs resistance training alone
+      outcome: muscle mass
+      direction: no difference
+      population: older adults aged 60 years and older
+      magnitude: g = 0.35, 95% CI −0.09 to 0.78
+    - id: P2.C3
+      factor: creatine supplementation combined with resistance training vs resistance training alone
+      outcome: physical function
+      direction: no difference
+      population: older adults aged 60 years and older
+      magnitude: g = 0.47, 95% CI −0.08 to 1.03; p = 0.086
+  - key: 2739
+    label: (Amiri & Sheikholeslami‐Vatani, 2023)
+    study_type: randomized_trial
+    n: 45
+    sex: mixed
+    duration: under 3 months
+    claims:
+    - id: P3.C1
+      factor: resistance training (before vs after)
+      outcome: malondialdehyde (MDA)
+      direction: decrease
+      population: older adults
+      magnitude: p = 0.001
+    - id: P3.C2
+      factor: resistance training (before vs after)
+      outcome: 8-hydroxydeoxyguanosine (8-OHdG)
+      direction: decrease
+      population: older adults
+      magnitude: p = 0.001
+    - id: P3.C3
+      factor: resistance training with creatine vs resistance training with placebo (after)
+      outcome: glutathione peroxidase (GPX)
+      direction: increase
+      population: older adults
+      magnitude: p = 0.004
+    - id: P3.C4
+      factor: resistance training (before vs after)
+      outcome: quality of life
+      direction: increase
+      population: older adults
+      magnitude: p = 0.001
+  - key: 2745
+    label: (Brose et al., 2003)
+    study_type: randomized_trial
+    n: 28
+    sex: mixed
+    duration: 3 months or more
+    claims:
+    - id: P4.C1
+      factor: creatine monohydrate vs placebo (following strength training)
+      outcome: fat-free mass and total body mass
+      direction: increase
+      population: older adults
+      magnitude: p <.05
+    - id: P4.C2
+      factor: creatine monohydrate vs placebo (following strength training)
+      outcome: isometric knee extension strength
+      direction: increase
+      population: older men and women
+      magnitude: p <.05
+    - id: P4.C3
+      factor: creatine monohydrate vs placebo (following strength training)
+      outcome: isometric dorsiflexion strength
+      direction: increase
+      population: older men
+      magnitude: p <.05
+    - id: P4.C4
+      factor: creatine monohydrate vs placebo (following strength training)
+      outcome: intramuscular total creatine
+      direction: increase
+      population: older adults
+      magnitude: p <.05
+  - key: 2785
+    label: (Stares & Bains, 2019)
+    study_type: systematic_review
+    n: null
+    sex: mixed
+    duration: 3 months or more
+    claims:
+    - id: P5.C1
+      factor: creatine supplementation combined with resistance training vs exercise alone (before vs after / duration)
+      outcome: upper and/or lower body strength, functional capacity, and lean mass
+      direction: increase
+      population: older adults
+      magnitude: null
+  - key: 2746
+    label: (Devries & Phillips, 2014)
+    study_type: meta_analysis
+    n: 357
+    sex: not reported
+    duration: under 3 months
+    claims:
+    - id: P6.C1
+      factor: Creatine + resistance training vs resistance training alone
+      outcome: total body mass
+      direction: increase
+      population: 357 older adults
+      magnitude: P = 0.004
+    - id: P6.C2
+      factor: Creatine + resistance training vs resistance training alone
+      outcome: fat-free mass
+      direction: increase
+      population: 357 older adults
+      magnitude: P < 0.0001
+    - id: P6.C3
+      factor: Creatine + resistance training vs resistance training alone
+      outcome: chest press one-repetition maximum
+      direction: increase
+      population: 357 older adults
+      magnitude: P = 0.004
+    - id: P6.C4
+      factor: Creatine + resistance training vs resistance training alone
+      outcome: 30-s chair stand test
+      direction: increase
+      population: 357 older adults
+      magnitude: P = 0.03
+  - key: 2737
+    label: (Candow et al., 2025)
+    study_type: narrative_review
+    n: null
+    sex: not reported
+    duration: not reported
+    claims:
+    - id: P7.C1
+      factor: creatine monohydrate supplementation combined with exercise training vs none
+      outcome: whole-body lean body mass, regional muscle size, muscle strength, bone area and thickness, functional
+        ability, glucose kinetics, cognition and memory
+      direction: increase
+      population: older adults
+      magnitude: null
+  - key: 2740
+    label: (Ramos-Hernández et al., 2025)
+    study_type: randomized_trial
+    n: 30
+    sex: mixed
+    duration: under 3 months
+    claims:
+    - id: P8.C1
+      factor: CRE + HMB vs placebo (before vs after)
+      outcome: leg strength
+      direction: increase
+      population: 30 physically active older adults
+      magnitude: p < 0.05
+    - id: P8.C2
+      factor: CRE + HMB vs placebo (before vs after)
+      outcome: fat mass
+      direction: decrease
+      population: 30 physically active older adults
+      magnitude: p < 0.05
+  - key: 2741
+    label: (Michalak et al., 2026)
+    study_type: narrative_review
+    n: null
+    sex: not applicable
+    duration: not applicable
+    claims:
+    - id: P9.C1
+      factor: creatine supplementation combined with progressive resistance training vs resistance training alone
+      outcome: lean mass
+      direction: increase
+      population: older adults
+      magnitude: null
+    - id: P9.C2
+      factor: creatine supplementation combined with progressive resistance training vs resistance training alone
+      outcome: dynamic strength
+      direction: increase
+      population: older adults
+      magnitude: null
+    - id: P9.C3
+      factor: creatine supplementation combined with progressive resistance training vs resistance training alone
+      outcome: functional performance
+      direction: increase
+      population: older adults
+      magnitude: null
+    - id: P9.C4
+      factor: creatine supplementation (stand‑alone) vs no supplementation
+      outcome: areal bone mineral density
+      direction: no difference
+      population: older adults
+      magnitude: null
+    - id: P9.C5
+      factor: creatine supplementation vs baseline
+      outcome: muscle total creatine and PCr availability
+      direction: increase
+      population: older adults
+      magnitude: null
+  - key: 2816
+    label: (Bodrick & Zakariya, 2025)
+    study_type: randomized_trial
+    n: null
+    sex: male
+    duration: not applicable
+    claims:
+    - id: P10.C1
+      factor: creatine and whey protein supplementation with resistance training vs resistance training alone
+      outcome: muscular hypertrophy, exercise endurance, and recovery
+      direction: increase
+      population: older males aged 50 to 75
+      magnitude: null
+    - id: P10.C2
+      factor: post-exercise supplementation vs pre-exercise supplementation
+      outcome: muscular hypertrophy
+      direction: increase
+      population: older males aged 50 to 75
+      magnitude: null
+    - id: P10.C3
+      factor: creatine and whey protein supplementation vs no supplementation
+      outcome: anxiety
+      direction: decrease
+      population: older males aged 50 to 75
+      magnitude: null
+    - id: P10.C4
+      factor: recommended dosage supplementation vs higher/unsafe dosage
+      outcome: adverse safety events
+      direction: no difference
+      population: older males aged 50 to 75
+      magnitude: null
+  groups:
+  - question: Does creatine (with resistance training) increase muscle strength in older adults?
+    members:
+    - claim: P1.C2
+      stance: supports
+    - claim: P1.C3
+      stance: supports
+    - claim: P2.C1
+      stance: supports
+    - claim: P4.C2
+      stance: supports
+    - claim: P4.C3
+      stance: supports
+    - claim: P6.C3
+      stance: supports
+    - claim: P9.C2
+      stance: supports
+  - question: Does creatine (with resistance training) increase lean / fat-free mass in older adults?
+    members:
+    - claim: P1.C1
+      stance: supports
+    - claim: P2.C2
+      stance: no effect
+    - claim: P4.C1
+      stance: supports
+    - claim: P6.C2
+      stance: supports
+    - claim: P9.C1
+      stance: supports
+  - question: Does creatine (with resistance training) improve physical function in older adults?
+    members:
+    - claim: P2.C3
+      stance: no effect
+    - claim: P6.C4
+      stance: supports
+    - claim: P9.C3
+      stance: supports
+  ai_draft:
+  - question: Does creatine supplementation combined with resistance training increase upper-body strength?
+    members:
+    - claim: P1.C2
+      stance: supports
+    - claim: P6.C3
+      stance: supports
+    - claim: P4.C2
+      stance: supports
+  - question: Does creatine supplementation combined with resistance training increase lower-body strength?
+    members:
+    - claim: P1.C3
+      stance: supports
+    - claim: P8.C1
+      stance: supports
+  - question: Does creatine supplementation increase lean or fat‑free mass in older adults?
+    members:
+    - claim: P1.C1
+      stance: supports
+    - claim: P4.C1
+      stance: supports
+    - claim: P6.C2
+      stance: supports
+    - claim: P9.C1
+      stance: supports
+  labeled_by: claude
+  label_note: 'One strength group: upper vs lower body is not a different question. Left out on purpose: creatine
+    COMBINED with HMB or whey (P8, P10: a different intervention) and the broad multi-outcome claims (P5.C1, P7.C1).'
+- case: triceps
+  brief: Investigate the mechanical behavior, force generation, and functional role of the triceps brachii during
+    elbow extension, including measurement techniques and existing reviews.
+  reviewed: true
+  papers:
+  - key: 35
+    label: (Hussain et al., 2020)
+    study_type: lab_experiment
+    n: 25
+    sex: male
+    duration: under 3 months
+    claims:
+    - id: P1.C1
+      factor: exercise intensity (30% vs 60% 1RM)
+      outcome: rate of fatigue
+      direction: increase
+      population: twenty-five healthy, untrained, active, male university students
+      magnitude: P < 0.05
+    - id: P1.C2
+      factor: exercise intensity (30% vs 60% 1RM)
+      outcome: endurance time
+      direction: decrease
+      population: twenty-five healthy, untrained, active, male university students
+      magnitude: null
+  - key: 1924
+    label: (Roberts et al., 2026)
+    study_type: randomized_trial
+    n: 10
+    sex: female
+    duration: under 3 months
+    claims:
+    - id: P2.C1
+      factor: training (before vs after)
+      outcome: peak torque
+      direction: increase
+      population: 10 untrained women
+      magnitude: p = 0.040
+    - id: P2.C2
+      factor: training (before vs after) in forearm flexion
+      outcome: electromyographic co-activation
+      direction: decrease
+      population: 10 untrained women
+      magnitude: p = 0.011, -7.78%
+    - id: P2.C3
+      factor: training (before vs after)
+      outcome: muscle thickness
+      direction: no difference
+      population: 10 untrained women
+      magnitude: p = 0.106
+  - key: 19
+    label: (Akima et al., 2021)
+    study_type: lab_experiment
+    n: 17
+    sex: mixed
+    duration: single session
+    claims:
+    - id: P3.C1
+      factor: 120° vs 60° elbow angle
+      outcome: RMS during force levels of 60% and 80% MVC
+      direction: decrease
+      population: 7 men and 10 women
+      magnitude: P = 0.001 to P = 0.004
+    - id: P3.C2
+      factor: between joint angles (60°, 90°, 120°)
+      outcome: sum of difference in RMS from the identical line
+      direction: no difference
+      population: 7 men and 10 women
+      magnitude: P = 0.741
+  - key: 16
+    label: (Kholinne et al., 2018)
+    study_type: lab_experiment
+    n: 10
+    sex: mixed
+    duration: single session
+    claims:
+    - id: P4.C1
+      factor: long head vs lateral and medial heads at 0° shoulder elevation
+      outcome: muscle force and muscle activation
+      direction: increase
+      population: ten healthy participants
+      magnitude: p < 0.05
+    - id: P4.C2
+      factor: medial head vs long and lateral heads at 90°, 135° and 180° shoulder elevation
+      outcome: muscle force
+      direction: increase
+      population: ten healthy participants
+      magnitude: p < 0.05
+  - key: 18
+    label: (Peterson et al., 2017)
+    study_type: lab_experiment
+    n: 11
+    sex: mixed
+    duration: 3 months or more
+    claims:
+    - id: P5.C1
+      factor: biceps vs deltoid transfer
+      outcome: voluntary activation
+      direction: increase
+      population: nine individuals with SCI who had undergone either biceps or deltoid transfer
+      magnitude: p = .03
+    - id: P5.C2
+      factor: biceps vs deltoid transfer
+      outcome: maximum voluntary moments
+      direction: increase
+      population: nine individuals with SCI who had undergone either biceps or deltoid transfer
+      magnitude: p < .001
+  - key: 137
+    label: (Mansour et al., 2025)
+    study_type: computational
+    n: 14
+    sex: female
+    duration: single session
+    claims:
+    - id: P6.C1
+      factor: LSTM vs other machine learning models (RF, CNN, DT, DNN, SVM, LR)
+      outcome: correlation coefficient R for predicting elbow joint moments and triceps force
+      direction: increase
+      population: 14 female participants
+      magnitude: R = 0.98374
+  - key: 1852
+    label: (Stasinaki et al., 2018)
+    study_type: lab_experiment
+    n: 9
+    sex: female
+    duration: under 3 months
+    claims:
+    - id: P7.C1
+      factor: short vs long fascicle length training (before vs after)
+      outcome: elbow extension 1-RM
+      direction: increase
+      population: nine novice female participants
+      magnitude: 40.1 ± 21.3% for S and 44.5 ± 20.1% for L, p < 0.01
+    - id: P7.C2
+      factor: short vs long fascicle length training (before vs after)
+      outcome: muscle thickness at 50% length
+      direction: increase
+      population: nine novice female participants
+      magnitude: 10.7 ± 15.3% for S and 13.7 ± 9.0% for L
+  - key: 1829
+    label: (Werner et al., 1993)
+    study_type: lab_experiment
+    n: 7
+    sex: not reported
+    duration: single session
+    claims:
+    - id: P8.C1
+      factor: Elbow extension before ball release (before vs after)
+      outcome: biceps and triceps activity
+      direction: decrease
+      population: Seven healthy, adult pitchers
+      magnitude: null
+  - key: 67
+    label: (Popadić-Gaćeša et al., 2013)
+    study_type: lab_experiment
+    n: 19
+    sex: not reported
+    duration: 3 months or more
+    claims:
+    - id: P9.C1
+      factor: resistance training (before vs after)
+      outcome: endurance strength
+      direction: increase
+      population: nineteen healthy young nonathletes
+      magnitude: 57%, P < .001
+    - id: P9.C2
+      factor: resistance training (before vs after)
+      outcome: fatigue rate
+      direction: decrease
+      population: nineteen healthy young nonathletes
+      magnitude: 68%, P < .001
+    - id: P9.C3
+      factor: resistance training (before vs after)
+      outcome: decrease in strength
+      direction: increase
+      population: nineteen healthy young nonathletes
+      magnitude: 59%, P < .001
+  - key: 1859
+    label: (Günzkofer et al., 2011)
+    study_type: lab_experiment
+    n: 17
+    sex: mixed
+    duration: single session
+    claims:
+    - id: P10.C1
+      factor: shoulder flexion (increasing vs decreasing)
+      outcome: elbow flexion joint torques
+      direction: decrease
+      population: young and old males and females
+      magnitude: not reported
+  groups:
+  - question: Does resistance training increase elbow-extension strength?
+    members:
+    - claim: P2.C1
+      stance: supports
+    - claim: P7.C1
+      stance: supports
+    - claim: P9.C1
+      stance: supports
+  - question: Does resistance training increase triceps muscle thickness?
+    members:
+    - claim: P2.C3
+      stance: no effect
+    - claim: P7.C2
+      stance: supports
+  ai_draft:
+  - question: Does training increase muscle thickness?
+    members:
+    - claim: P2.C3
+      stance: no effect
+    - claim: P7.C2
+      stance: supports
+  labeled_by: claude
+  label_note: 'Fatigue claims (P1.C1 intensity, P9.C2 training) answer different questions: not grouped.'

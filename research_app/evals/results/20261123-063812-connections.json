@@ -1,0 +1,59 @@
+{
+ "suite": "connections",
+ "run_id": 1795415892,
+ "started_at": "2026-11-23T06:38:12.244628Z",
+ "seconds": 10.9,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "6.7",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite",
+  "results_per_query": "15",
+  "prefilter_keep": "40"
+ },
+ "metrics": {
+  "pair_precision": 0.9444444444444444,
+  "pair_recall": 0.25,
+  "groups_found": 0.5833333333333333,
+  "relation_accuracy": 0.75,
+  "stance_accuracy": 1.0,
+  "ai_groups": 2.5,
+  "runs": 1.0
+ },
+ "details": [
+  "MISSED GROUP · creatine · Does creatine (with resistance training) increase muscle strength in older adults?",
+  "FALSE LINK · creatine · P1.C3 ↔ P8.C1",
+  "MISSED LINK · creatine · P1.C1 ↔ P2.C2",
+  "MISSED LINK · creatine · P1.C2 ↔ P2.C1",
+  "MISSED LINK · creatine · P1.C2 ↔ P4.C2",
+  "MISSED LINK · creatine · P1.C2 ↔ P4.C3",
+  "MISSED LINK · creatine · P1.C2 ↔ P9.C2",
+  "MISSED LINK · creatine · P1.C3 ↔ P2.C1",
+  "MISSED LINK · creatine · P1.C3 ↔ P4.C2",
+  "MISSED LINK · creatine · P1.C3 ↔ P4.C3",
+  "MISSED LINK · creatine · P1.C3 ↔ P6.C3",
+  "MISSED LINK · creatine · P1.C3 ↔ P9.C2",
+  "MISSED GROUP · triceps · Does resistance training increase elbow-extension strength?",
+  "MISSED LINK · triceps · P2.C1 ↔ P7.C1",
+  "MISSED LINK · triceps · P2.C1 ↔ P9.C1",
+  "MISSED LINK · triceps · P7.C1 ↔ P9.C1"
+ ],
+ "cost": {
+  "connect · gemini": {
+   "calls": 2,
+   "tokens": 6056,
+   "seconds": 3.453
+  },
+  "connect · groq": {
+   "calls": 1,
+   "tokens": 3523,
+   "seconds": 2.8
+  }
+ }
+}

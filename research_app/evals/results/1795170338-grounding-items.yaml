@@ -1,0 +1,911 @@
+- id: creatine-2738-1
+  case: creatine
+  paper: (Chilibeck et al., 2017)
+  claim: 'lean tissue mass INCREASED (mean difference =1.37 kg [95% CI =0.97–1.76]; p <0.00001) — factor: creatine
+    supplementation vs placebo during resistance training — in: older adults'
+  quote: Creatine supplementation resulted in greater increases in lean tissue mass (mean difference =1.37 kg [95%
+    CI =0.97–1.76]; p <0.00001)
+  section: abstract
+  paragraph: 'Abstract: The loss of muscle mass and strength with aging results in significant functional impairment.
+    Creatine supplementation has been used in combination with resistance training as a strategy for increasing
+    lean tissue mass and muscle strength in older adults, but results across studies are equivocal. We conducted
+    a systematic review and meta-analysis of randomized controlled trials of creatine supplementation during resistance
+    training in older adults with lean tissue mass, chest press strength, and leg press strength as outcomes by
+    searching PubMed and SPORTDiscus databases. Twenty-two studies were included in our meta-analysis with 721 participants
+    (both men and women; with a mean age of 57–70 years across studies) randomized to creatine supplementation or
+    placebo during resistance training 2–3 days/week for 7–52 weeks. Creatine supplementation resulted in greater
+    increases in lean tissue mass (mean difference =1.37 kg [95% CI =0.97–1.76]; p <0.00001), chest press strength
+    (standardized mean difference [SMD] =0.35 [0.16–0.53]; p =0.0002), and leg press strength (SMD =0.24 [0.05–0.43];
+    p =0.01). A number of mechanisms exist by which creatine may increase lean tissue mass and muscular strength.
+    These are included in a narrative review in the discussion section of this article. In summary, creatine supplementation
+    increases lean tissue mass and upper and lower body muscular strength during resistance training of older adults,
+    but potential mechanisms by which creatine exerts these positive effects have yet to be evaluated extensively.
+    Keywords: muscle, age, sarcopenia, exercise, nutrition, bench press, leg press'
+  judge: supports
+  judge_reason: Paragraph reports greater increases in lean tissue mass matching claim
+  claim_data:
+    outcome: lean tissue mass
+    factor: creatine supplementation vs placebo during resistance training
+    population: older adults
+    direction: increase
+    magnitude: mean difference =1.37 kg [95% CI =0.97–1.76]; p <0.00001
+    quote: Creatine supplementation resulted in greater increases in lean tissue mass (mean difference =1.37 kg
+      [95% CI =0.97–1.76]; p <0.00001)
+- id: creatine-2738-2
+  case: creatine
+  paper: (Chilibeck et al., 2017)
+  claim: 'chest press strength INCREASED (SMD =0.35 [0.16–0.53]; p =0.0002) — factor: creatine supplementation vs
+    placebo during resistance training — in: older adults'
+  quote: chest press strength (standardized mean difference [SMD] =0.35 [0.16–0.53]; p =0.0002)
+  section: abstract
+  paragraph: 'Abstract: The loss of muscle mass and strength with aging results in significant functional impairment.
+    Creatine supplementation has been used in combination with resistance training as a strategy for increasing
+    lean tissue mass and muscle strength in older adults, but results across studies are equivocal. We conducted
+    a systematic review and meta-analysis of randomized controlled trials of creatine supplementation during resistance
+    training in older adults with lean tissue mass, chest press strength, and leg press strength as outcomes by
+    searching PubMed and SPORTDiscus databases. Twenty-two studies were included in our meta-analysis with 721 participants
+    (both men and women; with a mean age of 57–70 years across studies) randomized to creatine supplementation or
+    placebo during resistance training 2–3 days/week for 7–52 weeks. Creatine supplementation resulted in greater
+    increases in lean tissue mass (mean difference =1.37 kg [95% CI =0.97–1.76]; p <0.00001), chest press strength
+    (standardized mean difference [SMD] =0.35 [0.16–0.53]; p =0.0002), and leg press strength (SMD =0.24 [0.05–0.43];
+    p =0.01). A number of mechanisms exist by which creatine may increase lean tissue mass and muscular strength.
+    These are included in a narrative review in the discussion section of this article. In summary, creatine supplementation
+    increases lean tissue mass and upper and lower body muscular strength during resistance training of older adults,
+    but potential mechanisms by which creatine exerts these positive effects have yet to be evaluated extensively.
+    Keywords: muscle, age, sarcopenia, exercise, nutrition, bench press, leg press'
+  judge: supports
+  judge_reason: Paragraph reports greater increases in chest press strength matching claim
+  claim_data:
+    outcome: chest press strength
+    factor: creatine supplementation vs placebo during resistance training
+    population: older adults
+    direction: increase
+    magnitude: SMD =0.35 [0.16–0.53]; p =0.0002
+    quote: chest press strength (standardized mean difference [SMD] =0.35 [0.16–0.53]; p =0.0002)
+- id: creatine-2738-3
+  case: creatine
+  paper: (Chilibeck et al., 2017)
+  claim: 'leg press strength INCREASED (SMD =0.24 [0.05–0.43]; p =0.01) — factor: creatine supplementation vs placebo
+    during resistance training — in: older adults'
+  quote: leg press strength (SMD =0.24 [0.05–0.43]; p =0.01)
+  section: abstract
+  paragraph: 'Abstract: The loss of muscle mass and strength with aging results in significant functional impairment.
+    Creatine supplementation has been used in combination with resistance training as a strategy for increasing
+    lean tissue mass and muscle strength in older adults, but results across studies are equivocal. We conducted
+    a systematic review and meta-analysis of randomized controlled trials of creatine supplementation during resistance
+    training in older adults with lean tissue mass, chest press strength, and leg press strength as outcomes by
+    searching PubMed and SPORTDiscus databases. Twenty-two studies were included in our meta-analysis with 721 participants
+    (both men and women; with a mean age of 57–70 years across studies) randomized to creatine supplementation or
+    placebo during resistance training 2–3 days/week for 7–52 weeks. Creatine supplementation resulted in greater
+    increases in lean tissue mass (mean difference =1.37 kg [95% CI =0.97–1.76]; p <0.00001), chest press strength
+    (standardized mean difference [SMD] =0.35 [0.16–0.53]; p =0.0002), and leg press strength (SMD =0.24 [0.05–0.43];
+    p =0.01). A number of mechanisms exist by which creatine may increase lean tissue mass and muscular strength.
+    These are included in a narrative review in the discussion section of this article. In summary, creatine supplementation
+    increases lean tissue mass and upper and lower body muscular strength during resistance training of older adults,
+    but potential mechanisms by which creatine exerts these positive effects have yet to be evaluated extensively.
+    Keywords: muscle, age, sarcopenia, exercise, nutrition, bench press, leg press'
+  judge: supports
+  judge_reason: Paragraph reports greater increases in leg press strength matching claim
+  claim_data:
+    outcome: leg press strength
+    factor: creatine supplementation vs placebo during resistance training
+    population: older adults
+    direction: increase
+    magnitude: SMD =0.24 [0.05–0.43]; p =0.01
+    quote: leg press strength (SMD =0.24 [0.05–0.43]; p =0.01)
+- id: creatine-2745-1
+  case: creatine
+  paper: (Brose et al., 2003)
+  claim: 'fat-free mass and total body mass INCREASED (p <.05) — factor: creatine monohydrate vs placebo (following
+    strength training) — in: older adults'
+  quote: CrM supplementation resulted in significantly greater increases in fat-free mass and total body mass, as
+    compared with placebo (p <.05).
+  section: abstract
+  paragraph: 'We sought to determine whether creatine monohydrate (CrM) supplementation would enhance the increases
+    in strength and fat-free mass that develop during resistance exercise training in older adults. Twenty-eight
+    healthy men and women over the age of 65 years participated in a whole-body resistance exercise program 3 days
+    per week for 14 weeks. The study participants were randomly allocated, in a double-blind fashion, to receive
+    either CrM (5 g/d + 2 g of dextrose; n = 14) or placebo (7 g of dextrose; n = 14). The primary outcome measurements
+    included the following: total body mass, fat-free mass, one-repetition maximum strength for each body part,
+    isometric knee extension, handgrip, and dorsiflexion strength, chair stand performance, 30-m walk test, 14-stair
+    climb performance, muscle fiber type and area, and intramuscular total creatine. Fourteen weeks of resistance
+    exercise training resulted in significant increases in all measurements of strength and functional tasks and
+    muscle fiber area for both groups (p <.05). CrM supplementation resulted in significantly greater increases
+    in fat-free mass and total body mass, as compared with placebo (p <.05). The CrM group also showed a greater
+    increase in isometric knee extension strength in men and women, as compared with placebo (p <.05), and also
+    greater gains in isometric dorsiflexion strength (p <.05), but in men only. There was a significant increase
+    in intramuscular total creatine in the CrM group (p <.05). Finally, there were no significant side effects of
+    treatment or exercise training. This study confirms that supervised heavy resistance exercise training can safely
+    increase muscle strength and functional capacity in older adults. The addition of CrM supplementation to the
+    exercise stimulus enhanced the increase in total and fat-free mass, and gains in several indices of isometric
+    muscle strength.'
+  judge: supports
+  judge_reason: Paragraph reports greater increases matching claim
+  claim_data:
+    outcome: fat-free mass and total body mass
+    factor: creatine monohydrate vs placebo (following strength training)
+    population: older adults
+    direction: increase
+    magnitude: p <.05
+    quote: CrM supplementation resulted in significantly greater increases in fat-free mass and total body mass,
+      as compared with placebo (p <.05).
+- id: creatine-2745-2
+  case: creatine
+  paper: (Brose et al., 2003)
+  claim: 'isometric knee extension strength INCREASED (p <.05) — factor: creatine monohydrate vs placebo (following
+    strength training) — in: older men and women'
+  quote: The CrM group also showed a greater increase in isometric knee extension strength in men and women, as
+    compared with placebo (p <.05)
+  section: abstract
+  paragraph: 'We sought to determine whether creatine monohydrate (CrM) supplementation would enhance the increases
+    in strength and fat-free mass that develop during resistance exercise training in older adults. Twenty-eight
+    healthy men and women over the age of 65 years participated in a whole-body resistance exercise program 3 days
+    per week for 14 weeks. The study participants were randomly allocated, in a double-blind fashion, to receive
+    either CrM (5 g/d + 2 g of dextrose; n = 14) or placebo (7 g of dextrose; n = 14). The primary outcome measurements
+    included the following: total body mass, fat-free mass, one-repetition maximum strength for each body part,
+    isometric knee extension, handgrip, and dorsiflexion strength, chair stand performance, 30-m walk test, 14-stair
+    climb performance, muscle fiber type and area, and intramuscular total creatine. Fourteen weeks of resistance
+    exercise training resulted in significant increases in all measurements of strength and functional tasks and
+    muscle fiber area for both groups (p <.05). CrM supplementation resulted in significantly greater increases
+    in fat-free mass and total body mass, as compared with placebo (p <.05). The CrM group also showed a greater
+    increase in isometric knee extension strength in men and women, as compared with placebo (p <.05), and also
+    greater gains in isometric dorsiflexion strength (p <.05), but in men only. There was a significant increase
+    in intramuscular total creatine in the CrM group (p <.05). Finally, there were no significant side effects of
+    treatment or exercise training. This study confirms that supervised heavy resistance exercise training can safely
+    increase muscle strength and functional capacity in older adults. The addition of CrM supplementation to the
+    exercise stimulus enhanced the increase in total and fat-free mass, and gains in several indices of isometric
+    muscle strength.'
+  judge: supports
+  judge_reason: Paragraph reports greater increase in both men and women
+  claim_data:
+    outcome: isometric knee extension strength
+    factor: creatine monohydrate vs placebo (following strength training)
+    population: older men and women
+    direction: increase
+    magnitude: p <.05
+    quote: The CrM group also showed a greater increase in isometric knee extension strength in men and women, as
+      compared with placebo (p <.05)
+- id: creatine-2745-3
+  case: creatine
+  paper: (Brose et al., 2003)
+  claim: 'isometric dorsiflexion strength INCREASED (p <.05) — factor: creatine monohydrate vs placebo (following
+    strength training) — in: older men'
+  quote: and also greater gains in isometric dorsiflexion strength (p <.05), but in men only.
+  section: abstract
+  paragraph: 'We sought to determine whether creatine monohydrate (CrM) supplementation would enhance the increases
+    in strength and fat-free mass that develop during resistance exercise training in older adults. Twenty-eight
+    healthy men and women over the age of 65 years participated in a whole-body resistance exercise program 3 days
+    per week for 14 weeks. The study participants were randomly allocated, in a double-blind fashion, to receive
+    either CrM (5 g/d + 2 g of dextrose; n = 14) or placebo (7 g of dextrose; n = 14). The primary outcome measurements
+    included the following: total body mass, fat-free mass, one-repetition maximum strength for each body part,
+    isometric knee extension, handgrip, and dorsiflexion strength, chair stand performance, 30-m walk test, 14-stair
+    climb performance, muscle fiber type and area, and intramuscular total creatine. Fourteen weeks of resistance
+    exercise training resulted in significant increases in all measurements of strength and functional tasks and
+    muscle fiber area for both groups (p <.05). CrM supplementation resulted in significantly greater increases
+    in fat-free mass and total body mass, as compared with placebo (p <.05). The CrM group also showed a greater
+    increase in isometric knee extension strength in men and women, as compared with placebo (p <.05), and also
+    greater gains in isometric dorsiflexion strength (p <.05), but in men only. There was a significant increase
+    in intramuscular total creatine in the CrM group (p <.05). Finally, there were no significant side effects of
+    treatment or exercise training. This study confirms that supervised heavy resistance exercise training can safely
+    increase muscle strength and functional capacity in older adults. The addition of CrM supplementation to the
+    exercise stimulus enhanced the increase in total and fat-free mass, and gains in several indices of isometric
+    muscle strength.'
+  judge: supports
+  judge_reason: Paragraph reports greater gains in men only, matching claim
+  claim_data:
+    outcome: isometric dorsiflexion strength
+    factor: creatine monohydrate vs placebo (following strength training)
+    population: older men
+    direction: increase
+    magnitude: p <.05
+    quote: and also greater gains in isometric dorsiflexion strength (p <.05), but in men only.
+- id: creatine-2745-4
+  case: creatine
+  paper: (Brose et al., 2003)
+  claim: 'intramuscular total creatine INCREASED (p <.05) — factor: creatine monohydrate vs placebo (following strength
+    training) — in: older adults'
+  quote: There was a significant increase in intramuscular total creatine in the CrM group (p <.05).
+  section: abstract
+  paragraph: 'We sought to determine whether creatine monohydrate (CrM) supplementation would enhance the increases
+    in strength and fat-free mass that develop during resistance exercise training in older adults. Twenty-eight
+    healthy men and women over the age of 65 years participated in a whole-body resistance exercise program 3 days
+    per week for 14 weeks. The study participants were randomly allocated, in a double-blind fashion, to receive
+    either CrM (5 g/d + 2 g of dextrose; n = 14) or placebo (7 g of dextrose; n = 14). The primary outcome measurements
+    included the following: total body mass, fat-free mass, one-repetition maximum strength for each body part,
+    isometric knee extension, handgrip, and dorsiflexion strength, chair stand performance, 30-m walk test, 14-stair
+    climb performance, muscle fiber type and area, and intramuscular total creatine. Fourteen weeks of resistance
+    exercise training resulted in significant increases in all measurements of strength and functional tasks and
+    muscle fiber area for both groups (p <.05). CrM supplementation resulted in significantly greater increases
+    in fat-free mass and total body mass, as compared with placebo (p <.05). The CrM group also showed a greater
+    increase in isometric knee extension strength in men and women, as compared with placebo (p <.05), and also
+    greater gains in isometric dorsiflexion strength (p <.05), but in men only. There was a significant increase
+    in intramuscular total creatine in the CrM group (p <.05). Finally, there were no significant side effects of
+    treatment or exercise training. This study confirms that supervised heavy resistance exercise training can safely
+    increase muscle strength and functional capacity in older adults. The addition of CrM supplementation to the
+    exercise stimulus enhanced the increase in total and fat-free mass, and gains in several indices of isometric
+    muscle strength.'
+  judge: supports
+  judge_reason: Paragraph reports significant increase in intramuscular creatine
+  claim_data:
+    outcome: intramuscular total creatine
+    factor: creatine monohydrate vs placebo (following strength training)
+    population: older adults
+    direction: increase
+    magnitude: p <.05
+    quote: There was a significant increase in intramuscular total creatine in the CrM group (p <.05).
+- id: creatine-2785-1
+  case: creatine
+  paper: (Stares & Bains, 2019)
+  claim: 'upper and/or lower body strength, functional capacity, and lean mass INCREASED — factor: creatine supplementation
+    combined with resistance training vs exercise alone (before vs after / duration) — in: older adults'
+  quote: any additive ergogenic creatine effects on upper and/or lower body strength, functional capacity, and lean
+    mass in an older population would require a continuous and daily low-dose creatine supplementation combined
+    with at least 12 weeks of resistance training.
+  section: abstract
+  paragraph: 'BACKGROUND AND PURPOSE: The role of creatine supplementation in young athletes and bodybuilders is
+    well established including ergogenic properties of muscular hypertrophy, strength, power, and endurance. Whether
+    the benefits of creatine supplementation translate to an aging population with moderate training stimulus remains
+    unclear especially in regard to gender, creatine dose, and duration. This systematic review assessed whether
+    creatine supplementation combined with exercise results in additive improvements in indices of skeletal muscle,
+    bone, and mental health over exercise alone in healthy older adults. METHODS: PubMed, CINAHL, and Web of Science
+    databases were utilized to identify randomized controlled trials of creatine supplementation combined with exercise
+    in an aging population with additional predetermined inclusion and exclusion criteria. Two reviewers independently
+    screened the titles and abstracts, reviewed full-text articles, and performed quality assessments using the
+    Physiotherapy Evidence Database scale. RESULTS AND DISCUSSION: Seventeen studies were comprehensively reviewed
+    according to categories of strength, endurance, functional capacity, body composition, cognition, and safety.
+    These studies suggest that any additive ergogenic creatine effects on upper and/or lower body strength, functional
+    capacity, and lean mass in an older population would require a continuous and daily low-dose creatine supplementation
+    combined with at least 12 weeks of resistance training. Potential creatine specific increases in regional bone
+    mineral density of the femur are possible but may require at least 1 year of creatine supplementation combined
+    with moderate resistance training, and additional long-term clinical trials are warranted. The limited data
+    suggested no additive effects of creatine over exercise alone on indices of mental health. The beneficial effects
+    of creatine supplementation are more consistent in older women than in men. CONCLUSIONS: Creatine monohydrate
+    is safe to use in older adults. While creatine in conjunction with moderate- to high-intensity exercise in an
+    aging population may improve skeletal muscle health, additional studies are needed to determine the effective
+    dosing and duration paradigm for potential combined creatine and exercise effects on bone and cognition in older
+    adults.'
+  judge: does not support
+  judge_reason: Paragraph only suggests requirements, no evidence of increase
+  claim_data:
+    outcome: upper and/or lower body strength, functional capacity, and lean mass
+    factor: creatine supplementation combined with resistance training vs exercise alone (before vs after / duration)
+    population: older adults
+    direction: increase
+    magnitude: null
+    quote: any additive ergogenic creatine effects on upper and/or lower body strength, functional capacity, and
+      lean mass in an older population would require a continuous and daily low-dose creatine supplementation combined
+      with at least 12 weeks of resistance training.
+- id: creatine-2740-1
+  case: creatine
+  paper: (Ramos-Hernández et al., 2025)
+  claim: 'leg strength INCREASED (p < 0.05) — factor: CRE + HMB vs placebo (before vs after) — in: 30 physically
+    active older adults'
+  quote: In contrast, CRE + HMB significantly improved multiple functional strength outcomes, including leg/back
+    strength, arm flexion strength, upper-body endurance
+  section: abstract
+  paragraph: Sarcopenia is a major contributor to frailty and functional decline among older adults. Combining exercise
+    with nutritional strategies such as creatine monohydrate (CRE) and β-hydroxy-β-methylbutyrate (HMB) supplementation
+    may help to preserve strength and independence. To evaluate the effects of 6-week CRE + HMB supplementation
+    combined with an integral physical conditioning (IPC) program on functional strength and body composition in
+    physically active older adults. In a randomized, double-blind, placebo-controlled crossover trial, 30 older
+    adults (20 men, 10 women; ≥ 60 years) completed two 6-week intervention periods (CRE + HMB or placebo) separated
+    by a 3-week washout. The IPC program performed in both conditions consisted of four supervised weekly sessions
+    combining strength, power, multicomponent circuits, high-intensity interval and moderate intensity continuous
+    training), performed at 40-100% training heart rate (THR) and 20-90% one-repetition maximum (1RM) and structured
+    as warm-up, main part and cooldown. Functional strength and body composition (bioelectrical impedance analysis)
+    were assessed pre- and post-intervention, respectively. Significant time × group interactions were observed
+    for fat mass, fat-free mass, total muscle mass, skeletal muscle mass, appendicular skeletal muscle mass, muscle
+    mass index, skeletal muscle index and ALM/BMI (all p < 0.05). The CRE + HMB group showed reductions in fat mass
+    and body fat percentage, with slight numerical increases in muscle parameters, whereas the placebo group exhibited
+    opposite trends. However, within-group changes were not statistically significant. In contrast, CRE + HMB significantly
+    improved multiple functional strength outcomes, including leg/back strength, arm flexion strength, upper-body
+    endurance (dumbbell flexion, push-ups, isometric hold) and core endurance (crunches). Regression analyses suggested
+    that these improvements were largely independent of changes in muscle mass, supporting a potential neuromuscular
+    mechanism. Six weeks of CRE + HMB supplementation combined with IPC enhanced functional strength and endurance
+    in active older adults, largely independent of changes in muscle mass. This combined approach represents a promising
+    strategy for preserving functional capacity and promoting healthy ageing.
+  judge: supports
+  judge_reason: Paragraph states leg strength improved
+  claim_data:
+    outcome: leg strength
+    factor: CRE + HMB vs placebo (before vs after)
+    population: 30 physically active older adults
+    direction: increase
+    magnitude: p < 0.05
+    quote: In contrast, CRE + HMB significantly improved multiple functional strength outcomes, including leg/back
+      strength, arm flexion strength, upper-body endurance
+- id: creatine-2740-2
+  case: creatine
+  paper: (Ramos-Hernández et al., 2025)
+  claim: 'fat mass DECREASED (p < 0.05) — factor: CRE + HMB vs placebo (before vs after) — in: 30 physically active
+    older adults'
+  quote: Significant time × group interactions were observed for fat mass, fat-free mass, total muscle mass, skeletal
+    muscle mass, appendicular skeletal muscle mass, muscle mass index, skeletal muscle index and ALM/BMI (all p
+    < 0.05).
+  section: abstract
+  paragraph: Sarcopenia is a major contributor to frailty and functional decline among older adults. Combining exercise
+    with nutritional strategies such as creatine monohydrate (CRE) and β-hydroxy-β-methylbutyrate (HMB) supplementation
+    may help to preserve strength and independence. To evaluate the effects of 6-week CRE + HMB supplementation
+    combined with an integral physical conditioning (IPC) program on functional strength and body composition in
+    physically active older adults. In a randomized, double-blind, placebo-controlled crossover trial, 30 older
+    adults (20 men, 10 women; ≥ 60 years) completed two 6-week intervention periods (CRE + HMB or placebo) separated
+    by a 3-week washout. The IPC program performed in both conditions consisted of four supervised weekly sessions
+    combining strength, power, multicomponent circuits, high-intensity interval and moderate intensity continuous
+    training), performed at 40-100% training heart rate (THR) and 20-90% one-repetition maximum (1RM) and structured
+    as warm-up, main part and cooldown. Functional strength and body composition (bioelectrical impedance analysis)
+    were assessed pre- and post-intervention, respectively. Significant time × group interactions were observed
+    for fat mass, fat-free mass, total muscle mass, skeletal muscle mass, appendicular skeletal muscle mass, muscle
+    mass index, skeletal muscle index and ALM/BMI (all p < 0.05). The CRE + HMB group showed reductions in fat mass
+    and body fat percentage, with slight numerical increases in muscle parameters, whereas the placebo group exhibited
+    opposite trends. However, within-group changes were not statistically significant. In contrast, CRE + HMB significantly
+    improved multiple functional strength outcomes, including leg/back strength, arm flexion strength, upper-body
+    endurance (dumbbell flexion, push-ups, isometric hold) and core endurance (crunches). Regression analyses suggested
+    that these improvements were largely independent of changes in muscle mass, supporting a potential neuromuscular
+    mechanism. Six weeks of CRE + HMB supplementation combined with IPC enhanced functional strength and endurance
+    in active older adults, largely independent of changes in muscle mass. This combined approach represents a promising
+    strategy for preserving functional capacity and promoting healthy ageing.
+  judge: does not support
+  judge_reason: No significant decrease in fat mass reported
+  claim_data:
+    outcome: fat mass
+    factor: CRE + HMB vs placebo (before vs after)
+    population: 30 physically active older adults
+    direction: decrease
+    magnitude: p < 0.05
+    quote: Significant time × group interactions were observed for fat mass, fat-free mass, total muscle mass, skeletal
+      muscle mass, appendicular skeletal muscle mass, muscle mass index, skeletal muscle index and ALM/BMI (all
+      p < 0.05).
+- id: creatine-2741-4
+  case: creatine
+  paper: (Michalak et al., 2026)
+  claim: 'areal bone mineral density DID NOT CHANGE — factor: creatine supplementation (stand‑alone) vs no supplementation
+    — in: older adults'
+  quote: effects on areal bone mineral density measured by DXA are generally neutral in long‑term trials
+  section: abstract
+  paragraph: 'Introduction and purpose: Age-related declines in skeletal muscle mass and strength, together with
+    bone loss, reduce physical performance and increase frailty and fall risk in older adults. Creatine supplementation
+    has been proposed as a supportive and potentially preventive strategy due to its role in cellular energy buffering
+    and its capacity to augment exercise training adaptations. This narrative review summarizes current evidence
+    on the effects of creatine supplementation on muscle strength and function and on bone-related outcomes in older
+    adults. Review methods: A narrative review of the literature was conducted using PubMed and Google Scholar.
+    Peer-reviewed studies published between 2000 and 2025 examining creatine supplementation and muscle- or bone-related
+    outcomes in adults were included. Brief description of the state of knowledge: Evidence from randomized trials
+    and meta-analyses indicates that creatine supplementation combined with progressive resistance training increases
+    lean mass and improves dynamic strength and functional performance in older adults more consistently than resistance
+    training alone. Mechanistically, benefits are biologically plausible through increased intramuscular creatine/phosphocreatine
+    availability, improved high-intensity exercise capacity, and downstream anabolic signaling that supports training
+    responsiveness. In contrast, effects on areal bone mineral density measured by DXA are generally neutral in
+    long-term trials and pooled analyses. Summary (conclusions): Creatine is a well-studied supplement that, when
+    paired with resistance training, reliably enhances lean mass and muscle strength in older adults. Current evidence
+    does not support creatine as an effective stand-alone strategy to increase areal BMD, but potential benefits
+    warrant further adequately powered, long-duration trials, particularly in sarcopenic and osteopenic populations.'
+  judge: other study
+  judge_reason: Quote comes from a review summarizing other research, not the study's own result
+  claim_data:
+    outcome: areal bone mineral density
+    factor: creatine supplementation (stand‑alone) vs no supplementation
+    population: older adults
+    direction: no difference
+    magnitude: null
+    quote: effects on areal bone mineral density measured by DXA are generally neutral in long‑term trials
+- id: creatine-2741-5
+  case: creatine
+  paper: (Michalak et al., 2026)
+  claim: 'muscle total creatine and PCr availability INCREASED — factor: creatine supplementation vs baseline —
+    in: older adults'
+  quote: creatine supplementation increases muscle total creatine and PCr availability in both young and older adults
+  section: results (Research results)
+  paragraph: Aging is associated with altered muscle energetics. Evidence from human studies suggests mild reductions
+    in intramuscular PCr content and/or slower PCr recovery kinetics with age, with more pronounced alterations
+    in sarcopenic muscle phenotypes(30). Importantly, creatine supplementation increases muscle total creatine and
+    PCr availability in both young and older adults, and responses may be larger in individuals with lower baseline
+    stores(31).
+  judge: supports
+  judge_reason: Paragraph states supplementation increases creatine and PCr in older adults as claimed
+  claim_data:
+    outcome: muscle total creatine and PCr availability
+    factor: creatine supplementation vs baseline
+    population: older adults
+    direction: increase
+    magnitude: null
+    quote: creatine supplementation increases muscle total creatine and PCr availability in both young and older
+      adults
+- id: creatine-2816-1
+  case: creatine
+  paper: (Bodrick & Zakariya, 2025)
+  claim: 'muscular hypertrophy, exercise endurance, and recovery INCREASED — factor: creatine and whey protein supplementation
+    with resistance training vs resistance training alone — in: older males aged 50 to 75'
+  quote: supplements of whey protein and creatine, when combined with resistance training, increased muscular hypertrophy,
+    exercise endurance, and recovery.
+  section: abstract
+  paragraph: Muscle loss during aging known as sarcopenia is the steady loss of muscle mass, consequent strength
+    and related functioning, which commonly affects seniors in the population, potentially reducing the ability
+    to perform daily tasks. It is progressively restrictive in physiological functioning, and supplementation with
+    creatine and whey protein has become viewed as an intervention to minimize or reverse the loss. Creatine and
+    whey protein have emerged as promising interventions for addressing muscle loss, especially when combined with
+    consistency in training. This review study explores the synergistic impact of creatine and whey protein supplementation,
+    combined with resistance training, on improving muscle mass, strength and fat loss, and overall physical performance
+    in older males aged 50 to 75. The review studies the accompanying benefits, including psychological resilience,
+    improved mood, and enhanced quality of life. The study aimed to synthesize evidence on the efficacy of creatine
+    and whey protein in enhancing muscle hypertrophy and strength. It also aimed to evaluate optimal supplementation
+    approaches, and identify gaps in current research, including long-term safety and adherence.The scope of this
+    review study focused on analyzing peer-reviewed studies, systematic reviews, and clinical trials from PubMed,
+    Scopus, and Google Scholar, using key terms that included creatine supplementation, whey protein, older adults,
+    and resistance training. The review included individuals aged 50 to 75 and examined the effect of creatine and/or
+    whey protein on muscle atrophy and hypertrophy, strength, fat loss, and psychological well-being. Studies without
+    physical or psychological outcomes, or involving a younger population below 50 years were excluded. The research
+    found that supplements of whey protein and creatine, when combined with resistance training, increased muscular
+    hypertrophy, exercise endurance, and recovery. Whey protein contains leucine, which enhances muscle mass, while
+    creatine boosts the intramuscular content of adenosine triphosphate to support recovery and function. Post-exercise
+    supplementation was found to be better than pre-exercise supplementation. Some studies showed variable gains
+    in muscles for older individuals, and were influenced by baseline protein diet or comorbidities. Supplementation
+    also improved mental health by reducing anxiety and improving sleep and self-esteem. Supplementation with exposure
+    to the sun also improved circadian rhythm and vitamin D synthesis, and mood stabilization. In spite of safety
+    considerations, such as renal strain and gastrointestinal issues, evidence supports general safety when the
+    recommended dosage is used. This review demonstrates that creatine and whey protein when combined with consistent
+    training can reduce age-related physical decline and improve overall wellness in the older population. The review
+    study shows significant findings in key areas of scientific literature that pertain to understanding adherence,
+    optimal dosing, and psychological outcomes across diverse populations. Focusing on these key areas can help
+    to refine supplementation guidelines that are beneficial for the aging demographic.
+  judge: other study
+  judge_reason: Paragraph is a review of prior research, not the study's own data
+  claim_data:
+    outcome: muscular hypertrophy, exercise endurance, and recovery
+    factor: creatine and whey protein supplementation with resistance training vs resistance training alone
+    population: older males aged 50 to 75
+    direction: increase
+    magnitude: null
+    quote: supplements of whey protein and creatine, when combined with resistance training, increased muscular
+      hypertrophy, exercise endurance, and recovery.
+- id: creatine-2816-2
+  case: creatine
+  paper: (Bodrick & Zakariya, 2025)
+  claim: 'muscular hypertrophy INCREASED — factor: post-exercise supplementation vs pre-exercise supplementation
+    — in: older males aged 50 to 75'
+  quote: Post-exercise supplementation was found to be better than pre-exercise supplementation.
+  section: abstract
+  paragraph: Muscle loss during aging known as sarcopenia is the steady loss of muscle mass, consequent strength
+    and related functioning, which commonly affects seniors in the population, potentially reducing the ability
+    to perform daily tasks. It is progressively restrictive in physiological functioning, and supplementation with
+    creatine and whey protein has become viewed as an intervention to minimize or reverse the loss. Creatine and
+    whey protein have emerged as promising interventions for addressing muscle loss, especially when combined with
+    consistency in training. This review study explores the synergistic impact of creatine and whey protein supplementation,
+    combined with resistance training, on improving muscle mass, strength and fat loss, and overall physical performance
+    in older males aged 50 to 75. The review studies the accompanying benefits, including psychological resilience,
+    improved mood, and enhanced quality of life. The study aimed to synthesize evidence on the efficacy of creatine
+    and whey protein in enhancing muscle hypertrophy and strength. It also aimed to evaluate optimal supplementation
+    approaches, and identify gaps in current research, including long-term safety and adherence.The scope of this
+    review study focused on analyzing peer-reviewed studies, systematic reviews, and clinical trials from PubMed,
+    Scopus, and Google Scholar, using key terms that included creatine supplementation, whey protein, older adults,
+    and resistance training. The review included individuals aged 50 to 75 and examined the effect of creatine and/or
+    whey protein on muscle atrophy and hypertrophy, strength, fat loss, and psychological well-being. Studies without
+    physical or psychological outcomes, or involving a younger population below 50 years were excluded. The research
+    found that supplements of whey protein and creatine, when combined with resistance training, increased muscular
+    hypertrophy, exercise endurance, and recovery. Whey protein contains leucine, which enhances muscle mass, while
+    creatine boosts the intramuscular content of adenosine triphosphate to support recovery and function. Post-exercise
+    supplementation was found to be better than pre-exercise supplementation. Some studies showed variable gains
+    in muscles for older individuals, and were influenced by baseline protein diet or comorbidities. Supplementation
+    also improved mental health by reducing anxiety and improving sleep and self-esteem. Supplementation with exposure
+    to the sun also improved circadian rhythm and vitamin D synthesis, and mood stabilization. In spite of safety
+    considerations, such as renal strain and gastrointestinal issues, evidence supports general safety when the
+    recommended dosage is used. This review demonstrates that creatine and whey protein when combined with consistent
+    training can reduce age-related physical decline and improve overall wellness in the older population. The review
+    study shows significant findings in key areas of scientific literature that pertain to understanding adherence,
+    optimal dosing, and psychological outcomes across diverse populations. Focusing on these key areas can help
+    to refine supplementation guidelines that are beneficial for the aging demographic.
+  judge: does not support
+  judge_reason: Quote compares timing, not a hypertrophy increase
+  claim_data:
+    outcome: muscular hypertrophy
+    factor: post-exercise supplementation vs pre-exercise supplementation
+    population: older males aged 50 to 75
+    direction: increase
+    magnitude: null
+    quote: Post-exercise supplementation was found to be better than pre-exercise supplementation.
+- id: creatine-2816-3
+  case: creatine
+  paper: (Bodrick & Zakariya, 2025)
+  claim: 'anxiety DECREASED — factor: creatine and whey protein supplementation vs no supplementation — in: older
+    males aged 50 to 75'
+  quote: Supplementation also improved mental health by reducing anxiety and improving sleep and self-esteem.
+  section: abstract
+  paragraph: Muscle loss during aging known as sarcopenia is the steady loss of muscle mass, consequent strength
+    and related functioning, which commonly affects seniors in the population, potentially reducing the ability
+    to perform daily tasks. It is progressively restrictive in physiological functioning, and supplementation with
+    creatine and whey protein has become viewed as an intervention to minimize or reverse the loss. Creatine and
+    whey protein have emerged as promising interventions for addressing muscle loss, especially when combined with
+    consistency in training. This review study explores the synergistic impact of creatine and whey protein supplementation,
+    combined with resistance training, on improving muscle mass, strength and fat loss, and overall physical performance
+    in older males aged 50 to 75. The review studies the accompanying benefits, including psychological resilience,
+    improved mood, and enhanced quality of life. The study aimed to synthesize evidence on the efficacy of creatine
+    and whey protein in enhancing muscle hypertrophy and strength. It also aimed to evaluate optimal supplementation
+    approaches, and identify gaps in current research, including long-term safety and adherence.The scope of this
+    review study focused on analyzing peer-reviewed studies, systematic reviews, and clinical trials from PubMed,
+    Scopus, and Google Scholar, using key terms that included creatine supplementation, whey protein, older adults,
+    and resistance training. The review included individuals aged 50 to 75 and examined the effect of creatine and/or
+    whey protein on muscle atrophy and hypertrophy, strength, fat loss, and psychological well-being. Studies without
+    physical or psychological outcomes, or involving a younger population below 50 years were excluded. The research
+    found that supplements of whey protein and creatine, when combined with resistance training, increased muscular
+    hypertrophy, exercise endurance, and recovery. Whey protein contains leucine, which enhances muscle mass, while
+    creatine boosts the intramuscular content of adenosine triphosphate to support recovery and function. Post-exercise
+    supplementation was found to be better than pre-exercise supplementation. Some studies showed variable gains
+    in muscles for older individuals, and were influenced by baseline protein diet or comorbidities. Supplementation
+    also improved mental health by reducing anxiety and improving sleep and self-esteem. Supplementation with exposure
+    to the sun also improved circadian rhythm and vitamin D synthesis, and mood stabilization. In spite of safety
+    considerations, such as renal strain and gastrointestinal issues, evidence supports general safety when the
+    recommended dosage is used. This review demonstrates that creatine and whey protein when combined with consistent
+    training can reduce age-related physical decline and improve overall wellness in the older population. The review
+    study shows significant findings in key areas of scientific literature that pertain to understanding adherence,
+    optimal dosing, and psychological outcomes across diverse populations. Focusing on these key areas can help
+    to refine supplementation guidelines that are beneficial for the aging demographic.
+  judge: other study
+  judge_reason: Paragraph reports reduced anxiety but is a review of other work
+  claim_data:
+    outcome: anxiety
+    factor: creatine and whey protein supplementation vs no supplementation
+    population: older males aged 50 to 75
+    direction: decrease
+    magnitude: null
+    quote: Supplementation also improved mental health by reducing anxiety and improving sleep and self-esteem.
+- id: creatine-2816-4
+  case: creatine
+  paper: (Bodrick & Zakariya, 2025)
+  claim: 'adverse safety events DID NOT CHANGE — factor: recommended dosage supplementation vs higher/unsafe dosage
+    — in: older males aged 50 to 75'
+  quote: evidence supports general safety when the recommended dosage is used.
+  section: abstract
+  paragraph: Muscle loss during aging known as sarcopenia is the steady loss of muscle mass, consequent strength
+    and related functioning, which commonly affects seniors in the population, potentially reducing the ability
+    to perform daily tasks. It is progressively restrictive in physiological functioning, and supplementation with
+    creatine and whey protein has become viewed as an intervention to minimize or reverse the loss. Creatine and
+    whey protein have emerged as promising interventions for addressing muscle loss, especially when combined with
+    consistency in training. This review study explores the synergistic impact of creatine and whey protein supplementation,
+    combined with resistance training, on improving muscle mass, strength and fat loss, and overall physical performance
+    in older males aged 50 to 75. The review studies the accompanying benefits, including psychological resilience,
+    improved mood, and enhanced quality of life. The study aimed to synthesize evidence on the efficacy of creatine
+    and whey protein in enhancing muscle hypertrophy and strength. It also aimed to evaluate optimal supplementation
+    approaches, and identify gaps in current research, including long-term safety and adherence.The scope of this
+    review study focused on analyzing peer-reviewed studies, systematic reviews, and clinical trials from PubMed,
+    Scopus, and Google Scholar, using key terms that included creatine supplementation, whey protein, older adults,
+    and resistance training. The review included individuals aged 50 to 75 and examined the effect of creatine and/or
+    whey protein on muscle atrophy and hypertrophy, strength, fat loss, and psychological well-being. Studies without
+    physical or psychological outcomes, or involving a younger population below 50 years were excluded. The research
+    found that supplements of whey protein and creatine, when combined with resistance training, increased muscular
+    hypertrophy, exercise endurance, and recovery. Whey protein contains leucine, which enhances muscle mass, while
+    creatine boosts the intramuscular content of adenosine triphosphate to support recovery and function. Post-exercise
+    supplementation was found to be better than pre-exercise supplementation. Some studies showed variable gains
+    in muscles for older individuals, and were influenced by baseline protein diet or comorbidities. Supplementation
+    also improved mental health by reducing anxiety and improving sleep and self-esteem. Supplementation with exposure
+    to the sun also improved circadian rhythm and vitamin D synthesis, and mood stabilization. In spite of safety
+    considerations, such as renal strain and gastrointestinal issues, evidence supports general safety when the
+    recommended dosage is used. This review demonstrates that creatine and whey protein when combined with consistent
+    training can reduce age-related physical decline and improve overall wellness in the older population. The review
+    study shows significant findings in key areas of scientific literature that pertain to understanding adherence,
+    optimal dosing, and psychological outcomes across diverse populations. Focusing on these key areas can help
+    to refine supplementation guidelines that are beneficial for the aging demographic.
+  judge: does not support
+  judge_reason: Quote mentions safety but does not address change in adverse events
+  claim_data:
+    outcome: adverse safety events
+    factor: recommended dosage supplementation vs higher/unsafe dosage
+    population: older males aged 50 to 75
+    direction: no difference
+    magnitude: null
+    quote: evidence supports general safety when the recommended dosage is used.
+- id: triceps-35-1
+  case: triceps
+  paper: (Hussain et al., 2020)
+  claim: 'rate of fatigue INCREASED (P < 0.05) — factor: exercise intensity (30% vs 60% 1RM) — in: twenty-five healthy,
+    untrained, active, male university students'
+  quote: The findings reveal that ROF increases with increase in the intensity and speed, and the opposite were
+    obtained for the ET.
+  section: abstract
+  paragraph: The objective of this study was to investigate the effects of changes in exercise intensity and speed
+    on the three heads of the triceps brachii (TB) during triceps push-down exercise until task failure. Twenty-five
+    subjects performed triceps push-down exercise at three different intensities (30%, 45% and 60% 1RM) and speeds
+    (slow, medium and fast) until failure, and surface electromyography (sEMG) signals were recorded from the lateral,
+    long and medial heads of the TB. The endurance time (ET), number of repetitions (NR) and rate of fatigue (ROF)
+    were analyzed. Subsequently, the root-mean-square (RMS), mean power frequency (MPF) and median frequency (MDF)
+    under no-fatigue (NF) and fatigue (Fa) conditions were statistically compared. The findings reveal that ROF
+    increases with increase in the intensity and speed, and the opposite were obtained for the ET. The ROF in the
+    three heads were comparable for all intensities and speeds. The ROF showed a significant difference (P<0.05)
+    among the three intensities and speeds for all heads. The three heads showed significantly different (P<0.05)
+    MPF and MDF values with all the performed exercises under both conditions, whereas the RMS values were significantly
+    different only under Fa conditions. The current observations suggest that exercise intensity and speed affect
+    the ROF while changes in intensity do not affect the MPF and MDF under Fa conditions. The behavior of the spectral
+    parameters indicate that the three heads do not work in unison under any of the conditions. Changes in the speed
+    of triceps push-down exercise affects the lateral and long heads, but changes in the exercise intensity affected
+    the attributes of all heads to a greater extent.
+  judge: supports
+  judge_reason: Paragraph confirms ROF increased as claimed
+  claim_data:
+    outcome: rate of fatigue
+    factor: exercise intensity (30% vs 60% 1RM)
+    population: twenty-five healthy, untrained, active, male university students
+    direction: increase
+    magnitude: P < 0.05
+    quote: The findings reveal that ROF increases with increase in the intensity and speed, and the opposite were
+      obtained for the ET.
+- id: triceps-35-2
+  case: triceps
+  paper: (Hussain et al., 2020)
+  claim: 'endurance time DECREASED — factor: exercise intensity (30% vs 60% 1RM) — in: twenty-five healthy, untrained,
+    active, male university students'
+  quote: The ET decreased with increases in the exercise intensity and speed, and the NR also decreased with increases
+    in the intensity...
+  section: results
+  paragraph: '**Figure 4** and **Table 1** show and summarizes the µ(SD) values of the ET and NR for the observed
+    exercise intensities and speeds. The ET decreased with increases in the exercise intensity and speed, and the
+    NR also decreased with increases in the intensity but was not affected by the exercise speed. **Figure 5** shows
+    the µ(SD) values of the ROF in the three heads during different exercises, and as shown, the ROF exhibited an
+    increasing trend with increases in both the intensity and speed of exercise.'
+  judge: supports
+  judge_reason: Paragraph states ET decreased as claimed
+  claim_data:
+    outcome: endurance time
+    factor: exercise intensity (30% vs 60% 1RM)
+    population: twenty-five healthy, untrained, active, male university students
+    direction: decrease
+    magnitude: null
+    quote: The ET decreased with increases in the exercise intensity and speed, and the NR also decreased with increases
+      in the intensity...
+- id: triceps-19-1
+  case: triceps
+  paper: (Akima et al., 2021)
+  claim: 'RMS during force levels of 60% and 80% MVC DECREASED (P = 0.001 to P = 0.004) — factor: 120° vs 60° elbow
+    angle — in: 7 men and 10 women'
+  quote: The RMS during force levels of ≥ 60%MVC at 120° was significantly lower than that at 60° or 90° for each
+    muscle.
+  section: abstract
+  paragraph: The electromyographic (EMG) activity and force relationship, i.e. EMG-force relationship, is a valuable
+    indicator of the degree of the neuromuscular activation during isometric force production. However, there is
+    minimal information available regarding the EMG-force relationship of individual triceps brachii (TB) muscles
+    at different elbow joint angles. This study aimed to compare the EMG-force relationships of the medial (TB-Med),
+    lateral (TB-Lat), and long heads (TB-Long) of the TB. 7 men and 10 women performed force matching isometric
+    tasks at 20%, 40%, 60%, and 80%maximum voluntary contraction (MVC) at 60°, 90°, and 120° of extension. During
+    the submaximal force matching tasks, the surface EMG signals of the TB-Med, TB-Lat, and TB-Long were recorded
+    and calculated the root mean square (RMS). RMS of each force level were then normalized by RMS at 100%MVC. For
+    the TB-Med, ultrasonography was used to determine the superficial region of the muscle that faced the skin surface
+    to minimize cross-talk. The joint angle was monitored using an electrogoniometer. The elbow extension force,
+    elbow joint angle, and surface EMG signals were simultaneously sampled at 2 kHz and stored on a personal computer.
+    The RMS did not significantly differ between the three muscles, except between the TB-Med and TB-Lat during
+    20%MVC at 60°. The RMS during force levels of ≥ 60%MVC at 120° was significantly lower than that at 60° or 90°
+    for each muscle. The sum of difference, which represents the difference in RMS from the identical line, did
+    not significantly differ in any of the assessed muscles in the present study. This suggests that a relatively
+    smaller neuromuscular activation could be required when the elbow joint angle was extended. However, neuromuscular
+    activation levels and relative force levels were matched in all three TB synergists when the elbow joint angle
+    was at 90° or a more flexed position.
+  judge: supports
+  judge_reason: Paragraph reports the claimed decrease in the same sample
+  claim_data:
+    outcome: RMS during force levels of 60% and 80% MVC
+    factor: 120° vs 60° elbow angle
+    population: 7 men and 10 women
+    direction: decrease
+    magnitude: P = 0.001 to P = 0.004
+    quote: The RMS during force levels of ≥ 60%MVC at 120° was significantly lower than that at 60° or 90° for each
+      muscle.
+- id: triceps-19-2
+  case: triceps
+  paper: (Akima et al., 2021)
+  claim: 'sum of difference in RMS from the identical line DID NOT CHANGE (P = 0.741) — factor: between joint angles
+    (60°, 90°, 120°) — in: 7 men and 10 women'
+  quote: The sum of difference, which represents the difference in RMS from the identical line, did not significantly
+    differ in any of the assessed muscles in the present study.
+  section: abstract
+  paragraph: The electromyographic (EMG) activity and force relationship, i.e. EMG-force relationship, is a valuable
+    indicator of the degree of the neuromuscular activation during isometric force production. However, there is
+    minimal information available regarding the EMG-force relationship of individual triceps brachii (TB) muscles
+    at different elbow joint angles. This study aimed to compare the EMG-force relationships of the medial (TB-Med),
+    lateral (TB-Lat), and long heads (TB-Long) of the TB. 7 men and 10 women performed force matching isometric
+    tasks at 20%, 40%, 60%, and 80%maximum voluntary contraction (MVC) at 60°, 90°, and 120° of extension. During
+    the submaximal force matching tasks, the surface EMG signals of the TB-Med, TB-Lat, and TB-Long were recorded
+    and calculated the root mean square (RMS). RMS of each force level were then normalized by RMS at 100%MVC. For
+    the TB-Med, ultrasonography was used to determine the superficial region of the muscle that faced the skin surface
+    to minimize cross-talk. The joint angle was monitored using an electrogoniometer. The elbow extension force,
+    elbow joint angle, and surface EMG signals were simultaneously sampled at 2 kHz and stored on a personal computer.
+    The RMS did not significantly differ between the three muscles, except between the TB-Med and TB-Lat during
+    20%MVC at 60°. The RMS during force levels of ≥ 60%MVC at 120° was significantly lower than that at 60° or 90°
+    for each muscle. The sum of difference, which represents the difference in RMS from the identical line, did
+    not significantly differ in any of the assessed muscles in the present study. This suggests that a relatively
+    smaller neuromuscular activation could be required when the elbow joint angle was extended. However, neuromuscular
+    activation levels and relative force levels were matched in all three TB synergists when the elbow joint angle
+    was at 90° or a more flexed position.
+  judge: supports
+  judge_reason: Paragraph states no significant change as claimed
+  claim_data:
+    outcome: sum of difference in RMS from the identical line
+    factor: between joint angles (60°, 90°, 120°)
+    population: 7 men and 10 women
+    direction: no difference
+    magnitude: P = 0.741
+    quote: The sum of difference, which represents the difference in RMS from the identical line, did not significantly
+      differ in any of the assessed muscles in the present study.
+- id: triceps-16-1
+  case: triceps
+  paper: (Kholinne et al., 2018)
+  claim: 'muscle force and muscle activation INCREASED (p < 0.05) — factor: long head vs lateral and medial heads
+    at 0° shoulder elevation — in: ten healthy participants'
+  quote: At 0° shoulder elevation, the long head of the triceps brachii generates a significantly higher muscle
+    force and muscle activation than the lateral and medial heads (p < 0.05).
+  section: abstract
+  paragraph: 'OBJECTIVE: The aim of this study was to investigate the functional role of each head of the triceps
+    brachii muscle, depending on the angle of shoulder elevation, and to compare each muscle force and activity
+    by using a virtual biomechanical simulator and surface electromyography. METHODS: Ten healthy participants (8
+    males and 2 females) were included in this study. The mean age was 29.2 years (23-45). Each participant performed
+    elbow extension tasks in five different degrees (0, 45, 90, 135, and 180°) of shoulder elevation with three
+    repetitions. Kinematics data and surface electromyography signal of each head of the triceps brachii were recorded.
+    Recorded kinematics data were then applied to an inverse kinematics musculoskeletal modeling software function
+    (OpenSim) to analyze the triceps brachii''s muscle force. Correlation between muscle force, muscle activity,
+    elbow extension, and shoulder elevation angle were compared and analyzed for each head of triceps brachii. RESULTS:
+    At 0° shoulder elevation, the long head of the triceps brachii generates a significantly higher muscle force
+    and muscle activation than the lateral and medial heads (p < 0.05). While at 90°, 135° and 180° shoulder elevation,
+    the medial head of the triceps brachii showed a significantly higher muscle force than the long and the lateral
+    heads (p < 0.05). CONCLUSIONS: Each head of the triceps brachii has a different pattern of force and activity
+    during different shoulder elevations. The long head contributes to elbow extension more at shoulder elevation
+    and the medial head takes over at 90° and above of shoulder elevation. This study provides further understanding
+    of triceps brachii''s for clinicians and health trainers who need to investigate the functional role of the
+    triceps brachii in detail.'
+  judge: supports
+  judge_reason: Paragraph reports higher force and activation, matching claim
+  claim_data:
+    outcome: muscle force and muscle activation
+    factor: long head vs lateral and medial heads at 0° shoulder elevation
+    population: ten healthy participants
+    direction: increase
+    magnitude: p < 0.05
+    quote: At 0° shoulder elevation, the long head of the triceps brachii generates a significantly higher muscle
+      force and muscle activation than the lateral and medial heads (p < 0.05).
+- id: triceps-18-1
+  case: triceps
+  paper: (Peterson et al., 2017)
+  claim: 'voluntary activation INCREASED (p = .03) — factor: biceps vs deltoid transfer — in: nine individuals with
+    SCI who had undergone either biceps or deltoid transfer'
+  quote: Maximum voluntary activation during elbow extension was greater in arms with biceps transfer relative to
+    arms with deltoid transfer.
+  section: results
+  paragraph: Maximum voluntary activation during elbow extension was greater in arms with biceps transfer relative
+    to arms with deltoid transfer. The main effect of transfer type (F1, 9 = 7.1, p = .03), and the interaction
+    of transfer type and posture (F2, 74 = 5.0, p = .01) were significant in the linear mixed-effect model and ANOVA
+    of voluntary activation. Post-hoc comparisons demonstrated that voluntary activation was greater in the arms
+    with biceps transfer relative to arms with deltoid transfer in the overhead reach (t80 = 3.0, p = .004) and
+    pressure relief postures (t80 = 3.1, p = .002), but the difference was not significant in the horizontal plane
+    posture (Fig 5). Voluntary activation was near complete (0.96 ± 0.02, mean ± one standard error) in the biceps
+    transfer group, and did not change significantly across postures. In contrast, the voluntary activation of individuals
+    with deltoid transfer exhibited a substantial dependence on posture. Within the deltoid transfer group, post-hoc
+    comparisons demonstrated that voluntary activation was greater in the horizontal plane (0.80 ± 0.04) relative
+    to the overhead reach (0.69 ± 0.06, t80 = 2.9, p = .004) and pressure relief postures (0.70 ± 0.06, t80 = 2.5,
+    p = .01) (Fig 5).
+  judge: supports
+  judge_reason: Paragraph reports greater activation for biceps transfer, aligning with claim of increase.
+  claim_data:
+    outcome: voluntary activation
+    factor: biceps vs deltoid transfer
+    population: nine individuals with SCI who had undergone either biceps or deltoid transfer
+    direction: increase
+    magnitude: p = .03
+    quote: Maximum voluntary activation during elbow extension was greater in arms with biceps transfer relative
+      to arms with deltoid transfer.
+- id: triceps-18-2
+  case: triceps
+  paper: (Peterson et al., 2017)
+  claim: 'maximum voluntary moments INCREASED (p < .001) — factor: biceps vs deltoid transfer — in: nine individuals
+    with SCI who had undergone either biceps or deltoid transfer'
+  quote: Mean voluntary moments during maximum elbow extension generated by the biceps transfer arms were greater
+    relative to voluntary moments generated by the deltoid transfer arms.
+  section: results
+  paragraph: 'Mean voluntary moments during maximum elbow extension generated by the biceps transfer arms were greater
+    relative to voluntary moments generated by the deltoid transfer arms. The main effects of transfer type (F1,
+    9 = 28.9, p < .001) and posture (F2, 83 = 13.6, p < .001) were each significant in the linear mixed-effect model
+    and ANOVA of maximum voluntary moments. Also, the interaction of transfer type and posture was significant (F2,
+    83 = 9.5, p < .001). Post-hoc comparisons demonstrated that voluntary moments generated by the biceps transfer
+    arms were greater relative to moments generated by arms with deltoid transfer in each posture (Fig 5: all p
+    < .001). Within the biceps transfer group, post-hoc comparisons demonstrated that the mean voluntary moments
+    were greater in the pressure relief posture (11.09 ± 0.46 N-m, mean ± one standard error) relative to the horizontal
+    plane (8.78 ± 0.74 N-m, t89 = 5.0, p < .001) and overhead reach postures (8.26 ± 0.81 N-m, t89 = 6.1, p < .001)
+    (Fig 5). Within the deltoid transfer group, voluntary moments did not differ by posture. The mean elbow extensor
+    moment generated by deltoid transfer arms across postures was 2.76 ± 0.22 N-m. The data are freely available
+    at https://simtk.org/projects/elbowtransfer.'
+  judge: supports
+  judge_reason: Paragraph reports greater voluntary moments for biceps transfer, matching claim of increase.
+  claim_data:
+    outcome: maximum voluntary moments
+    factor: biceps vs deltoid transfer
+    population: nine individuals with SCI who had undergone either biceps or deltoid transfer
+    direction: increase
+    magnitude: p < .001
+    quote: Mean voluntary moments during maximum elbow extension generated by the biceps transfer arms were greater
+      relative to voluntary moments generated by the deltoid transfer arms.
+- id: triceps-137-1
+  case: triceps
+  paper: (Mansour et al., 2025)
+  claim: 'correlation coefficient R for predicting elbow joint moments and triceps force INCREASED (R = 0.98374)
+    — factor: LSTM vs other machine learning models (RF, CNN, DT, DNN, SVM, LR) — in: 14 female participants'
+  quote: The analytical outcomes demonstrated that the LSTM model yielded the highest predictive accuracy, achieving
+    a correlation coefficient of R = 0.98374 when six input features [...] were used.
+  section: abstract
+  paragraph: 'Introduction: Understanding the biomechanics of the upper limb is of considerable interest in both
+    clinical and engineering domains. Estimating elbow joint moments and triceps force plays a pivotal role in modelling
+    musculoskeletal function. However, the use of electromyography (EMG) data is often constrained by challenges
+    such as signal noise and calibration complexity. The objective of this study is to determine the elbow joint
+    moment and triceps force during a Rest Pause Triceps Dumbbell Kickback exercise. Methods: This investigation
+    utilized kinematic assessments from a cohort of 14 participants with diverse anthropometric profiles. A range
+    of machine learning and deep learning models were employed to predict joint torque and triceps muscle force,
+    including deep neural networks (DNN), long short-term memory networks (LSTM), convolutional neural networks
+    (CNN), decision trees (DT), linear regression (LR), support vector machines (SVM), and random forests (RF).
+    Model performance was systematically evaluated using multiple statistical metrics: Mean Squared Residuals (MSR),
+    Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), and the Correlation Coefficient (R). Results: The
+    analytical outcomes demonstrated that the LSTM model yielded the highest predictive accuracy, achieving a correlation
+    coefficient of R = 0.98374 when six input features (time, mass, forearm mass, upper arm mass, elbow angle, and
+    height) were used. In descending order of R values, the performance of the remaining models was as follows:
+    RF (0.92793), CNN (0.92106), DT (0.88812), DNN (0.75769), SVM (0.70011), and LR (0.44690). These findings underscore
+    the potential of LSTM in capturing the temporal dynamics essential for biomechanical prediction. Conclusion:
+    The findings from this study provide new insights into data-driven biomechanics and suggest that LSTM-based
+    models may offer a promising alternative to EMG-based approaches. Accurate prediction of joint moments has significant
+    implications for the real-time control of assistive technologies, particularly active orthoses in the future.'
+  judge: partly
+  judge_reason: Population details differ from claim
+  claim_data:
+    outcome: correlation coefficient R for predicting elbow joint moments and triceps force
+    factor: LSTM vs other machine learning models (RF, CNN, DT, DNN, SVM, LR)
+    population: 14 female participants
+    direction: increase
+    magnitude: R = 0.98374
+    quote: The analytical outcomes demonstrated that the LSTM model yielded the highest predictive accuracy, achieving
+      a correlation coefficient of R = 0.98374 when six input features [...] were used.
+- id: triceps-1829-1
+  case: triceps
+  paper: (Werner et al., 1993)
+  claim: 'biceps and triceps activity DECREASED — factor: Elbow extension before ball release (before vs after)
+    — in: Seven healthy, adult pitchers'
+  quote: Elbow extension before ball release corresponded with a decrease in biceps activity and an increase in
+    triceps activity.
+  section: abstract
+  paragraph: By understanding pitching biomechanics, therapists can develop better preventive and rehabilitative
+    programs for pitchers. The purpose of this study was to quantify and explain the joint motions, loads, and muscle
+    activity that occur at the elbow during baseball pitching. Seven healthy, adult pitchers were examined with
+    synchronized high-speed video digitization and surface electromyography. Elbow extension before ball release
+    corresponded with a decrease in biceps activity and an increase in triceps activity. A varus torque of 120 Nm,
+    acting to resist valgus stress, occurred near the time of maximum shoulder external rotation. Previous cadaveric
+    research showed that the ulnar collateral ligament by itself cannot withstand a valgus load of this magnitude.
+    Triceps, wrist flexorpronator, and anconeus activity during peak valgus stress suggests that these muscles may
+    act as dynamic stabilizers to assist the ulnar collateral ligament in preventing valgus extension overload.
+  judge: opposite
+  judge_reason: Paragraph reports biceps decreased but triceps increased, contradicting claim of both decreasing
+  claim_data:
+    outcome: biceps and triceps activity
+    factor: Elbow extension before ball release (before vs after)
+    population: Seven healthy, adult pitchers
+    direction: decrease
+    magnitude: null
+    quote: Elbow extension before ball release corresponded with a decrease in biceps activity and an increase in
+      triceps activity.
+- id: triceps-1859-1
+  case: triceps
+  paper: (Günzkofer et al., 2011)
+  claim: 'elbow flexion joint torques DECREASED (not reported) — factor: shoulder flexion (increasing vs decreasing)
+    — in: young and old males and females'
+  quote: The results show that increasing shoulder flexion leads to decreasing elbow flexion joint torques
+  section: abstract
+  paragraph: 'Strength prediction for arbitrary postures presupposes correlations between joint angles and joint
+    torques due to the length -- tension relationship of muscles. This paper investigates isometric elbow flexion
+    and extension joint torque curves as a function of elbow flexion, shoulder flexion, and forearm rotation. Numerous
+    authors have already examined elbow joint torque functions. However either only young or male subjects or old
+    subjects with a high sample size but only one measurement posture were used. Alongside posture effects this
+    study focuses on age and gender effects. Therefore four subject groups consisting of five young males, five
+    young females, four old males, and three old females took part. Significant influences were obtained for elbow
+    and shoulder flexion, age and gender. The results show that increasing shoulder flexion leads to decreasing
+    elbow flexion joint torques whereas this effect gains in importance with increasing elbow flexion angles. Unlike
+    previous studies no consistent results were found concerning the influence of forearm rotation. The extension
+    torques were 79 Isometric elbow flexion and extension joint torque measurements considering biomechanical aspects
+    (PDF Download Available). Available from: https://www.researchgate.net/publication/228535401_Isometric_elbow_flexion_and_extension_joint_torque_measurements_considering_biomechanical_aspects
+    [accessed Mar 24, 2016].'
+  judge: supports
+  judge_reason: Paragraph reports decreasing elbow torque with increased shoulder flexion, matching claim.
+  claim_data:
+    outcome: elbow flexion joint torques
+    factor: shoulder flexion (increasing vs decreasing)
+    population: young and old males and females
+    direction: decrease
+    magnitude: not reported
+    quote: The results show that increasing shoulder flexion leads to decreasing elbow flexion joint torques

@@ -1,0 +1,38 @@
+{
+ "suite": "judge-check",
+ "run_id": 1795411182,
+ "started_at": "2026-11-23T05:19:42.867179Z",
+ "seconds": 47.1,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "5.3",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite",
+  "results_per_query": "15",
+  "prefilter_keep": "40"
+ },
+ "metrics": {
+  "labelled": 26.0,
+  "judged": 19.0,
+  "agreement": 0.8421052631578947,
+  "agreement_supported_or_not": 0.8947368421052632
+ },
+ "details": [
+  "creatine-2816-2 ((Bodrick & Zakariya, 2025)): you said partly, judge said other study — the paragraph reports a review’s summary rather than the original study’s own result",
+  "creatine-2745-4 ((Brose et al., 2003)): you said partly, judge said supports — Paragraph reports a significant increase in intramuscular total creatine (p<.05), consistent with the claim.",
+  "creatine-2741-5 ((Michalak et al., 2026)): you said other study, judge said supports — Narrative review states creatine supplementation increases muscle total creatine and PCr availability, as claimed."
+ ],
+ "cost": {
+  "judge · groq": {
+   "calls": 4,
+   "tokens": 14080,
+   "seconds": 6.546
+  }
+ }
+}

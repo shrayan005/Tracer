@@ -1,0 +1,47 @@
+{
+ "suite": "screening",
+ "run_id": 1795410090,
+ "started_at": "2026-11-23T05:01:30.471600Z",
+ "seconds": 24.6,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "5.3",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite"
+ },
+ "metrics": {
+  "papers": 60.0,
+  "relevant_recall": 0.9032258064516129,
+  "relevant_precision": 0.9032258064516129,
+  "bucket_accuracy": 0.7333333333333333,
+  "gold_relevant": 31.0,
+  "study_type_accuracy": 0.875
+ },
+ "details": [
+  "MISSED · creatine · Effects of Creatine Supplementation on Properties of Muscle, Bone, and Brain Fun → AI 5/10: Broad narrative review covering muscle, bone, and brain effects of creatine in older adults.",
+  "STUDY TYPE · creatine · Muscle Mass and Fat Reduction: Do Creatine and Whey Protein Supplement: AI randomized_trial, you narrative_review",
+  "FALSE RELEVANT · creatine · Comparative Effects of Guanidinoacetic Acid and Creatine on Body Composition, Mu → AI 9/10, you: partly",
+  "MISSED · triceps · Isometric elbow flexion and extension joint torque measurements considering biom → AI 5/10: Measures isometric elbow extension joint torques and length-tension relationships, partially relevant to force generation.",
+  "MISSED · triceps · Strategies for muscle activation during isometric torque generation at the human → AI 5/10: The study investigates muscle activation patterns during isometric torque generation at the elbow, providing some relevant context.",
+  "FALSE RELEVANT · triceps · Biomechanics of the Elbow During Baseball Pitching → AI 7/10, you: partly",
+  "FALSE RELEVANT · triceps · Spatiotemporal surface EMG characteristics from rat triceps brachii muscle durin → AI 6/10, you: not relevant"
+ ],
+ "cost": {
+  "screen · gemini": {
+   "calls": 4,
+   "tokens": 10199,
+   "seconds": 9.626
+  },
+  "screen · groq": {
+   "calls": 2,
+   "tokens": 5288,
+   "seconds": 3.906
+  }
+ }
+}

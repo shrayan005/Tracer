@@ -1,0 +1,878 @@
+how_to: 'For each paper set `gold:` to one of: relevant, partly, not relevant (for the case''s brief). Optionally
+  set `gold_study_type:` (e.g. randomized_trial) to check study types too. Then set `reviewed: true` for the case.'
+cases:
+- case: creatine
+  brief: Investigate how creatine supplementation influences muscle strength outcomes in older adult populations,
+    including mechanisms, dosage protocols, and comparative effectiveness.
+  reviewed: true
+  papers:
+  - key: 2745
+    title: Creatine Supplementation Enhances Isometric Strength and Body Composition Improvements Following Strength
+      Exercise Training in Older Adults
+    year: 2003
+    link: https://doi.org/10.1093/gerona/58.1.b11
+    abstract: We sought to determine whether creatine monohydrate (CrM) supplementation would enhance the increases
+      in strength and fat-free mass that develop during resistance exercise training in older adults. Twenty-eight
+      healthy men and women over the age of 65 years participated in a whole-body resistance exercise program 3
+      days per week for 14 weeks. The study participants were randomly allocated, in a do...
+    ai_relevance: 10
+    ai_reason: Randomized double‑blind trial testing creatine supplementation on strength in seniors.
+    ai_study_type: randomized_trial
+    gold: relevant
+    gold_study_type: randomized_trial
+  - key: 2738
+    title: 'Effect of creatine supplementation during resistance training on lean tissue mass and muscular strength
+      in older adults: a meta-analysis'
+    year: 2017
+    link: https://doi.org/10.2147/oajsm.s123529
+    abstract: 'Abstract: The loss of muscle mass and strength with aging results in significant functional impairment.
+      Creatine supplementation has been used in combination with resistance training as a strategy for increasing
+      lean tissue mass and muscle strength in older adults, but results across studies are equivocal. We conducted
+      a systematic review and meta-analysis of randomized controlled trials of creati...'
+    ai_relevance: 9
+    ai_reason: Meta-analysis of RCTs on creatine supplementation with resistance training and strength outcomes
+      in older adults.
+    ai_study_type: meta_analysis
+    gold: relevant
+    gold_study_type: meta_analysis
+  - key: 2741
+    title: 'Impact of Creatine Supplementation on Muscle and Bone Strength in Older Adults: A Narrative Review'
+    year: 2026
+    link: https://doi.org/10.12775/jehs.2026.88.68067
+    abstract: 'Introduction and purpose: Age-related declines in skeletal muscle mass and strength, together with
+      bone loss, reduce physical performance and increase frailty and fall risk in older adults. Creatine supplementation
+      has been proposed as a supportive and potentially preventive strategy due to its role in cellular energy buffering
+      and its capacity to augment exercise training adaptations. This narrat...'
+    ai_relevance: 9
+    ai_reason: Direct narrative review of creatine effects on muscle strength in older adults.
+    ai_study_type: narrative_review
+    gold: relevant
+    gold_study_type: null
+  - key: 2742
+    title: 'Effects of resistance training combined with creatine supplementation on muscle strength, physical function,
+      and muscle mass in older adults: a systematic review and three-level meta-analysis'
+    year: 2026
+    link: https://doi.org/10.3389/fnut.2026.1919884
+    abstract: Objective To systematically evaluate the additional effects of creatine supplementation combined with
+      resistance training, compared with resistance training alone, on muscle strength, muscle mass and physical
+      function in older adults. Methods PubMed, Embase, the Cochrane Library and Web of Science were searched from
+      inception to 20 May 2026. Randomized controlled trials enrolling older adults aged...
+    ai_relevance: 9
+    ai_reason: Systematic review and meta-analysis of creatine plus resistance training effects on strength, mass,
+      and function in older adults.
+    ai_study_type: meta_analysis
+    gold: relevant
+    gold_study_type: null
+  - key: 2746
+    title: Creatine Supplementation during Resistance Training in Older Adults—A Meta-analysis
+    year: 2014
+    link: https://doi.org/10.1249/mss.0000000000000220
+    abstract: 'INTRODUCTION: Age-related sarcopenia and dynapenia have negative effects on strength and the ability
+      to perform activities of daily living. Resistance training (RT) increases muscle mass and strength in older
+      adults and is an established countermeasure for sarcopenia and dynapenia, and creatine may enhance this effect.
+      We aimed to determine whether the addition of Cr to RT increased gains in muscl...'
+    ai_relevance: 9
+    ai_reason: Meta-analysis specifically on creatine supplementation during resistance training and strength gains
+      in older adults.
+    ai_study_type: meta_analysis
+    gold: relevant
+    gold_study_type: null
+  - key: 2785
+    title: 'The Additive Effects of Creatine Supplementation and Exercise Training in an Aging Population: A Systematic
+      Review of Randomized Controlled Trials'
+    year: 2019
+    link: https://doi.org/10.1519/jpt.0000000000000222
+    abstract: 'BACKGROUND AND PURPOSE: The role of creatine supplementation in young athletes and bodybuilders is
+      well established including ergogenic properties of muscular hypertrophy, strength, power, and endurance. Whether
+      the benefits of creatine supplementation translate to an aging population with moderate training stimulus
+      remains unclear especially in regard to gender, creatine dose, and duration. This ...'
+    ai_relevance: 9
+    ai_reason: Systematic review of RCTs on creatine plus exercise for strength in aging populations.
+    ai_study_type: systematic_review
+    gold: relevant
+    gold_study_type: null
+  - key: 2737
+    title: Creatine monohydrate supplementation for older adults and clinical populations
+    year: 2025
+    link: https://doi.org/10.1080/15502783.2025.2534130
+    abstract: 'BACKGROUND: The biological process of aging is typically associated with a decrease in muscle quantity,
+      muscle performance (primarily strength), bone mass and architecture, functionality and neurological/cognitive
+      function. From a healthy aging perspective, interventions that have the potential to overcome or attenuate
+      these decrements are clinically relevant. METHODS: We conducted a narrative rev...'
+    ai_relevance: 8
+    ai_reason: Narrative review summarizing efficacy of creatine monohydrate on muscle strength in older adults.
+    ai_study_type: narrative_review
+    gold: relevant
+    gold_study_type: null
+  - key: 2752
+    title: 'Effects of Creatine Supplementation on Properties of Muscle, Bone, and Brain Function in Older Adults:
+      A Narrative Review'
+    year: 2021
+    link: https://doi.org/10.1080/19390211.2021.1877232
+    abstract: Aging is associated with reductions in muscle and bone mass and brain function, which may be counteracted
+      by several lifestyle factors, of which exercise appears to be most beneficial. However, less than 20% of older
+      adults (> 55 years of age) adhere to performing the recommended amount of resistance training (≥ 2 days/week)
+      and less than 12% regularly meet the aerobic exercise guidelines (≥ 150 m...
+    ai_relevance: 8
+    ai_reason: Narrative review covering creatine’s impact on muscle strength among other outcomes in older adults.
+    ai_study_type: narrative_review
+    gold: relevant
+    gold_study_type: null
+  - key: 2739
+    title: The role of resistance training and creatine supplementation on oxidative stress, antioxidant defense,
+      muscle strength, and quality of life in older adults
+    year: 2023
+    link: https://doi.org/10.3389/fpubh.2023.1062832
+    abstract: Background The aim of this study was to evaluate the effect of resistance training (RT) with creatine
+      monohydrate supplementation (CS) on serum levels of 8-hydroxydeoxyguanosine (8-OHdG), malondialdehyde (MDA),
+      glutathione peroxidase (GPX), and total antioxidant capacity (TAC) in older adults. Objectives This study
+      evaluated the effect of resistance training with creatine monohydrate supplementati...
+    ai_relevance: 7
+    ai_reason: Directly tests creatine plus resistance training on muscle strength in older adults, though also
+      focuses on oxidative stress.
+    ai_study_type: randomized_trial
+    gold: relevant
+    gold_study_type: randomized_trial
+  - key: 2740
+    title: 'Combined creatine and HMB co-supplementation improves functional strength independent of muscle mass
+      in physically active older adults: a randomized crossover trial'
+    year: 2025
+    link: https://doi.org/10.1007/s11357-025-01889-y
+    abstract: Sarcopenia is a major contributor to frailty and functional decline among older adults. Combining
+      exercise with nutritional strategies such as creatine monohydrate (CRE) and β-hydroxy-β-methylbutyrate (HMB)
+      supplementation may help to preserve strength and independence. To evaluate the effects of 6-week CRE + HMB
+      supplementation combined with an integral physical conditioning (IPC) program on func...
+    ai_relevance: 7
+    ai_reason: Randomized crossover trial of creatine + HMB on functional strength in older adults.
+    ai_study_type: randomized_trial
+    gold: relevant
+    gold_study_type: randomized_trial
+  - key: 2816
+    title: 'Muscle Mass and Fat Reduction: Do Creatine and Whey Protein Supplementation Improve Fitness and Strength
+      in Older Males?'
+    year: 2025
+    link: https://doi.org/10.32996/jspes.2025.5.2.1
+    abstract: Muscle loss during aging known as sarcopenia is the steady loss of muscle mass, consequent strength
+      and related functioning, which commonly affects seniors in the population, potentially reducing the ability
+      to perform daily tasks. It is progressively restrictive in physiological functioning, and supplementation
+      with creatine and whey protein has become viewed as an intervention to minimize or rev...
+    ai_relevance: 7
+    ai_reason: Investigates creatine (with whey) supplementation on strength in older males, likely an intervention
+      study.
+    ai_study_type: randomized_trial
+    gold: relevant
+    gold_study_type: narrative_review
+  - key: 2750
+    title: Strategic creatine supplementation and resistance training in healthy older adults
+    year: 2015
+    link: https://doi.org/10.1139/apnm-2014-0498
+    abstract: 'Creatine supplementation in close proximity to resistance training may be an important strategy for
+      increasing muscle mass and strength; however, it is unknown whether creatine supplementation before or after
+      resistance training is more effective for aging adults. Using a double-blind, repeated measures design, older
+      adults (50-71 years) were randomized to 1 of 3 groups: creatine before (CR-B: n =...'
+    ai_relevance: 6
+    ai_reason: Randomized trial comparing timing of creatine with resistance training on strength in older adults.
+    ai_study_type: randomized_trial
+    gold: relevant
+    gold_study_type: null
+  - key: 2774
+    title: The effects of supplementation with creatine and protein on muscle strength following a traditional resistance
+      training program in middle-aged and older men
+    year: 2009
+    link: https://doi.org/10.1007/s12603-009-0124-8
+    abstract: 'OBJECTIVES: Creatine and protein supplementation can enhance the training outcomes of young subjects,
+      but it is not clear if there are benefits for older individuals. Therefore, the purpose of this study was
+      to determine the effects of creatine and protein supplementation on strength gains following a traditional
+      resistance training program for middle-aged and older men. DESIGN, SETTING, PARTICIPA...'
+    ai_relevance: 6
+    ai_reason: Examines creatine and protein supplementation with resistance training on strength in middle-aged/older
+      men.
+    ai_study_type: randomized_trial
+    gold: relevant
+    gold_study_type: null
+  - key: 2818
+    title: 'Strength training intervention with creatine/whey protein supplementation vs placebo on frailty in older
+      adults with cirrhosis (STRIVE): A Randomized Controlled Trial'
+    year: 2026
+    link: https://doi.org/10.21203/rs.3.rs-10695023/v1
+    abstract: Abstract Background Older adults with cirrhosis are particularly vulnerable to developing frailty
+      with poor outcomes including increased falls, physical disability, hospitalizations, and all-cause mortality.
+      Current management of frailty among older adults with cirrhosis is limited to general lifestyle recommendations
+      including increased exercise and optimized diet, and few studies examining exerc...
+    ai_relevance: 6
+    ai_reason: RCT of creatine/whey vs placebo on frailty outcomes in older adults with cirrhosis, includes strength
+      measures.
+    ai_study_type: randomized_trial
+    gold: relevant
+    gold_study_type: null
+  - key: 2753
+    title: 'The effects of age on skeletal muscle and the phosphocreatine energy system: can creatine supplementation
+      help older adults'
+    year: 2009
+    link: https://doi.org/10.1186/1476-5918-8-6
+    abstract: Creatine supplementation has been found to significantly increase muscle strength and hypertrophy
+      in young adults (</= 35 yr) particularly when consumed in conjunction with a resistance training regime. Literature
+      examining the efficacy of creatine supplementation in older adults (55-82 yr) suggests creatine to promote
+      muscle strength and hypertrophy to a greater extent than resistance training al...
+    ai_relevance: 5
+    ai_reason: Review of literature on creatine effects in older adults, summarizing mechanisms and outcomes including
+      strength.
+    ai_study_type: narrative_review
+    gold: relevant
+    gold_study_type: null
+    label_sure: false
+    label_reason: 'review of creatine in the ageing muscle/PCr system: mechanisms are in the brief'
+  - key: 2821
+    title: 'Comparative Effects of Guanidinoacetic Acid and Creatine on Body Composition, Muscle Strength, and Protein
+      Metabolism Biomarkers in Older Adults: A Randomized Exploratory Pilot Trial'
+    year: 2026
+    link: https://doi.org/10.3177/jnsv.72.284
+    abstract: Creatine supplementation can improve muscle outcomes in older adults, particularly when combined with
+      resistance exercise; however, its efficacy without exercise is less consistent. Guanidinoacetic acid (GAA),
+      the immediate precursor of creatine, may bypass age-related limitations in creatine synthesis and transport
+      and exert distinct effects on muscle energetics and protein metabolism. The main a...
+    ai_relevance: 5
+    ai_reason: Pilot trial comparing GAA and creatine on strength; relevant but focuses on comparison rather than
+      dosage protocols.
+    ai_study_type: randomized_trial
+    gold: partly
+    gold_study_type: null
+  - key: 2803
+    title: 'The power of creatine plus resistance training for healthy aging: enhancing physical vitality and cognitive
+      function'
+    year: 2024
+    link: https://doi.org/10.3389/fphys.2024.1496544
+    abstract: Sarcopenia is generally defined as an age-related musculoskeletal disease characterized by the reductions
+      in muscle strength, lean/muscle mass (quality) and functional ability leading to various adverse health outcomes,
+      including impaired physical function and reduced quality of life (1). Sarcopenia is also associated with cognitive
+      decline in older adults (2). As sarcopenia is a potentially rever...
+    ai_relevance: 4
+    ai_reason: Broad review of creatine plus resistance training for aging, but emphasis on vitality and cognition
+      beyond strength.
+    ai_study_type: narrative_review
+    gold: relevant
+    gold_study_type: null
+    label_sure: true
+    label_reason: creatine + resistance training for healthy ageing (review)
+  - key: 2823
+    title: 'Synergistic effects of synbiotic, protein supplementation, and resistance training on inflammation,
+      oxidative stress, and muscle strength in older adults with type 2 diabetes mellitus: a RCT triple-blinded
+      study'
+    year: 2026
+    link: https://doi.org/10.1007/s00394-026-04076-7
+    abstract: Background Population aging poses major challenges for the management of type 2 diabetes mellitus
+      (T2DM), particularly because inadequate protein intake, physical inactivity, and gut microbial dysbiosis may
+      contribute to systemic oxidative stress and chronic low-grade inflammation (inflammaging). The present study
+      investigated the combined effects of protein supplementation (P), synbiotic plus pro...
+    ai_relevance: 3
+    ai_reason: Includes creatine only peripherally; primary focus is synbiotic and protein with resistance training.
+    ai_study_type: randomized_trial
+    gold: not relevant
+    gold_study_type: null
+    label_sure: true
+    label_reason: synbiotic/protein supplement, no creatine
+  - key: 2801
+    title: 'Dose-response effects of resistance training in sarcopenic older adults: systematic review and meta-analysis'
+    year: 2025
+    link: https://doi.org/10.1186/s12877-025-06559-4
+    abstract: 'BACKGROUND: Currently, resistance training (RT) programs for sarcopenic older adults are numerous
+      they remain controversial, and there is a lack of standardized programs specifically tailored for this population.
+      OBJECTIVES: This study aims to investigate the dose-response effects between RT on grip strength, skeletal
+      muscle mass index (SMI), and short physical performance battery (SPPB) in sarcop...'
+    ai_relevance: 2
+    ai_reason: Focuses on resistance training dose‑response, only peripheral mention of creatine.
+    ai_study_type: meta_analysis
+    gold: not relevant
+    gold_study_type: null
+  - key: 2795
+    title: 'Protein and muscle health during aging: benefits and concerns related to animal-based protein'
+    year: 2019
+    link: https://doi.org/10.1093/af/vfz030
+    abstract: Individuals aged at least 65 years are a fast-growing segment of the population. Age-related loss
+      of muscle mass and strength will continue to have a significant economic impact unless dietary or exercise
+      interventions are implemented. Increasing the ratio of animal-based protein relative to plant-based protein
+      in the diet may help to mitigate age-related losses of muscle mass and strength. Animal...
+    ai_relevance: 1
+    ai_reason: Discusses protein sources for muscle health, does not address creatine supplementation.
+    ai_study_type: other
+    gold: not relevant
+    gold_study_type: null
+  labeled_by: claude
+- case: triceps
+  brief: Investigate the mechanical behavior, force generation, and functional role of the triceps brachii during
+    elbow extension, including measurement techniques and existing reviews.
+  reviewed: true
+  papers:
+  - key: 35
+    title: Muscle Fatigue in the Three Heads of Triceps Brachii During Intensity and Speed Variations of Triceps
+      Push-Down Exercise
+    year: 2020
+    link: https://doi.org/10.3389/fphys.2020.00112
+    abstract: The objective of this study was to investigate the effects of changes in exercise intensity and speed
+      on the three heads of the triceps brachii (TB) during triceps push-down exercise until task failure. Twenty-five
+      subjects performed triceps push-down exercise at three different intensities (30%, 45% and 60% 1RM) and speeds
+      (slow, medium and fast) until failure, and surface electromyography (sEMG)...
+    ai_relevance: 10
+    ai_reason: The study directly investigates muscle activity and fatigue of the three heads of the triceps brachii
+      during elbow extension exercises.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: lab_experiment
+  - key: 19
+    title: Effect of elbow joint angles on electromyographic activity versus force relationships of synergistic
+      muscles of the triceps brachii
+    year: 2021
+    link: https://doi.org/10.1371/journal.pone.0252644
+    abstract: The electromyographic (EMG) activity and force relationship, i.e. EMG-force relationship, is a valuable
+      indicator of the degree of the neuromuscular activation during isometric force production. However, there
+      is minimal information available regarding the EMG-force relationship of individual triceps brachii (TB) muscles
+      at different elbow joint angles. This study aimed to compare the EMG-force re...
+    ai_relevance: 9
+    ai_reason: Directly investigates EMG-force relationships of each triceps head across elbow angles, addressing
+      mechanical behavior and force generation.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: null
+  - key: 16
+    title: The different role of each head of the triceps brachii muscle in elbow extension
+    year: 2018
+    link: https://doi.org/10.1016/j.aott.2018.02.005
+    abstract: 'OBJECTIVE: The aim of this study was to investigate the functional role of each head of the triceps
+      brachii muscle, depending on the angle of shoulder elevation, and to compare each muscle force and activity
+      by using a virtual biomechanical simulator and surface electromyography. METHODS: Ten healthy participants
+      (8 males and 2 females) were included in this study. The mean age was 29.2 years (23-...'
+    ai_relevance: 8
+    ai_reason: Examines functional role of each triceps head during elbow extension using EMG and biomechanical
+      simulation.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: null
+  - key: 18
+    title: Voluntary activation of biceps-to-triceps and deltoid-to-triceps transfers in quadriplegia
+    year: 2017
+    link: https://doi.org/10.1371/journal.pone.0171141
+    abstract: The biceps or the posterior deltoid can be transferred to improve elbow extension function for many
+      individuals with C5 or C6 quadriplegia. Maximum strength after elbow reconstruction is variable; the patient's
+      ability to voluntarily activate the transferred muscle to extend the elbow may contribute to the variability.
+      We compared voluntary activation during maximum isometric elbow extension follo...
+    ai_relevance: 8
+    ai_reason: Studies voluntary activation of transferred muscles for elbow extension, directly addressing triceps
+      brachii function and force.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: null
+  - key: 1859
+    title: Isometric elbow flexion and extension joint torque measurements considering biomechanical aspects
+    year: 2011
+    link: https://mediatum.ub.tum.de/node?id=1318170
+    abstract: Strength prediction for arbitrary postures presupposes correlations between joint angles and joint
+      torques due to the length -- tension relationship of muscles. This paper investigates isometric elbow flexion
+      and extension joint torque curves as a function of elbow flexion, shoulder flexion, and forearm rotation.
+      Numerous authors have already examined elbow joint torque functions. However either o...
+    ai_relevance: 8
+    ai_reason: It measures isometric elbow extension joint torques as a function of posture, which relates directly
+      to the mechanical behavior of elbow extension.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: null
+  - key: 1924
+    title: Early Phase Adaptations in Strength, Muscle Size, and Co-activation Following Resistance Training in
+      Untrained Women
+    year: 2026
+    link: https://doi.org/10.70252/ijes2026705
+    abstract: The present study examined the effects of four days of training on peak torque (PT), muscle thickness
+      (MT), and electromyographic co-activation (Co- Act). Ten untrained women (age=21.6±1.0 years) completed four
+      days of maximal, reciprocal, concentric, isokinetic forearm extension (FE) and flexion (FF) training with
+      six sets of 10 repetitions at 180°·s -1 . The subjects completed pre-training and p...
+    ai_relevance: 8
+    ai_reason: It examines adaptations in strength, peak torque, and triceps brachii activation following forearm
+      extension training.
+    ai_study_type: randomized_trial
+    gold: relevant
+    gold_study_type: lab_experiment
+  - key: 67
+    title: Changes in Strength, Endurance, and Fatigue During a Resistance-Training Program for the Triceps Brachii
+      Muscle
+    year: 2013
+    link: https://doi.org/10.4085/1062-6050-48.4.16
+    abstract: 'CONTEXT: As a result of the adaptation process, some functional properties show different functions
+      over time during strength training. Muscle strength and fatigue may show different adaptation patterns in
+      reaching the improvement plateau after several weeks of training. OBJECTIVE: To follow muscle endurance and
+      fatigue values during resistance training of the elbow extensors in young nonathletes....'
+    ai_relevance: 7
+    ai_reason: Tracks strength, endurance, and fatigue of triceps brachii during resistance training, directly related
+      to its mechanical behavior and force generation.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: null
+  - key: 137
+    title: Rapid Estimation of Elbow Joint Moment and Triceps Force During Triceps Dumbbell Kickback
+    year: 2025
+    link: https://doi.org/10.2339/politeknik.1681703
+    abstract: 'Introduction: Understanding the biomechanics of the upper limb is of considerable interest in both
+      clinical and engineering domains. Estimating elbow joint moments and triceps force plays a pivotal role in
+      modelling musculoskeletal function. However, the use of electromyography (EMG) data is often constrained by
+      challenges such as signal noise and calibration complexity. The objective of this stud...'
+    ai_relevance: 7
+    ai_reason: Estimates elbow joint moment and triceps force during a specific exercise, focusing on force generation
+      and measurement techniques.
+    ai_study_type: computational
+    gold: relevant
+    gold_study_type: null
+  - key: 1852
+    title: Triceps Brachii Muscle Strength and Architectural Adaptations with Resistance Training Exercises at Short
+      or Long Fascicle Length
+    year: 2018
+    link: https://doi.org/10.3390/jfmk3020028
+    abstract: The aim of this study was to investigate whether resistance training at short or long triceps brachii
+      fascicle length induces different muscular strength and architectural adaptations. Nine young, novice, female
+      participants, were trained for 6 weeks (two sessions/week) performing 6 sets × 6-RM (repetition maximum) unilateral
+      cable exercises either with push-downs at short fascicle length (S) or o...
+    ai_relevance: 7
+    ai_reason: Directly measures triceps strength and architectural changes from resistance training, relevant to
+      force generation and functional role.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: lab_experiment
+  - key: 2108
+    title: Estimating Muscle Parameters via Hierarchical Bayesian Neuromechanics
+    year: 2026
+    link: https://doi.org/10.64898/2026.07.08.737322
+    abstract: Musculoskeletal models are widely used to relate muscle mechanics to movement patterns in biomechanics.
+      Accurate estimation of muscle parameters is essential for building individualized models, yet most rely on
+      generic parameters derived from cadaveric data that do not reflect subject-specific properties critical to
+      force generation. Here, we introduce a hierarchical Bayesian framework that levera...
+    ai_relevance: 7
+    ai_reason: Uses EMG and torque from isometric elbow tasks to estimate muscle parameters, directly addressing
+      force generation and measurement of triceps brachii.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: null
+  - key: 26
+    title: Strategies for muscle activation during isometric torque generation at the human elbow
+    year: 1989
+    link: https://doi.org/10.1152/jn.1989.62.6.1201
+    abstract: 1. We studied the patterns of electromyographic (EMG) activity in elbow muscles of 14 normal human
+      subjects. The activity of five muscles that act in flexion-extension and forearm supination-pronation was
+      simultaneously recorded during isometric voluntary torque generation, in which torques generated in a plane
+      orthogonal to the long axis of the forearm were voluntarily coupled with torques genera...
+    ai_relevance: 6
+    ai_reason: Analyzes EMG patterns of elbow muscles, including triceps, during isometric torque generation, relevant
+      to force behavior.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: null
+  - key: 51
+    title: 'Effects of dumbbell weight on the rest-pause triceps kickback exercise in women: kinetic, finite element
+      and EMG analyses'
+    year: 2026
+    link: https://doi.org/10.1007/s13246-025-01672-5
+    abstract: The triceps kickback is a popular strength exercise targeting the arm muscles, often performed by
+      women to enhance muscle strength and tone. However, physiological differences in endurance between women and
+      men can make the exercise challenging, particularly as dumbbell weight increases. Higher weights may compromise
+      proper form and reduce effective muscle contraction, yet the relationship between...
+    ai_relevance: 6
+    ai_reason: Analyzes kinetics, FEM and EMG of a triceps extension exercise, providing mechanical behavior data.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: null
+  - key: 1829
+    title: Biomechanics of the Elbow During Baseball Pitching
+    year: 1993
+    link: https://doi.org/10.2519/jospt.1993.17.6.274
+    abstract: By understanding pitching biomechanics, therapists can develop better preventive and rehabilitative
+      programs for pitchers. The purpose of this study was to quantify and explain the joint motions, loads, and
+      muscle activity that occur at the elbow during baseball pitching. Seven healthy, adult pitchers were examined
+      with synchronized high-speed video digitization and surface electromyography. Elbow...
+    ai_relevance: 6
+    ai_reason: Quantifies triceps activity during elbow extension phase of pitching, shedding light on functional
+      role.
+    ai_study_type: lab_experiment
+    gold: partly
+    gold_study_type: null
+    label_sure: true
+    label_reason: pitching elbow loads; triceps activity is a side result
+  - key: 21
+    title: Forearm Position Influences Triceps Brachii Activation During Triceps Push-Down Exercise
+    year: 2024
+    link: https://doi.org/10.47206/ijsc.v4i1.250
+    abstract: 'Introduction: This study investigated the influence of forearm position (supinated or pronated) on
+      the EMG activity of the triceps brachii lateralis head (TLA), triceps brachii longus head (TLO), flexor carpi
+      radialis (FR), and extensor carpi radialis (ER) muscles during the triceps push-down exercise. Also, we analyzed
+      the effect of different grips (handle vs standard padded pulley strap) to veri...'
+    ai_relevance: 5
+    ai_reason: Investigates how forearm position affects triceps EMG during push‑down, relevant to activation patterns
+      in elbow extension.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: null
+    label_sure: true
+    label_reason: triceps activation by forearm position during push-downs
+  - key: 22
+    title: Comparative analysis of the maximum voluntary isometric contraction of the biceps brachii and triceps
+      brachii at different elbow angles
+    year: 2026
+    link: https://doi.org/10.15437/jetr.1746892
+    abstract: 'Purpose: The objective of this study is to compare the maximum voluntary isometric contraction (MVIC)
+      values obtained from the biceps brachii (BB) and triceps brachii (TB) muscles at different elbow angles and
+      to determine which angle provides optimum efficiency according to this comparison. Methods: A total of 30
+      healthy volunteers participated in the study. Electromyography (EMG) data were obtai...'
+    ai_relevance: 5
+    ai_reason: Compares isometric force output of triceps at various elbow angles, pertinent to force generation
+      measurement.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: null
+    label_sure: true
+    label_reason: maximum voluntary isometric contraction of the triceps (measurement)
+  - key: 36
+    title: Combined Ultrasound Imaging and Biomechanical Modeling to Estimate Triceps Brachii Musculotendon Changes
+      in Stroke Survivors
+    year: 2016
+    link: https://doi.org/10.1155/2016/5275768
+    abstract: The aim of this study was to investigate the changes of musculotendon parameters of triceps brachii
+      in persons after stroke based on subject-specific biomechanical modeling technique combined with in vivo ultrasound
+      measurement. Five chronic stroke survivors and five normal control subjects were recruited. B-mode ultrasound
+      was applied to measure muscle pennation angle and the optimal length of th...
+    ai_relevance: 5
+    ai_reason: Uses ultrasound and modeling to assess triceps musculotendon parameters, relevant to measurement
+      but not directly to extension mechanics.
+    ai_study_type: lab_experiment
+    gold: relevant
+    gold_study_type: null
+    label_sure: true
+    label_reason: ultrasound + modelling of triceps musculotendon changes
+  - key: 1836
+    title: COMPARISON OF MUSCLE ACTIVATION USING VARIOUS HAND POSITIONS DURING THE PUSH-UP EXERCISE
+    year: 2005
+    link: https://doi.org/10.1519/00124278-200508000-00024
+    abstract: Popular fitness literature suggests that varied hand placements during push-ups may isolate different
+      muscles. Scientific literature, however, offers scant evidence that varied hand placements elicit different
+      muscle responses. This study examined whether different levels of electromyographic (EMG) activity in the
+      pectoralis major and triceps brachii muscles are required to perform push-ups from e...
+    ai_relevance: 5
+    ai_reason: Measures EMG of triceps brachii during push‑ups, providing data on activation patterns relevant to
+      force generation.
+    ai_study_type: lab_experiment
+    gold: partly
+    gold_study_type: null
+  - key: 68
+    title: Phase- and Workload-Dependent Changes in Corticospinal Excitability to the Biceps and Triceps Brachii
+      during Arm Cycling
+    year: 2016
+    link: https://doi.org/10.3390/brainsci6040060
+    abstract: This is the first study to examine corticospinal excitability (CSE) to antagonistic muscle groups
+      during arm cycling. Transcranial magnetic stimulation (TMS) of the motor cortex and transmastoid electrical
+      stimulation (TMES) of the corticospinal tract were used to assess changes in supraspinal and spinal excitability,
+      respectively. TMS induced motor evoked potentials (MEPs) and TMES induced cervic...
+    ai_relevance: 4
+    ai_reason: Examines corticospinal excitability of triceps during arm cycling, offering indirect insight into
+      neural control but not mechanical behavior of elbow extension.
+    ai_study_type: lab_experiment
+    gold: partly
+    gold_study_type: null
+  - key: 159
+    title: The effect of variable inertial resistance on force, velocity, power and muscle activation during a chest
+      press exercise
+    year: 2023
+    link: https://doi.org/10.1101/2023.12.16.572002
+    abstract: This study investigated the effect of the inertial component of the resistance ( INERTIA ) at different
+      intensity levels ( LOAD ) on force ( FORCE ), velocity ( VELOCITY ), power ( POWER ), and the muscle activity
+      of the pectoralis major ( EMG PM ), anterior deltoid ( EMG DA ) and triceps brachii ( EMG TB ) muscles during
+      a chest press exercise. A motor-driven exercise apparatus was programmed to ...
+    ai_relevance: 4
+    ai_reason: Includes triceps activation data in a chest press task, offering some insight into force generation
+      but not specific to elbow extension.
+    ai_study_type: lab_experiment
+    gold: partly
+    gold_study_type: null
+  - key: 1858
+    title: Nociceptive EMG suppression in triceps brachii muscle in humans
+    year: 2004
+    link: https://doi.org/10.1016/j.clinph.2003.12.005
+    abstract: (no abstract)
+    ai_relevance: 4
+    ai_reason: Investigates EMG suppression in triceps brachii, offering some insight into activation but not mechanical
+      behavior.
+    ai_study_type: lab_experiment
+    gold: partly
+    gold_study_type: null
+  - key: 25
+    title: Shoulder Muscle Recruitment Patterns and Related Biomechanics during Upper Extremity Sports
+    year: 2009
+    link: https://doi.org/10.2165/00007256-200939070-00004
+    abstract: Understanding when and how much shoulder muscles are active during upper extremity sports is helpful
+      to physicians, therapists, trainers and coaches in providing appropriate treatment, training and rehabilitation
+      protocols to these athletes. This review focuses on shoulder muscle activity (rotator cuff, deltoids, pectoralis
+      major, latissimus dorsi, triceps and biceps brachii, and scapular muscles)...
+    ai_relevance: 3
+    ai_reason: Mentions triceps brachii within a broader shoulder muscle review, not centered on elbow extension
+      mechanics.
+    ai_study_type: narrative_review
+    gold: partly
+    gold_study_type: null
+  - key: 34
+    title: The influence of sodium bicarbonate on maximal force and rates of force development in the triceps surae
+      and brachii during fatiguing exercise
+    year: 2016
+    link: https://doi.org/10.1113/ep085933
+    abstract: New findings What is the central question of this study? Does metabolic alkalosis in humans, induced
+      by sodium bicarbonate, affect rates of skeletal muscle fatigue differentially in muscle groups composed predominately
+      of slow- and fast-twitch fibres? What is the main finding and its importance? Sodium bicarbonate exhibited
+      no effect on the fatigue profile observed between triceps surae and brachi...
+    ai_relevance: 3
+    ai_reason: Investigates metabolic effects on triceps brachii force during fatigue, only tangentially related
+      to elbow extension.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+    label_sure: true
+    label_reason: triceps SURAE (calf), not triceps brachii
+  - key: 1844
+    title: Spatiotemporal surface EMG characteristics from rat triceps brachii muscle during treadmill locomotion
+      indicate selective recruitment of functionally distinct muscle regions
+    year: 2001
+    link: https://doi.org/10.1007/s002210100685
+    abstract: (no abstract)
+    ai_relevance: 3
+    ai_reason: Animal EMG study of triceps recruitment during locomotion, partially relevant to muscle function.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+    label_sure: true
+    label_reason: rat triceps during locomotion
+  - key: 1863
+    title: Stride-Phase Kinematic Parameters That Predict Peak Elbow Varus Torque
+    year: 2020
+    link: https://doi.org/10.1177/2325967120968068
+    abstract: 'Background: During baseball pitching, a high amount of elbow varus torque in the arm cocking-to-acceleration
+      phase is thought to be a biomechanical risk factor for medial elbow pain and injury. The biomechanics of the
+      stride phase may provide preparation for the arm cocking-to-acceleration phase that follows it. Purpose: To
+      determine the kinematic parameters that predict peak elbow varus torque du...'
+    ai_relevance: 3
+    ai_reason: It investigates elbow varus torque during baseball pitching, providing partial context on elbow joint
+      biomechanics but not specifically the triceps brachii.
+    ai_study_type: lab_experiment
+    gold: partly
+    gold_study_type: null
+  - key: 1920
+    title: 'Electromyographic analysis of muscle activation and co-activation across smash phases in para-badminton:
+      an exploratory investigation of neuromuscular coordination'
+    year: 2026
+    link: https://doi.org/10.3389/fbioe.2026.1853282
+    abstract: 'Objective This study aimed to examine and compare muscle activation and co-activation across the
+      backswing and forward swing phases of the para-badminton smash to improve understanding of phase-specific
+      neuromuscular coordination that may inform future biomechanical and injury-related research. Methods Nine
+      elite para-badminton players were recruited for the study (body mass: 79.0 ± 7.9 kg; height...'
+    ai_relevance: 3
+    ai_reason: It analyzes general upper limb muscle activation during para-badminton smashes without a specific
+      focus on the triceps brachii.
+    ai_study_type: lab_experiment
+    gold: partly
+    gold_study_type: null
+  - key: 1927
+    title: Kinematic and Muscle Activation Differences Between High-Performance and Intermediate Tennis Players
+      During the Forehand Drive
+    year: 2026
+    link: https://doi.org/10.3390/s26072244
+    abstract: 'This study compared the kinematic and neuromuscular characteristics of the tennis forehand drive
+      between high-performance (HP) and intermediate (INT) players. Eighteen right-handed male players (HP: n =
+      9; INT: n = 9) performed cross-court forehands while three-dimensional motion capture and surface electromyography
+      (EMG) were recorded from the dominant upper limb and trunk. Kinematic and EMG data...'
+    ai_relevance: 3
+    ai_reason: It analyzes kinematics and EMG during the tennis forehand drive, touching upon upper limb muscle
+      activation but not focused on elbow extension mechanics.
+    ai_study_type: lab_experiment
+    gold: partly
+    gold_study_type: null
+  - key: 2107
+    title: 'Normalization factor for the assessment of elbow spasticity with passive stretch measurement: maximum
+      torque VS. body weight'
+    year: 2018
+    link: https://doi.org/10.1109/embc.2018.8512435
+    abstract: Spasticity of the elbow was generally assessed by repeated passive stretch movement, including the
+      modified Ashworth Scale (MAS) from physiotherapist, and biomechanics analysis of the movement. The MAS-based
+      method depends on the subjective evaluations and the performance of biomechanics analysis assessment is affected
+      by the individual difference. Therefore, the normalization to reduce the indivi...
+    ai_relevance: 3
+    ai_reason: It focuses on elbow spasticity and torque measurement during passive stretch, offering minor relevance
+      to elbow joint torque assessment.
+    ai_study_type: lab_experiment
+    gold: partly
+    gold_study_type: null
+  - key: 31
+    title: 'Eccentric and Concentric Exercise of the Triceps Surae: An in Vivo Study of Dynamic Muscle and Tendon
+      Biomechanical Parameters'
+    year: 2014
+    link: https://doi.org/10.1123/jab.2013-0284
+    abstract: Triceps surae eccentric exercise is more effective than concentric exercise for treating Achilles
+      tendinopathy, however the mechanisms underpinning these effects are unclear. This study compared the biomechanical
+      characteristics of eccentric and concentric exercises to identify differences in the tendon load response.
+      Eleven healthy volunteers performed eccentric and concentric exercises on a forc...
+    ai_relevance: 2
+    ai_reason: This study focuses on the triceps surae (calf muscles) and Achilles tendon, which are unrelated to
+      the elbow and triceps brachii.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+  - key: 48
+    title: Anticipatory modulation of motor unit discharge rate before rapid isometric elbow flexion force production
+    year: 2026
+    link: https://doi.org/10.64898/2026.07.11.737916
+    abstract: Surface electromyography (EMG) studies have demonstrated anticipatory muscle activation prior to predictable
+      voluntary actions. However, the mechanism through which this preparation is expressed, whether through motor-unit
+      recruitment or discharge-rate modulation, remains to be elucidated. We employed surface decomposition EMG
+      to quantify motor-unit behavior prior to self-paced rapid isometric elb...
+    ai_relevance: 2
+    ai_reason: Studies anticipatory activation before elbow flexion, not extension of triceps.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+  - key: 84
+    title: Bradykinin type 2 receptor -9/-9 genotype is associated with triceps brachii muscle hypertrophy following
+      strength training in young healthy men
+    year: 2012
+    link: https://doi.org/10.1186/1471-2474-13-217
+    abstract: 'BACKGROUND: Bradykinin type 2 receptor (B2BRK) genotype was reported to be associated with changes
+      in the left-ventricular mass as a response to aerobic training, as well as in the regulation of the skeletal
+      muscle performance in both athletes and non-athletes. However, there are no reports on the effect of B2BRK
+      9-bp polymorphism on the response of the skeletal muscle to strength training, and ou...'
+    ai_relevance: 2
+    ai_reason: Focuses on genetic association with triceps hypertrophy, mentioning the muscle only in a training
+      context.
+    ai_study_type: cohort
+    gold: not relevant
+    gold_study_type: null
+  - key: 1830
+    title: Kinematics, Kinetics, and Muscle Activation during Explosive Upper Body Movements
+    year: 1996
+    link: https://doi.org/10.1123/jab.12.1.31
+    abstract: The aim of this study was to investigate the kinematics, kinetics, and neural activation of the traditional
+      bench press movement performed explosively and the explosive bench throw in which the barbell was projected
+      from the hands. Seventeen male subjects completed three trials with a bar weight of 45% of the subject's previously
+      determined 1RM. Performance was significantly higher during the thro...
+    ai_relevance: 2
+    ai_reason: Focuses on bench press movements, not specific triceps elbow extension behavior.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+  - key: 1834
+    title: Compensation for intrinsic muscle stiffness by short-latency reflexes in human triceps surae muscles
+    year: 1984
+    link: https://doi.org/10.1152/jn.1984.52.5.797
+    abstract: The incremental torque resisting rotation of the foot about the ankle joint was studied in normal
+      seated subjects. Prior to each rotation, subjects were required to activate triceps surae (TS) muscles and
+      maintain a constant plantar flexion torque (range 6-14 N X m) on a platform whose position was controlled
+      by a torque motor. Subjects were instructed to increase torque as rapidly as possible onc...
+    ai_relevance: 2
+    ai_reason: It examines triceps surae muscles at the ankle joint, which is irrelevant to the triceps brachii
+      and elbow extension.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+  - key: 1919
+    title: Follower arm muscle activity during the driver swing and its association with stroking performance in
+      male golfers of different skill levels
+    year: 2026
+    link: https://doi.org/10.3389/fbioe.2026.1946349
+    abstract: Objective This study aims to investigate the activation patterns of the follower-arm muscles during
+      the driver swing in male golfers of different skill levels and to examine their associations with stroking
+      performance parameters, with the goal of elucidating the functional role of the follower arm in the golf swing.
+      Methods Sixteen right-handed golfers (8 National Level 1 and 8 National Level 2 a...
+    ai_relevance: 2
+    ai_reason: This paper investigates follower arm muscle activity during golf swings, only mentioning arm muscles
+      generally rather than the triceps brachii specifically.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+  - key: 29
+    title: Muscle architecture of biceps brachii, triceps brachii and supraspinatus in the horse
+    year: 2006
+    link: https://doi.org/10.1111/j.1469-7580.2006.00669.x
+    abstract: Three muscles from the proximal equine forelimb were dissected in order to investigate their potential
+      to contribute to proximal limb mechanics. Muscle mass, fibre length, tendon mass and tendon length were measured
+      from biceps brachii, triceps brachii, supraspinatus and lacertus fibrosus (biceps lateral head mass 171-343.4
+      g and fibre length 0.5-0.8 cm; biceps medial head mass 283-500 g and fibre...
+    ai_relevance: 1
+    ai_reason: Studies triceps architecture in horses, not human elbow extension mechanics.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+  - key: 46
+    title: 'American Society of Biomechanics Journal of Biomechanics Award 2021: Exploring the Functional Boundaries
+      and Metabolic Consequences of Triceps Surae Force-Length Relations during Walking'
+    year: 2023
+    link: https://doi.org/10.1016/j.jbiomech.2023.111771
+    abstract: 'The relationship between individual muscle dynamics and whole-body metabolic cost is not well established.
+      Here we use biofeedback to modulate triceps surae (TS) activity during walking to test the following hypotheses
+      based on basic principles of muscle physiology: (1) increased TS activity would increase metabolic cost via
+      shorter muscle fascicle lengths and thus reduced force capacity and (2) d...'
+    ai_relevance: 1
+    ai_reason: Focuses on triceps surae (calf) rather than triceps brachii, only tangentially related.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+  - key: 1857
+    title: Torque-producing capacity is affected by moment arm in the human knee extensors
+    year: 2020
+    link: https://doi.org/10.1186/s13104-020-05182-3
+    abstract: 'OBJECTIVE: The torque-producing capacity can be assessed as maximal isometric torque per muscle size.
+      Nevertheless, the factors contributing to this capacity remain poorly understood. In general, the magnitude
+      of joint torque production is determined not only by muscle size but also by joint moment arm (MA). Based
+      on this background, we hypothesized that longer MA would be related to higher torque...'
+    ai_relevance: 1
+    ai_reason: Examines knee extensors, unrelated to triceps brachii elbow extension.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+  - key: 1918
+    title: Force-limiting factors in triceps surae muscle of children and adolescents with spastic cerebral palsy
+    year: 2026
+    link: https://doi.org/10.1016/j.clinbiomech.2026.106944
+    abstract: Background Children with cerebral palsy (CP) experience functional impairments, including reduced
+      muscle force. Although previous research has demonstrated reduced plantarflexion force and the feasibility
+      of assessing muscle function in children with CP, little is known about contraction-related muscle mechanics
+      that limit force generation. This study aimed to identify key mechanical and neural fa...
+    ai_relevance: 1
+    ai_reason: Focuses on triceps surae in cerebral palsy, not the triceps brachii of the arm.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+  - key: 54
+    title: Lower limb muscle activation and biomechanics during single-leg hopping in different directions
+    year: 2025
+    link: https://doi.org/10.3389/fspor.2025.1733669
+    abstract: Background Single-leg forward and vertical hopping are commonly employed to evaluate knee neuromuscular
+      function following anterior cruciate ligament reconstruction. However, similar hopping performance between
+      limbs does not ensure full knee recovery. Single-leg backward hopping has been suggested to impose greater
+      knee kinetics, but its effects on lower limb muscle activation and kinematics rema...
+    ai_relevance: 0
+    ai_reason: Investigates lower‑limb muscles, no relevance to triceps brachii elbow extension.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+  - key: 60
+    title: 'Heterogeneity of muscle activation in relation to force direction: A multi-channel surface electromyography
+      study on the triceps surae muscle'
+    year: 2008
+    link: https://doi.org/10.1016/j.jelekin.2008.04.013
+    abstract: (no abstract)
+    ai_relevance: 0
+    ai_reason: Studies triceps surae (calf) activation, unrelated to triceps brachii elbow extension.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+  - key: 1846
+    title: Neuromuscular Activation of Triceps Surae Using Muscle Functional MRI and EMG
+    year: 2005
+    link: https://doi.org/10.1249/01.mss.0000159026.99792.76
+    abstract: 'PURPOSE: The aim of the present study was to clarify the neuromuscular activation patterns among
+      individual triceps surae (TS) muscles during a repetitive plantarflexion using muscle functional magnetic
+      resonance imaging (MRI) (mfMRI) and electromyography (EMG). METHODS: Six healthy men participated in this
+      study, performing 5 sets of 10 repetitions of a calf-raise exercise bilaterally, unilateral...'
+    ai_relevance: 0
+    ai_reason: Examines triceps surae (calf) muscles, unrelated to triceps brachii elbow extension.
+    ai_study_type: lab_experiment
+    gold: not relevant
+    gold_study_type: null
+  labeled_by: claude

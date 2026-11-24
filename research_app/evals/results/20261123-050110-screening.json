@@ -1,0 +1,50 @@
+{
+ "suite": "screening",
+ "run_id": 1795410070,
+ "started_at": "2026-11-23T05:01:10.048594Z",
+ "seconds": 14.3,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "5.3",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite"
+ },
+ "metrics": {
+  "papers": 60.0,
+  "relevant_recall": 0.8387096774193549,
+  "relevant_precision": 0.8666666666666667,
+  "bucket_accuracy": 0.7166666666666667,
+  "gold_relevant": 31.0,
+  "study_type_accuracy": 0.875
+ },
+ "details": [
+  "STUDY TYPE · creatine · Muscle Mass and Fat Reduction: Do Creatine and Whey Protein Supplement: AI randomized_trial, you narrative_review",
+  "FALSE RELEVANT · creatine · Comparative Effects of Guanidinoacetic Acid and Creatine on Body Composition, Mu → AI 8/10, you: partly",
+  "MISSED · triceps · Voluntary activation of biceps-to-triceps and deltoid-to-triceps transfers in qu → AI 5/10: Focuses on voluntary activation after muscle transfers, touching on force generation but in a clinical context.",
+  "MISSED · triceps · Early Phase Adaptations in Strength, Muscle Size, and Co-activation Following Re → AI 5/10: Reports early strength and EMG changes in triceps after short‑term training, partially relevant to mechanical behavior.",
+  "MISSED · triceps · Changes in Strength, Endurance, and Fatigue During a Resistance-Training Program → AI 5/10: Tracks endurance and fatigue of triceps during a training program, offering limited insight into force generation.",
+  "MISSED · triceps · Triceps Brachii Muscle Strength and Architectural Adaptations with Resistance Tr → AI 5/10: Examines strength and architectural changes with different training lengths, only indirectly related to mechanical behavior.",
+  "MISSED · triceps · Strategies for muscle activation during isometric torque generation at the human → AI 5/10: It investigates muscle activation in elbow muscles during isometric torque generation, including extension.",
+  "FALSE RELEVANT · triceps · Biomechanics of the Elbow During Baseball Pitching → AI 7/10, you: partly",
+  "FALSE RELEVANT · triceps · Spatiotemporal surface EMG characteristics from rat triceps brachii muscle durin → AI 6/10, you: not relevant",
+  "FALSE RELEVANT · triceps · Muscle architecture of biceps brachii, triceps brachii and supraspinatus in the  → AI 6/10, you: not relevant"
+ ],
+ "cost": {
+  "screen · gemini": {
+   "calls": 3,
+   "tokens": 7624,
+   "seconds": 8.099
+  },
+  "screen · groq": {
+   "calls": 3,
+   "tokens": 8300,
+   "seconds": 5.7
+  }
+ }
+}

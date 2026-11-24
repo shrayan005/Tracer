@@ -1,0 +1,62 @@
+{
+ "suite": "connections",
+ "run_id": 1795416252,
+ "started_at": "2026-11-23T06:44:12.300395Z",
+ "seconds": 91.1,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "6.7",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite",
+  "results_per_query": "15",
+  "prefilter_keep": "40"
+ },
+ "metrics": {
+  "pair_precision": 0.7994403744403744,
+  "pair_recall": 0.8854166666666666,
+  "groups_found": 0.8888888888888888,
+  "relation_accuracy": 1.0,
+  "stance_accuracy": 1.0,
+  "ai_groups": 2.3333333333333335,
+  "runs": 3.0
+ },
+ "details": [
+  "CHECK · creatine · group 'Does creatine supplementation combined with resistance train' dropped: it sets a change over time and a comparison against each other, which are different questions, not a contradiction",
+  "CHECK · creatine · group 'Does creatine supplementation combined with resistance train' dropped: it sets a change over time and a comparison against each other, which are different questions, not a contradiction",
+  "MISSED GROUP · creatine · Does creatine (with resistance training) increase lean / fat-free mass in older adults?",
+  "MISSED GROUP · creatine · Does creatine (with resistance training) improve physical function in older adults?",
+  "FALSE LINK · creatine · P1.C2 ↔ P8.C1",
+  "FALSE LINK · creatine · P1.C3 ↔ P8.C1",
+  "FALSE LINK · creatine · P2.C1 ↔ P8.C1",
+  "FALSE LINK · creatine · P4.C2 ↔ P8.C1",
+  "FALSE LINK · creatine · P4.C3 ↔ P8.C1",
+  "FALSE LINK · creatine · P6.C3 ↔ P8.C1",
+  "FALSE LINK · creatine · P8.C1 ↔ P9.C2",
+  "MISSED LINK · creatine · P1.C1 ↔ P2.C2",
+  "MISSED LINK · creatine · P1.C1 ↔ P4.C1",
+  "MISSED LINK · creatine · P1.C1 ↔ P6.C2",
+  "MISSED LINK · creatine · P1.C1 ↔ P9.C1",
+  "MISSED LINK · creatine · P2.C2 ↔ P4.C1",
+  "MISSED LINK · creatine · P2.C2 ↔ P6.C2",
+  "MISSED LINK · creatine · P2.C2 ↔ P9.C1",
+  "MISSED LINK · creatine · P2.C3 ↔ P6.C4",
+  "MISSED LINK · creatine · P2.C3 ↔ P9.C3",
+  "MISSED LINK · creatine · P4.C1 ↔ P6.C2",
+  "CHECK · triceps · P9.C3 dropped: its paper is on both sides of this question (probably a badly worded claim)",
+  "CHECK · triceps · group 'Does elbow angle affect triceps muscle activity?' dropped: fewer than 2 papers left",
+  "CHECK · triceps · group 'Do triceps head differences affect muscle force?' dropped: fewer than 2 papers left"
+ ],
+ "cost": {
+  "connect · groq": {
+   "calls": 6,
+   "tokens": 22077,
+   "seconds": 19.156
+  }
+ }
+}

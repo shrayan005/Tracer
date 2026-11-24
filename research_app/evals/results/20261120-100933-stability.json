@@ -1,0 +1,59 @@
+{
+ "suite": "stability",
+ "run_id": 1795169373,
+ "started_at": "2026-11-20T10:09:33.191514Z",
+ "seconds": 217.2,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "5.3",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite"
+ },
+ "metrics": {
+  "facts_identical_share": 0.975,
+  "trust_identical_share": 1.0,
+  "claim_count_identical_share": 0.75,
+  "claim_overlap_mean": 0.913888888888889,
+  "papers": 20.0,
+  "runs": 3.0,
+  "connection_overlap_mean": 0.5940860215053764,
+  "connection_groups_mean": 2.1666666666666665
+ },
+ "details": [
+  "most unstable facts: duration (5)",
+  "creatine · (Candow et al., 2025) · duration: not reported / not applicable / not reported",
+  "creatine · connection groups per run: 3 / 3 / 2",
+  "triceps · (Roberts et al., 2026) · duration: under 3 months / under 3 months / single session",
+  "triceps · (Peterson et al., 2017) · duration: 3 months or more / single session / single session",
+  "triceps · (Werner et al., 1993) · duration: single session / not reported / single session",
+  "triceps · (Günzkofer et al., 2011) · duration: not reported / not reported / single session",
+  "triceps · connection groups per run: 2 / 2 / 1"
+ ],
+ "cost": {
+  "analyze · gemini": {
+   "calls": 61,
+   "tokens": 269886,
+   "seconds": 320.955
+  },
+  "analyze · groq": {
+   "calls": 1,
+   "tokens": 2714,
+   "seconds": 2.598
+  },
+  "connect · gemini": {
+   "calls": 2,
+   "tokens": 5155,
+   "seconds": 9.44
+  },
+  "connect · groq": {
+   "calls": 5,
+   "tokens": 16478,
+   "seconds": 12.86
+  }
+ }
+}

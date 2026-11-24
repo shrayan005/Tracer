@@ -1,0 +1,67 @@
+{
+ "suite": "appraisal",
+ "run_id": 1795414665,
+ "started_at": "2026-11-23T06:17:45.066414Z",
+ "seconds": 24.5,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "6.7",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite",
+  "results_per_query": "15",
+  "prefilter_keep": "40"
+ },
+ "metrics": {
+  "papers": 10.0,
+  "facts": 100.0,
+  "fact_accuracy": 0.89,
+  "false_yes": 3.0,
+  "false_yes_rate": 0.08823529411764706,
+  "missed_yes": 4.0,
+  "missed_yes_rate": 0.11428571428571428,
+  "sample_size_accuracy": 0.9,
+  "trust_agreement": 0.8,
+  "accuracy_sex": 1.0,
+  "accuracy_duration": 0.8,
+  "accuracy_control_group": 0.9,
+  "accuracy_randomized": 0.9,
+  "accuracy_blinded": 1.0,
+  "accuracy_statistics_reported": 0.8,
+  "accuracy_effect_sizes": 0.7,
+  "accuracy_conflicts_declared": 1.0,
+  "accuracy_data_available": 0.9
+ },
+ "details": [
+  "creatine · (Yao et al., 2026) · duration: AI not applicable, you not reported",
+  "creatine · (Amiri & Sheikholeslami‐Vatani, 2023) · effect_sizes: AI yes, you not reported",
+  "triceps · (Hussain et al., 2020) · data_available: AI yes, you no",
+  "triceps · (Roberts et al., 2026) · statistics_reported: AI not reported, you yes",
+  "triceps · (Roberts et al., 2026) · effect_sizes: AI not reported, you yes",
+  "triceps · (Roberts et al., 2026) · TRUST: AI's facts give 3, yours give 4",
+  "triceps · (Akima et al., 2021) · control_group: AI not reported, you not applicable",
+  "triceps · (Peterson et al., 2017) · sample_size: AI 9, you 11",
+  "triceps · (Peterson et al., 2017) · duration: AI under 3 months, you single session",
+  "triceps · (Peterson et al., 2017) · randomized: AI yes, you no",
+  "triceps · (Peterson et al., 2017) · TRUST: AI's facts give 2, yours give 3",
+  "triceps · (Stasinaki et al., 2018) · statistics_reported: AI not reported, you yes",
+  "triceps · (Stasinaki et al., 2018) · effect_sizes: AI not reported, you yes"
+ ],
+ "cost": {
+  "analyze · gemini": {
+   "calls": 9,
+   "tokens": 60689,
+   "seconds": 22.996
+  },
+  "analyze · groq": {
+   "calls": 1,
+   "tokens": 7777,
+   "seconds": 3.755
+  }
+ }
+}

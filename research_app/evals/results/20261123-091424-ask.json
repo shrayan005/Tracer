@@ -1,0 +1,44 @@
+{
+ "suite": "ask",
+ "run_id": 1795425264,
+ "started_at": "2026-11-23T09:14:24.168066Z",
+ "seconds": 29.7,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "6.7",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,chat->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite",
+  "results_per_query": "15",
+  "prefilter_keep": "40"
+ },
+ "metrics": {
+  "questions": 13.0,
+  "retrieval_recall": 0.9090909090909091,
+  "answered_correctly": 0.9090909090909091,
+  "declined_correctly": 1.0,
+  "quotes_ok": 0.9375,
+  "sentences_per_answer": 1.2307692307692308
+ },
+ "details": [
+  "NOT RETRIEVED · creatine · What daily dose of creatine did Brose et al. give?",
+  "FLAG · triceps · Did a few days of training change triceps muscle thickness? · quote not found in the passage"
+ ],
+ "cost": {
+  "chat · gemini": {
+   "calls": 13,
+   "tokens": 32119,
+   "seconds": 21.488
+  },
+  "embed · gemini": {
+   "calls": 13,
+   "tokens": 215,
+   "seconds": 7.466
+  }
+ }
+}

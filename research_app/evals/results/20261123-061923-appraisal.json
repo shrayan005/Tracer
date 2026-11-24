@@ -1,0 +1,57 @@
+{
+ "suite": "appraisal",
+ "run_id": 1795414763,
+ "started_at": "2026-11-23T06:19:23.376351Z",
+ "seconds": 14.5,
+ "cases": [
+  "creatine",
+  "triceps"
+ ],
+ "settings": {
+  "analysis_version": "6.7",
+  "judge": "groq",
+  "provider_order": "groq,gemini,openrouter",
+  "routes": "analyze->gemini,connect->groq,gaps->gemini,summarize->gemini",
+  "groq_model": "openai/gpt-oss-120b",
+  "gemini_model": "gemini-3.5-flash-lite",
+  "results_per_query": "15",
+  "prefilter_keep": "40"
+ },
+ "metrics": {
+  "papers": 10.0,
+  "facts": 100.0,
+  "fact_accuracy": 0.92,
+  "false_yes": 2.0,
+  "false_yes_rate": 0.05714285714285714,
+  "missed_yes": 2.0,
+  "missed_yes_rate": 0.05714285714285714,
+  "sample_size_accuracy": 1.0,
+  "trust_agreement": 1.0,
+  "accuracy_sex": 1.0,
+  "accuracy_duration": 0.8,
+  "accuracy_control_group": 0.8,
+  "accuracy_randomized": 0.9,
+  "accuracy_blinded": 1.0,
+  "accuracy_statistics_reported": 0.9,
+  "accuracy_effect_sizes": 0.8,
+  "accuracy_conflicts_declared": 1.0,
+  "accuracy_data_available": 1.0
+ },
+ "details": [
+  "creatine · (Yao et al., 2026) · duration: AI not applicable, you not reported",
+  "creatine · (Amiri & Sheikholeslami‐Vatani, 2023) · effect_sizes: AI yes, you not reported",
+  "triceps · (Akima et al., 2021) · control_group: AI not reported, you not applicable",
+  "triceps · (Peterson et al., 2017) · duration: AI under 3 months, you single session",
+  "triceps · (Peterson et al., 2017) · randomized: AI yes, you no",
+  "triceps · (Mansour et al., 2025) · control_group: AI not applicable, you not reported",
+  "triceps · (Stasinaki et al., 2018) · statistics_reported: AI not reported, you yes",
+  "triceps · (Stasinaki et al., 2018) · effect_sizes: AI not reported, you yes"
+ ],
+ "cost": {
+  "analyze · gemini": {
+   "calls": 10,
+   "tokens": 69887,
+   "seconds": 26.758
+  }
+ }
+}
